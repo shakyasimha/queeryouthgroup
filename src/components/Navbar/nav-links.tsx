@@ -49,12 +49,7 @@ export default function NavLinks({ className }: any) {
                 <li key={link.name}>
                 <Link
                     href={link.href}
-                    className={`flex items-center px-3 py-2 text-[#e8344a] hover:text-[#264564] ${
-                    pathname === link.href
-                        ? 'border-b-2 border-[#e8344a] font-bold'
-                        : 'border-b-2 border-transparent'
-                    } transition-all duration-300 ease-in-out`}
-                    aria-current={pathname === link.href ? 'page' : undefined}
+                    className={`flex items-center px-3 py-2 text-[#d13467] hover:text-[#264564]`}
                 >
                     <p className="hidden md:block">{link.name}</p>
                 </Link>

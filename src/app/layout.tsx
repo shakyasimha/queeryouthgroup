@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Queer Youth Group",
+  title: "Queer Youth Group Nepal",
   description: "",
+  icons: {
+    icon: "/qyg-logo.svg",
+  }
 };
 
 export default function RootLayout({
@@ -19,6 +23,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

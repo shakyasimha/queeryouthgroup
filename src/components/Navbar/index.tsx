@@ -7,7 +7,7 @@ import { alegreyaSans } from "@/ui/fonts";
 export default function Navbar() {
     return(
         <nav className="bg-[#F5EFE0] border-gray-200 relative">
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
                 {/* For logo and link */}
                 <Link 
                     key="logo" 
@@ -19,10 +19,10 @@ export default function Navbar() {
                         <Image 
                             src="/qyg-logo.svg"
                             alt="Logo"
-                            width={40}
-                            height={40}
+                            width={32}
+                            height={32}
                         />
-                        <span className={`${alegreyaSans.className} text-2xl font-medium text-[#D41367] whitespace-nowrap`}>
+                        <span className={`${alegreyaSans.className} text-2xl font-medium text-[#D41367] whitespace-nowrap p-4`}>
                             Queer Youth Group
                         </span>
                     </div>
