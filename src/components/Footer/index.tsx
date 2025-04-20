@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { openSans, alegreyaSans } from "@/ui/fonts";
+import { FaFacebook, FaInstagram} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
     return (
@@ -38,6 +40,8 @@ export default function Footer() {
                     <Link
                         key="location"
                         href="https://maps.app.goo.gl/6apehbLTBEmZGDva8"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="hover:text-[#333]/80 transition duration-400"
                     >
                         यल ध्वाखा (पाटनढोका), वागमति प्रदेश, नेपाल
@@ -47,6 +51,8 @@ export default function Footer() {
                     <Link
                         key="email"
                         href="mailto:communications.qyg@gmail.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="hover:text-[#333]/80 transition duration-400"
                     >
                         communications.qyg@gmail.com
@@ -59,6 +65,40 @@ export default function Footer() {
                 <div className="max-w-screen-xl mx-auto px-4 py-4 flex flex-col justify-between">
                     <div className={`${alegreyaSans.className} font-bold text-[#333] text-xl`}>Connect With Us</div>
 
+                    <div className="flex flex-row space-x-6 mt-2 mb-10 ml-1">
+                        {/* Facebook icon */}
+                        <Link 
+                            key="facebook" 
+                            href="https://www.facebook.com/QYGnepal" 
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-[#333]/80 transition duration-400"
+                        >
+                            <FaFacebook size={24}/>
+                        </Link>
+
+                        {/* Instagram icon */}
+                        <Link 
+                            key="instagram" 
+                            href="https://www.instagram.com/qygnepal/"
+                            target="_blank"
+                            rel="noopener noreferrer" 
+                            className="hover:text-[#333]/80 transition duration-400"
+                        >
+                            <FaInstagram size={24}/>
+                        </Link>
+                        
+                        {/* X/Twitter icon */}
+                        <Link 
+                            key="twitter" 
+                            href="https://www.instagram.com/qygnepal/" 
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-[#333]/80 transition duration-400"
+                        >
+                            <FaXTwitter size={24}/>
+                        </Link>
+                    </div>
                 </div>
             </div>
             {/* Divider line */}
