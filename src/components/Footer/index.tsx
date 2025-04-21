@@ -17,7 +17,7 @@ export default function Footer() {
                         href="https://maps.app.goo.gl/6apehbLTBEmZGDva8"
                         className="hover:text-[#333]/80 transition duration-400"
                     >
-                        Yala Dhwakha (Patandhoka), Bagmati, Nepal
+                        Yala Dhwakha (Patandhoka), Lalitpur-11, Nepal
                     </Link>
 
                     {/* Email address */}
@@ -44,7 +44,7 @@ export default function Footer() {
                         rel="noopener noreferrer"
                         className="hover:text-[#333]/80 transition duration-400"
                     >
-                        यल ध्वाखा (पाटनढोका), वागमति प्रदेश, नेपाल
+                        यल ध्वाखा (पाटनढोका), ललितपुर-११, नेपाल
                     </Link>
 
                     {/* Email address */}
