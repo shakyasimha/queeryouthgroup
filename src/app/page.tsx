@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import { roboto, openSans } from "@/ui/fonts";
 import Slideshow from "@/components/Slideshow";
 

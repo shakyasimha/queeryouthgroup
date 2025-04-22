@@ -39,8 +39,11 @@ const links = [
         href: '/dictionary'
     },
 ]
+interface NavLinksProps {
+    className?: string;
+}
 
-export default function NavLinks({ className }: any) {
+export default function NavLinks({ className }: NavLinksProps) {
     const pathname = usePathname(); // Get current route 
 
     return (
