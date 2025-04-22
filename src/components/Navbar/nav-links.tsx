@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import { alegreyaSans } from "@/ui/fonts"
 
@@ -52,7 +53,12 @@ export default function NavLinks({ className }: NavLinksProps) {
                 <li key={link.name}>
                 <Link
                     href={link.href}
-                    className={`flex items-center px-2 py-2 text-[#d13467] rounded-md transition duration-300 ease-in-out hover:bg-[#d13467] hover:text-white`}
+                    className={clsx(
+                        "flex items-center px-2 py-2 text-[#d13467] rounded-md transition duration-300 ease-in-out hover:bg-[#d13467] hover:text-white", // default link style
+                        {
+                            "text-white bg-[#d13467] font-bold transition-all duration-300 ease-in-out": pathname === link.href, /// active link style</li>
+                        }
+                    )}
                 >
                     <p className="hidden md:block">{link.name}</p>
                 </Link>
