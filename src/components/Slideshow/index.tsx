@@ -1,8 +1,11 @@
+"use client";
+
 import React, { useState } from 'react';
+import { alegreyaSans } from '@/ui/fonts';
+
+// Import Swiper styles
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-
-// Import Swiper styles 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation'; 
@@ -71,7 +74,7 @@ const Slideshow = () => {
 
             {/* Site Title Overlay */}
             <div className="absolute inset-0 flex items-center justify-center bg-opacity-20 z-10">
-                <h1 className="text-4xl md:text-6xl font-bold text-white text-center text-shadow">
+                <h1 className={`${alegreyaSans.className} text-4xl md:text-6xl font-bold text-white text-center text-shadow`}>
                     Queer Youth Group
                 </h1>
             </div>

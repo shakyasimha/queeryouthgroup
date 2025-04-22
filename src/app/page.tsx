@@ -1,12 +1,14 @@
 import Image from "next/image";
 import { roboto, openSans } from "@/ui/fonts";
+import Slideshow from "@/components/Slideshow";
+
 
 export default function Home() {
   return (
     <div className="w-full flex flex-col flex-grow">
       {/* First container - image and welcome */}
       <div className='flex flex-col min-[1200px]:flex-row items-center'>
-          {/* <Slideshow /> */}
+          <Slideshow />
       </div>
 
       {/* Second container - containing books written, etc */}
