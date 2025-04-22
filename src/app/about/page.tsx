@@ -3,7 +3,7 @@ import { alegreyaSans, roboto } from "@/ui/fonts";
 
 export default function Page() {
     return(
-        <div className="flex flex-grow flex-col bg-[#fafafc]">
+        <div className="w-full flex flex-grow flex-col bg-[#fafafc]">
             {/* Image section and "Who We Are" */}
             {/* <div className="flex flex-col min-[1200px]:flex-row items-center">
                 <Image 

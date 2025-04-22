@@ -24,7 +24,7 @@ const links = [
     },
     {
         name: 'Legal Resources',
-        href: '/legal-resources'
+        href: '/resources'
     },
     {
         name: 'Litigations',

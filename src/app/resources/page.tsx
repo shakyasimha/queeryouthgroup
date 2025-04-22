@@ -5,7 +5,7 @@ export default function Page() {
         <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
             <div className="flex flex-col items-center min-h-[30vh]">
                 <div className="text-center text-2xl">
-                    <h1 className={`${alegreyaSans.className} text-black py-4`}>Our Team</h1>
+                    <h1 className={`${alegreyaSans.className} text-black py-4`}>Legal Resources</h1>
                 </div>
 
                 <div className={`${roboto.className} text-bg text-justify px-16 py-2 text-black`}>
