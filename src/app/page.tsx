@@ -12,7 +12,7 @@ export default function Home() {
       </div>
 
       {/* Second container - containing books written, etc */}
-      <div className="p-8 flex flex-col md:flex-row justify-between bg-[#f5efe0] gap-8">
+      <div className="p-8 flex flex-col md:flex-row sm:flex-col justify-between bg-[#f5efe0] gap-8">
         {/* 4 Books Section */}
         <div className="md:w-1/3">
             <h1 className={`${openSans.className} font-bold text-black text-lg md:text-xl text-center mb-8`}>4 Books</h1>
@@ -43,12 +43,12 @@ export default function Home() {
       </div>
 
       {/* Partners */}
-      <div className="p-4 flex justify-center items-center bg-[#e4f3ee]">
+      <div className="p-4 flex md:flex-row sm:flex-col justify-center items-center bg-[#e4f3ee]">
           <h1 className={`${openSans.className} font-bold text-black text-lg md:text-xl text-center mb-8`}> Our Partners </h1>
       </div>
         
       {/* Projects and Activities */}
-      <div className="p-4 flex justify-center items-center bg-[#e0e5f5]">
+      <div className="p-4 flex md:flex-row sm:flex-col justify-center items-center bg-[#e0e5f5]">
           <h1 className={`${openSans.className} font-bold text-black text-lg md:text-xl text-center mb-8`}> Our Projects and Activities </h1>
       </div>
     </div>

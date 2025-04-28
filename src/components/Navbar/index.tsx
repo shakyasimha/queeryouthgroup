@@ -1,13 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import NavLinks from "@/components/Navbar/nav-links";
-
+import { useState } from "react";
 import { alegreyaSans } from "@/ui/fonts";
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 export default function Navbar() {
+    const [isOpen, setIsOpen] = useState(false);
+
     return(
         <nav className="bg-[#F5EFE0] border-gray-200 relative">
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
+            <div className="max-w-screen-xl flex flex-nowrap items-center justify-between mx-auto px-4">
                 {/* For logo and link */}
                 <Link 
                     key="logo" 
@@ -27,8 +32,17 @@ export default function Navbar() {
                         </span>
                     </div>
                 </Link>
+
+                {/* <button
+                    className="sm:hidden text-[#D41367] text-2xl focus:outline-none"
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    {isOpen ? <FaTimes /> : <FaBars />}
+                </button> */}
+
+                {/* Horizontal links for wider screens */}
                 <div className="w-full min-[1200px]:w-auto min-[1200px]:flex space-x-6 transition-all duration-300 ease-in-out overflow-hidden">
-                    <NavLinks />
+                    <NavLinks/>
                 </div>
             </div>
         </nav>
