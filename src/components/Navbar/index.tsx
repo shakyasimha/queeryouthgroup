@@ -8,41 +8,52 @@ import { alegreyaSans } from "@/ui/fonts";
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isClick, setisClick] = useState(false);
+
+    const toggleNavbar = (): void => {
+        setisClick(!isClick);
+    }
 
     return(
         <nav className="bg-[#F5EFE0] border-gray-200 relative">
-            <div className="max-w-screen-xl flex flex-nowrap items-center justify-between mx-auto px-4">
-                {/* For logo and link */}
-                <Link 
-                    key="logo" 
-                    href="/"
-                    className="flex items-center space-x-3 hover:text-[#D41367] transition-colors"
-                >
-                    <div className="flex items-center justify-between">
-                        {/* Logo goes here */}
-                        <Image 
-                            src="/qyg-logo.svg"
-                            alt="Logo"
-                            width={32}
-                            height={32}
-                        />
-                        <span className={`${alegreyaSans.className} text-2xl font-medium text-[#D41367] whitespace-nowrap p-4`}>
-                            Queer Youth Group
-                        </span>
+            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16">
+                    <div className="flex items-center">
+                        <div className="flex-shrink-0">
+                            {/* For logo and link */}
+                            <Link 
+                                key="logo" 
+                                href="/"
+                                className="flex items-center space-x-3 hover:text-[#D41367] transition-colors"
+                            >
+                                <div className="flex items-center justify-between">
+                                    {/* Logo goes here */}
+                                    <Image 
+                                        src="/qyg-logo.svg"
+                                        alt="Logo"
+                                        width={32}
+                                        height={32}
+                                    />
+                                    <span className={`${alegreyaSans.className} text-2xl font-medium text-[#D41367] whitespace-nowrap p-4`}>
+                                        Queer Youth Group
+                                    </span>
+                                </div>
+                            </Link>
+                        </div>
                     </div>
-                </Link>
-
-                {/* <button
-                    className="sm:hidden text-[#D41367] text-2xl focus:outline-none"
-                    onClick={() => setIsOpen(!isOpen)}
-                >
-                    {isOpen ? <FaTimes /> : <FaBars />}
-                </button> */}
-
-                {/* Horizontal links for wider screens */}
-                <div className="w-full min-[1200px]:w-auto min-[1200px]:flex space-x-6 transition-all duration-300 ease-in-out overflow-hidden">
-                    <NavLinks/>
+                    <div className="hidden md:block">
+                        <NavLinks />
+                    </div>
+                    
+                    {/* Burger menu for smaller screens */}
+                    <div className="md:hidden flex items-center">
+                        <button
+                            className="sm:hidden text-[#d41367] text-2xl focus:border-[#d41367] hover:border-[#d41367] transition duration-300 ease-in-out"
+                            onClick={toggleNavbar}
+                        >
+                            {isClick ? <FaTimes /> : <FaBars />}
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
