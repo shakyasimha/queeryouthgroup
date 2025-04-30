@@ -1,7 +1,6 @@
 // import Image from "next/image";
 import { roboto, openSans } from "@/ui/fonts";
-import Slideshow from "@/components/Slideshow";
-
+// import Slideshow from "@/components/Slideshow";
 
 export default function Home() {
   return (
