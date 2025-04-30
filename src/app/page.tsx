@@ -8,7 +8,7 @@ export default function Home() {
     <div className="w-full flex flex-col flex-grow">
       {/* First container - image and welcome */}
       <div className='flex flex-col min-[1200px]:flex-row items-center'>
-          <Slideshow />
+          Queer Youth Group
       </div>
 
       {/* Second container - containing books written, etc */}
