@@ -11,28 +11,37 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 const images = [
-  '/images/event1.jpg',
-  '/images/event2.jpg',
-  '/images/event3.jpg',
+  '/images/ilga_2025.jpg',
+  '/images/IMG_6795.jpg',
+  '/images/nsl_round_1.jpg',
+  '/images/4.-Nepal-Pride-Parade-2019.jpg',
+  '/images/IMG_5290.jpg'
 ];
 
 const Slideshow = () => {
   return (
-        <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={50}
-        slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 3000 }}
-        loop={true}
-        >
-        {images.map((img, i) => (
-            <SwiperSlide key={i}>
-            <img src={img} alt={`Slide ${i + 1}`} className="w-full h-auto object-cover" />
-            </SwiperSlide>
-        ))}
-        </Swiper>
+        <div className="w-full h-[300px] sm:h-[350px] md:h-[450px] lg:h-[500px] xl:h-[550px] relative overflow-hidden rounded-xl">
+            <Swiper
+                modules={[Navigation, Pagination, Autoplay]}
+                spaceBetween={0}
+                slidesPerView={1}
+                navigation
+                pagination={{ clickable: true }}
+                autoplay={{ delay: 4000 }}
+                loop={true}
+                className="w-full h-full"
+            >
+                {images.map((img, i) => (
+                <SwiperSlide key={i}>
+                    <img
+                    src={img}
+                    alt={`Slide ${i + 1}`}
+                    className="w-full h-full object-cover"
+                    />
+                </SwiperSlide>
+                ))}
+            </Swiper>
+        </div>
     );
 };
 
