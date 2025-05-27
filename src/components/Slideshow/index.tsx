@@ -9,6 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation'; 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import './slideshow.css';
 
 const images = [
   '/images/ilga_2025.jpg',
