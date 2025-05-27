@@ -1,17 +1,45 @@
 import { alegreyaSans, roboto } from "@/ui/fonts"
+import Image from "next/image";
 
 export default function Page() {
   return (
-    <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
-      <div className="flex flex-col items-center min-h-[30vh]">
-        <div className="text-center text-2xl">
-          <h1 className={`${alegreyaSans.className} text-black py-4`}>Our Team</h1>
-        </div>
+    <div className="w-full flex flex-col flex-grow bg-[#fafafc] items-center">
+      <div className="text-center text-2xl">
+          <h1 className={`${alegreyaSans.className} text-black font-bold py-4 mt-4`}>Our Team</h1>
+      </div>
 
-        <div className={`${roboto.className} text-bg text-justify px-16 py-2 text-black`}>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+      {/* First row of team */}
+      <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 p-4">
+        <div className="bg-white text-black w-[300px] h-[500px] border rounded shadow">
+          <div className="w-full h-full relative overflow-hidden rounded">
+            <Image 
+                key="aboutus"
+                src="images/rukshana.jpg"
+                alt="rukshana"
+                width={300}
+                height={300}
+                className="object-cover"
+            />
+          </div>
+        </div>
+        <div className="bg-white text-black w-[300px] h-[500px] p-4 border rounded shadow">
+          Two
+        </div>
+        <div className="bg-white text-black w-[300px] h-[500px] p-4 border rounded shadow">
+          Three
+        </div>
+      </div>
+
+      {/* Second row of team */}
+      <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 p-4">
+        <div className="bg-white text-black w-[300px] h-[500px] p-4 border rounded shadow">
+          Four
+        </div>
+        <div className="bg-white text-black w-[300px] h-[500px] p-4 border rounded shadow">
+          Five
+        </div>
+        <div className="bg-white text-black w-[300px] h-[500px] p-4 border rounded shadow sm:mb-4">
+          Six
         </div>
       </div>
     </div>
