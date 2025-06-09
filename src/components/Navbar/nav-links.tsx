@@ -18,8 +18,8 @@ const links = [
         href: '/team'
     },
     {
-        name: 'Research',
-        href: '/research'
+        name: 'Our Works',
+        href: '/work'
     },
     {
         name: 'Legal Resources',
