@@ -24,7 +24,7 @@ export default function Page() {
                 </div>
 
                 
-                <div className={`${roboto.className} text-bg text-justify px-16 py-2 text-black md:mx-64`}>
+                <div className={`${roboto.className} text-bg text-justify px-16 py-2 text-black md:mx-64 sm:mx-2`}>
                     <p>
                     Queer Youth Group (QYG) is a youth-led, not-for-profit collective dedicated to advocating for the rights and dignity of queer individuals in Nepal Since its founding, QYG has been at the forefront of policy advocacy, awareness campaigns, and community support for people of marginalized sexual orientation, gender identity, and sex characteristics (PoMSOGIESC).
                     Driven by a vision of equity and justice, QYG works to advance the social and legal recognition of gender diversity through strategic litigation, education, and resource development. Our initiatives span strategic litigation, education, and the development of accessible resources. We actively promote language justice, inclusive public policies, and gender-affirmative healthcare.
@@ -36,7 +36,7 @@ export default function Page() {
                     <h1 className={`${alegreyaSans.className} text-black py-4`}> About Us </h1>
                 </div>
 
-                <div className={`${roboto.className} text-bg text-justify mb-16 px-16 py-2 text-black md:mx-64`}>
+                <div className={`${roboto.className} text-bg text-justify mb-16 px-16 py-2 text-black md:mx-64 sm:mx-2`}>
                     <p>
                         Queer Youth Group (QYG) was founded on December 5, 2018, as a loose network. It was started by Rukshana Kapali, Dipesh Shrestha, and Badal Lama to create leadership opportunities for young people in the gender and sexual minority movement.
                         In 2020, QYG was officially registered as a not-for-profit organization. Our core belief is that sexual orientation, gender identity, and sex characteristics exist on a spectrum. They are fluid and not fixed in a rigid structure. These identities should not be limit to a box.
