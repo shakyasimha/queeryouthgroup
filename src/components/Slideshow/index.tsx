@@ -11,7 +11,7 @@ import './slideshow.css';
 
 const images = [
   '/images/ilga_2025.jpg',
-  '/images/IMG_6795.jpg',
+  '/images/IMG_6955.jpg',
   '/images/nsl_round_1.jpg',
   '/images/4.-Nepal-Pride-Parade-2019.jpg',
   '/images/IMG_5290.jpg'
