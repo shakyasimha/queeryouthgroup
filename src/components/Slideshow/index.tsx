@@ -1,8 +1,5 @@
 "use client";
 
-import React, { useState } from 'react';
-import { alegreyaSans } from '@/ui/fonts';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';

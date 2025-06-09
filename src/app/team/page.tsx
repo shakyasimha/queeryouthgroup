@@ -1,4 +1,4 @@
-import { alegreyaSans, roboto } from "@/ui/fonts"
+import { alegreyaSans } from "@/ui/fonts"
 import Image from "next/image";
 
 export default function Page() {

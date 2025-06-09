@@ -1,5 +1,5 @@
 // import Image from "next/image";
-import { roboto, openSans, alegreyaSans } from "@/ui/fonts";
+// import { roboto, openSans, alegreyaSans } from "@/ui/fonts";
 import Slideshow from "@/components/Slideshow";
 import Welcome from "@/components/Welcome";
 
