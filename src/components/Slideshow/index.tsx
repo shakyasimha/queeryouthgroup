@@ -9,6 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation'; 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import Image from 'next/image';
 import './slideshow.css';
 
 const images = [
@@ -34,10 +35,12 @@ const Slideshow = () => {
             >
                 {images.map((img, i) => (
                 <SwiperSlide key={i}>
-                    <img
+                    <Image
                     src={img}
                     alt={`Slide ${i + 1}`}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    priority={i==0}
                     />
                 </SwiperSlide>
                 ))}
