@@ -8,6 +8,42 @@ import { useState } from "react";
 import { alegreyaSans } from "@/ui/fonts";
 import { FaBars, FaTimes } from 'react-icons/fa';
 
+// Navbar links are here
+const links = [
+    { 
+        name: 'Home', 
+        href: '/'
+    },
+    {
+        name: 'About Us',
+        href: '/about'
+    },
+    {
+        name: 'Our Team',
+        href: '/team'
+    },
+    {
+        name: 'Our Works',
+        href: '/work'
+    },
+    {
+        name: 'Legal Resources',
+        href: '/resources'
+    },
+    {
+        name: 'Litigations',
+        href: '/litigations'
+    },
+    {
+        name: 'Publications',
+        href: '/publications'
+    },
+    {
+        name: 'Dictionary',
+        href: '/dictionary'
+    },
+];
+
 export default function Navbar() {
     const [isClick, setisClick] = useState(false);
 
@@ -36,7 +72,9 @@ export default function Navbar() {
 
                 {/* Desktop nav link */}
                 <div className="hidden md:block">
-                    <NavLinks />
+                    <NavLinks 
+                        links={links}
+                    />
                 </div>
 
                 {/* Burger menu icon */}
@@ -58,7 +96,10 @@ export default function Navbar() {
                         : "opacity-0 max-h-0 pointer-events-none"
                     )}
                 > 
-                    <NavLinks className="flex-col space-y-6 px-4 py-4" />
+                    <NavLinks 
+                        className="flex-col space-y-6 px-4 py-4" 
+                        links={links}    
+                    />
                 </div>
             </div>
         </nav>
