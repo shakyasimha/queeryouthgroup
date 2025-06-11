@@ -7,10 +7,9 @@ import clsx from "clsx";
 import { useState } from "react";
 import { alegreyaSans } from "@/ui/fonts";
 import { FaBars, FaTimes } from 'react-icons/fa';
-import translations from '@/locales/en/common.json'; // Fallback to English
 
 // Navbar links are here
-const linkData = [
+const links = [
     { 
         name: 'Home', 
         href: '/'
@@ -24,7 +23,7 @@ const linkData = [
         href: '/team'
     },
     {
-        name: 'Our Work',
+        name: 'Our Works',
         href: '/work'
     },
     {
@@ -45,23 +44,9 @@ const linkData = [
     },
 ];
 
-export default function Navbar({ lang }: { lang: string }) {
+export default function Navbar() {
     const [isClick, setisClick] = useState(false);
 
-    // Load translations based on lang, fallback to English
-    let messages;
-    try {
-        messages = require(`@/locales/${lang}/common.json`);
-    } catch (error) {
-        messages = translations; // Fallback to en/common.json
-    }
-
-    // Map linkData to include translated names and localized hrefs
-    const links = linkData.map(link => ({
-        name: messages.navbar[link.key] || link.key, // Fallback to key if translation is missing
-        href: `/${lang}${link.href === '/' ? '' : link.href}`,
-    }));
-    
     const toggleNavbar = (): void => {
         setisClick(!isClick);
     }
@@ -80,7 +65,7 @@ export default function Navbar({ lang }: { lang: string }) {
                             height={32}
                         />
                         <span className={`${alegreyaSans.className} font-bold text-[#D41367] whitespace-nowrap p-4 text-xl`}>
-                            {messages.navtitle.title || "Queer Youth Group"}
+                            Queer Youth Group
                         </span>
                     </div>
                 </Link>
