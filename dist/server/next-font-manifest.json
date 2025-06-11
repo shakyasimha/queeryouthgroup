@@ -1,0 +1,47 @@
+{
+  "app": {
+    "[project]/src/app/_not-found/page": [
+      "static/media/memvYaGs126MiZpBA_UvWbX2vVnXBbObj2OVTS_mu0SC55I-s.p.47b51c64.woff2",
+      "static/media/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ-s.p.a797655c.woff2",
+      "static/media/o_0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a7du3mhPy0-s.p.4427385a.woff2",
+      "static/media/rP2Fp2K15kgb_F3ibfW4Hz_DJF4e8A-s.p.c866de43.woff2",
+      "static/media/7r3fqXp6utEsO9pI4f8ok8sWg_mSot8z5UNVHYc-s.p.96f89d2e.woff2",
+      "static/media/5aUu9__1phKLFgshYDvh6Vwt5alOqEp2i0VBuxM-s.p.f41c328d.woff2",
+      "static/media/5aUu9__1phKLFgshYDvh6Vwt5eFIqEp2i0VBuxM-s.p.55838850.woff2",
+      "static/media/5aUz9__1phKLFgshYDvh6Vwt7VptvWdUhm8-s.p.7cf9d78d.woff2"
+    ],
+    "[project]/src/app/about/page": [
+      "static/media/memvYaGs126MiZpBA_UvWbX2vVnXBbObj2OVTS_mu0SC55I-s.p.47b51c64.woff2",
+      "static/media/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ-s.p.a797655c.woff2",
+      "static/media/o_0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a7du3mhPy0-s.p.4427385a.woff2",
+      "static/media/7r3fqXp6utEsO9pI4f8ok8sWg_mSot8z5UNVHYc-s.p.96f89d2e.woff2",
+      "static/media/rP2Fp2K15kgb_F3ibfW4Hz_DJF4e8A-s.p.c866de43.woff2",
+      "static/media/5aUu9__1phKLFgshYDvh6Vwt5alOqEp2i0VBuxM-s.p.f41c328d.woff2",
+      "static/media/5aUu9__1phKLFgshYDvh6Vwt5eFIqEp2i0VBuxM-s.p.55838850.woff2",
+      "static/media/5aUz9__1phKLFgshYDvh6Vwt7VptvWdUhm8-s.p.7cf9d78d.woff2"
+    ],
+    "[project]/src/app/page": [
+      "static/media/memvYaGs126MiZpBA_UvWbX2vVnXBbObj2OVTS_mu0SC55I-s.p.47b51c64.woff2",
+      "static/media/rP2Fp2K15kgb_F3ibfW4Hz_DJF4e8A-s.p.c866de43.woff2",
+      "static/media/o_0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a7du3mhPy0-s.p.4427385a.woff2",
+      "static/media/7r3fqXp6utEsO9pI4f8ok8sWg_mSot8z5UNVHYc-s.p.96f89d2e.woff2",
+      "static/media/5aUu9__1phKLFgshYDvh6Vwt5alOqEp2i0VBuxM-s.p.f41c328d.woff2",
+      "static/media/5aUz9__1phKLFgshYDvh6Vwt7VptvWdUhm8-s.p.7cf9d78d.woff2",
+      "static/media/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ-s.p.a797655c.woff2",
+      "static/media/5aUu9__1phKLFgshYDvh6Vwt5eFIqEp2i0VBuxM-s.p.55838850.woff2"
+    ],
+    "[project]/src/app/team/page": [
+      "static/media/memvYaGs126MiZpBA_UvWbX2vVnXBbObj2OVTS_mu0SC55I-s.p.47b51c64.woff2",
+      "static/media/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ-s.p.a797655c.woff2",
+      "static/media/o_0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a7du3mhPy0-s.p.4427385a.woff2",
+      "static/media/7r3fqXp6utEsO9pI4f8ok8sWg_mSot8z5UNVHYc-s.p.96f89d2e.woff2",
+      "static/media/rP2Fp2K15kgb_F3ibfW4Hz_DJF4e8A-s.p.c866de43.woff2",
+      "static/media/5aUu9__1phKLFgshYDvh6Vwt5alOqEp2i0VBuxM-s.p.f41c328d.woff2",
+      "static/media/5aUu9__1phKLFgshYDvh6Vwt5eFIqEp2i0VBuxM-s.p.55838850.woff2",
+      "static/media/5aUz9__1phKLFgshYDvh6Vwt7VptvWdUhm8-s.p.7cf9d78d.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}
