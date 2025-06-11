@@ -3,6 +3,7 @@
     import { usePathname } from "next/navigation";
     import { alegreyaSans } from "@/ui/fonts"
 
+<<<<<<< HEAD
     interface Link {
         name: string; 
         href: string;
@@ -11,6 +12,46 @@
         className?: string;
         links: Link[];
     }
+=======
+// Navbar links are here
+const links = [
+    { 
+        name: 'Home', 
+        href: '/'
+    },
+    {
+        name: 'About Us',
+        href: '/about'
+    },
+    {
+        name: 'Our Team',
+        href: '/team'
+    },
+    {
+        name: 'Research',
+        href: '/research'
+    },
+    {
+        name: 'Legal Resources',
+        href: '/resources'
+    },
+    {
+        name: 'Litigations',
+        href: '/litigations'
+    },
+    {
+        name: 'Publications',
+        href: '/publications'
+    },
+    {
+        name: 'Dictionary',
+        href: '/dictionary'
+    },
+]
+interface NavLinksProps {
+    className?: string;
+}
+>>>>>>> parent of 992fe74 (added our work section in navbar and content)
 
     export default function NavLinks({ className, links }: NavLinksProps) {
         const pathname = usePathname(); // Get current route 
