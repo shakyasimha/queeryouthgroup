@@ -9,7 +9,7 @@ export default function Page() {
                     <h2 className={`${alegreyaSans.className} text-black text-lg py-4 font-bold`}>Driving Change For Queer Rights In Nepal</h2>
                 </div>
 
-                <div className={`${roboto.className} text-bg text-justify px-16 py-2 text-black md:mx-64 sm:mx-2`}>
+                <div className={`${roboto.className} text-bg text-justify px-4 py-2 text-black md:mx-64 sm:mx-2`}>
                     <p>
                         At Queer Youth Group (QYG), our commitment to advancing the rights and dignity of queer individuals in Nepal is realized through a multifaceted approach. We actively engage in several key areas to foster a more equitable, just, and inclusive society for all gender and sexual minorities.
                     </p>
