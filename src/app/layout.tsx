@@ -24,9 +24,9 @@ export default function RootLayout({
       <body
         className="min-h-screen w-full flex flex-col flex-grow"
       >
-        <Navbar />
+        <Navbar lang="np" />
         {children}
-        <Footer />
+        <Footer lang="np" />
       </body>
     </html>
   );
