@@ -89,7 +89,7 @@ export default function Page() {
 
                                     Reviewing and refining our strategy.
                                     Optimizing our organizational structure.
-                                    Adapting our working modalities to enhance QYG’s capabilities for sustainability and growth.
+                                    Adapting our working modalities to enhance QYG&apos;s capabilities for sustainability and growth.
                                     Driving transformative change rooted in our core organizational values.
                                 </p>
                             </li>
