@@ -2,6 +2,7 @@
 // import { roboto, openSans, alegreyaSans } from "@/ui/fonts";
 import Slideshow from "@/components/Slideshow";
 import Welcome from "@/components/Welcome";
+import Notice from "@/components/Notice";
 
 export default function Home() {
   return (
@@ -13,6 +14,11 @@ export default function Home() {
 
       {/* You can add a Welcome section, About, etc. below this */}
       <Welcome />
+
+      {/* Notice section */}
+      <div className="mb-32 mt-16 text-center">
+        <Notice />
+      </div>
     </main>
   );
 }

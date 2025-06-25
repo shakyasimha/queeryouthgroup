@@ -1,69 +1,77 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { alegreyaSans, roboto } from '@/ui/fonts';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import Image from 'next/image';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
-const messages = [
-    {
-        header: "Notice",
-        subheading: "Temporary Suspension of New Case Intake.",
-        body: "Welcome to Queer Youth Group. Here you'll find news and information about our events and initiatives."
-    },
-    {
-        header: "सुचना",
-        subheading: "केही समयका लागि नयाँ मुद्दा बन्द गरिएको सूचना !",
-        body: "क्वेयर युथ ग्रुपमा तपाईँहरुलाई स्वागत छ। हाम्रा कार्यक्रम र परियोजनाहरुका बारे यस वेबसाइटमा जानकारी पाउन हुनेछ।"
-    },
-]
-const Welcome = () => {
-    const [current, setCurrent] = useState(0);
-    const [fade, setFade]  = useState(true);
+const images = [
+  '/images/banda-notice-08.jpg',
+  '/images/banda-notice-09-09-09.jpg',
+];
 
-    useEffect(()=>{
-        const interval = setInterval(()=>{
-            setFade(false);
-            
-            setTimeout(()=>{
-                setCurrent((prev) => (prev+1) % messages.length);
-                setFade(true); // Sets fade
-            }, 500); // Half the totan animation duration
-        }, 4000);
+export default function Notice() {
+  return (
+    <div className="w-[400px] h-[400px] lg:h-[800px] lg:w-[800px] relative group">
+      <Swiper
+        modules={[Autoplay, Pagination, Navigation]}
+        spaceBetween={0}
+        slidesPerView={1}
+        loop={true}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        pagination={false} // Disabled round pagination buttons
+        navigation={{
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }}
+        className="w-full h-full"
+      >
+        {images.map((img, index) => (
+          <SwiperSlide key={index}>
+            <div className="relative w-full h-full">
+              <Image
+                src={img}
+                alt={`Notice ${index + 1}`}
+                fill
+                className="object-cover"
+                priority={index === 0}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+              />
+            </div>
+          </SwiperSlide>
+        ))}
+        
+        {/* Custom minimal arrows */}
+        <div className="swiper-button-prev !left-2 !w-8 !h-8 after:!text-xl after:!text-white after:!opacity-80 hover:after:!opacity-100 !hidden group-hover:!block"></div>
+        <div className="swiper-button-next !right-2 !w-8 !h-8 after:!text-xl after:!text-white after:!opacity-80 hover:after:!opacity-100 !hidden group-hover:!block"></div>
+      </Swiper>
 
-        return () => clearInterval(interval);
-    }, []);
-
-    return(
-        <div className="mt-8 mb-8 text-center"> 
-            <h1
-                className={`
-                ${alegreyaSans.className}
-                text-[#333] text-3xl font-bold mb-2
-                transition-opacity duration-500 ease-in-out
-                ${fade ? 'opacity-100': 'opacity-0'}
-                `}
-                key={current} // key forces re-render for animation
-            >
-                {messages[current].header}
-            </h1>
-
-            <h2 className={`
-                ${alegreyaSans.className}
-                text-[#333] text-2xl
-                  transition-opacity duration-500
-                  ${fade ? 'opacity-100': 'opacity-0'}
-                `}>
-                {messages[current].subheading}
-            </h2>
-
-            <p className={`
-                ${roboto.className} 
-                text-[#333] max-w-xl mx-auto
-                ${fade ? 'opacity-100': 'opacity-0'}
-            `}>
-                {messages[current].body}
-            </p>
-        </div>
-    )
+      <style jsx global>{`
+        .swiper-button-prev:after, 
+        .swiper-button-next:after {
+          font-size: 1.5rem;
+          color: white;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        .swiper-button-prev,
+        .swiper-button-next {
+          background: rgba(0,0,0,0.2);
+          backdrop-filter: blur(2px);
+          border-radius: 50%;
+          width: 2rem;
+          height: 2rem;
+          transition: all 0.3s ease;
+        }
+        .swiper-button-prev:hover,
+        .swiper-button-next:hover {
+          background: rgba(0,0,0,0.4);
+        }
+      `}</style>
+    </div>
+  );
 }
-
-export default Welcome;

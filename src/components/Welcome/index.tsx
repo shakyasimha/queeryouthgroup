@@ -15,6 +15,7 @@ const messages = [
         body: "क्वेयर युथ ग्रुपमा तपाईँहरुलाई स्वागत छ। हाम्रा कार्यक्रम र परियोजनाहरुका बारे यस वेबसाइटमा जानकारी पाउन हुनेछ।"
     },
 ]
+
 const Welcome = () => {
     const [current, setCurrent] = useState(0);
     const [fade, setFade]  = useState(true);
