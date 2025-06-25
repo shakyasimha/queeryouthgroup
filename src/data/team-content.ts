@@ -1,4 +1,19 @@
-export const teamMember = {
+interface TeamMember {
+    name: string;
+    role: string;
+    image: string;
+}
+
+type TeamMembers = {
+    [key: string]: TeamMember;
+};
+
+type TeamLocale = {
+    en: TeamMembers;
+    np: TeamMembers;
+}
+
+export const teamMember: TeamLocale = {
     "en": {
         "rukshana": {
             "name": "Rukshana Kapali",
