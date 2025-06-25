@@ -3,22 +3,14 @@ import { openSans, alegreyaSans } from "@/ui/fonts";
 import { FaPhone, FaEnvelope, FaFacebook, FaInstagram } from "react-icons/fa";
 import { FaXTwitter, FaLocationDot } from "react-icons/fa6";
 import { footerContent } from "@/data/footer-content";
+// import { getLocalizedHref } from "@/lib/getLocalizedHref";
+
+// Dont forget to use getLocalizedHref here if necessary 
+
 
 export default function Footer({ lang = "en" }: { lang?: "en" | "np" }) {
   const content = footerContent[lang];
 
-  // Helper function to generate localized href
-  const getLocalizedHref = (href: string) => {
-    if (href === '') return ''; // Handle empty links
-    if (href.startsWith('http')) return href; // External links remain unchanged
-    
-    // Special case for home route
-    if (href === '/') return lang === 'en' ? '/' : '/np';
-    
-    // Add language prefix
-    return lang === 'en' ? href : `/np${href}`;
-  };
-  
   return (
     <footer className={`${openSans.className} text-[#333] bg-[#cccffe] py-6`}>
       <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row">
