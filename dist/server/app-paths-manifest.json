@@ -1,9 +1,9 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/en/page": "app/en/page.js",
-  "/np/litigations/page": "app/np/litigations/page.js",
-  "/np/page": "app/np/page.js",
-  "/np/resources/page": "app/np/resources/page.js",
-  "/np/team/page": "app/np/team/page.js",
-  "/np/work/page": "app/np/work/page.js"
+  "/about/page": "app/about/page.js",
+  "/litigations/page": "app/litigations/page.js",
+  "/page": "app/page.js",
+  "/resources/page": "app/resources/page.js",
+  "/team/page": "app/team/page.js",
+  "/work/page": "app/work/page.js"
 }
