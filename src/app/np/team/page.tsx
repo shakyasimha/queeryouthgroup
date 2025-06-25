@@ -1,5 +1,10 @@
 import { alegreyaSans } from "@/ui/fonts";
 import Card from "@/components/Card";
+import { teamMember } from "@/data/team-content";
+
+const teamMemberData = teamMember['np'];
+const firstRow = ["rukshana", "nishant", "rita"];
+const secondRow = ["chhesang", "nangboong", "sudip", "ankit"];
 
 export default function Page() {
   return (
@@ -10,50 +15,34 @@ export default function Page() {
 
       {/* First row of team */}
       <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 p-4 mb-4">
-        <Card 
-          image="images/rukshana.jpg"
-          name="Rukshana Kapali"
-          role="CEO"
-        />
-
-        <Card 
-          image="images/rita.jpg"
-          name="Rita Chalise"
-          role="Finance Officer"
-        />
-
-        <Card 
-          image="images/nangboong.jpg"
-          name="Nangboong Rai"
-          role="Information and Communication Officer"
-        />
+        {firstRow.map((memberKey) => {
+          const member = teamMemberData[memberKey];
+          
+          return (
+            <Card 
+              key={memberKey}
+              image={member.image}
+              name={member.name}
+              role={member.role}
+            />
+          )
+        })}
       </div>
 
       {/* Second row of team */}
       <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 p-4 mb-8">
-        <Card  
-          image="images/nishant.jpg"
-          name="Nishant Shah"
-          role="Executive Officer Assistance"
-        />
+        {secondRow.map((memberKey) => {
+          const member = teamMemberData[memberKey];
 
-        <Card 
-          image="images/chhesing.jpg"
-          name="Chhesang Ghising"
-          role="Program Officer"
-        />
-
-        <Card 
-          image="images/sudip.jpg"
-          name="Sudip Chaudhary"
-          role="Office Assistance"
-        />
-
-        <Card 
-          image="images/ankita.jpg"
-          name="Ankita Regmi"
-          role="Legal Assistant (Trainee)"
-        />
+          return (
+            <Card 
+              key={memberKey}
+              name={member.name}
+              image={member.image}
+              role={member.role}
+            />
+          )
+        })}
       </div>
     </div>
   )
