@@ -22,7 +22,7 @@ export default function Page() {
                                 Gender-Affirmative Healthcare
 
                                 <p className="my-2">
-                                    Gender-affirmative healthcare is fundamental to the well-being and self-actualization of transgender and gender-diverse individuals. This essential care encompasses a range of social, psychological, behavioral, or medical interventions, as defined by the World Health Organization (WHO), to support and affirm an individual's gender identity. This can include Hormone Replacement Therapy (HRT), various feminization or masculinization surgeries (e.g., facial, voice), body hair removal/growth, and reconstructive surgeries. We recognize that the absence of such care can lead to gender dysphoria. QYG is committed to policy reform to ensure access to gender-affirmative healthcare in Nepal.
+                                    Gender-affirmative healthcare is fundamental to the well-being and self-actualization of transgender and gender-diverse individuals. This essential care encompasses a range of social, psychological, behavioral, or medical interventions, as defined by the World Health Organization (WHO), to support and affirm an individual&apos;s gender identity. This can include Hormone Replacement Therapy (HRT), various feminization or masculinization surgeries (e.g., facial, voice), body hair removal/growth, and reconstructive surgeries. We recognize that the absence of such care can lead to gender dysphoria. QYG is committed to policy reform to ensure access to gender-affirmative healthcare in Nepal.
                                 </p>
                             </li>
 
