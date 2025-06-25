@@ -10,14 +10,14 @@ export const footerContent = {
       connect: "Connect With Us",
     },
     resources: [
-      { name: "SOGEISC Dictionary", href: "" },
-      { name: "Legal documents", href: "" },
-      { name: "Publications", href: "" },
+      { name: "SOGEISC Dictionary", href: "/dictionary" },
+      { name: "Legal documents", href: "/resources" },
+      { name: "Publications", href: "/publications" },
     ],
     links: [
-      { name: "Home", href: "" },
-      { name: "About Us", href: "" },
-      { name: "Our Team", href: "" },
+      { name: "Home", href: "/" },
+      { name: "About Us", href: "/about" },
+      { name: "Our Team", href: "/team" },
     ],
     socialMedia: [
       { name: "Facebook", icon: "FaFacebook", href: "https://www.facebook.com/QYGnepal" },
@@ -27,7 +27,7 @@ export const footerContent = {
     copyright: `© ${new Date().getFullYear()} Queer Youth Group. All rights reserved.`,
   },
   np: {
-    title: "क्वियर युथ ग्रुप",
+    title: "क्वेयर युथ ग्रुप",
     address: "यल ध्वखा (पाटनधोका), ललितपुर-११, नेपाल",
     email: "communications.qyg@gmail.com",
     phone: "+९७७ ९८५१३५०६६५",
@@ -37,14 +37,14 @@ export const footerContent = {
       connect: "हामीसित जोड्नुहोस्",
     },
     resources: [
-      { name: "SOGEISC शब्दकोश", href: "" },
-      { name: "मुद्दाहरू", href: "" },
-      { name: "प्रकाशनहरू", href: "" },
+      { name: "SOGEISC शब्दकोश", href: "/dictionary" },
+      { name: "मुद्दाहरू", href: "/resources" },
+      { name: "प्रकाशनहरू", href: "/publications" },
     ],
     links: [
-      { name: "गृहपृष्ठ", href: "" },
-      { name: "हाम्रो बारेमा", href: "" },
-      { name: "हाम्रो टोली", href: "" },
+      { name: "गृहपृष्ठ", href: "/" },
+      { name: "हाम्रो बारेमा", href: "/about" },
+      { name: "हाम्रो टोली", href: "/team" },
     ],
     socialMedia: [
       { name: "फेसबुक", icon: "FaFacebook", href: "https://www.facebook.com/QYGnepal" },

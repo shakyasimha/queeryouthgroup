@@ -11,7 +11,7 @@ export default function Page() {
             >
                 <Image 
                     key="aboutus"
-                    src="images/about-us-section.jpg"
+                    src="/images/about-us-section.jpg"
                     alt="about us"
                     fill
                     className="object-cover"
@@ -20,7 +20,7 @@ export default function Page() {
 
             <div className="flex flex-col items-center min-h-[30vh] mt-4"> 
                 <div className="text-center text-2xl">
-                    <h1 className={`${alegreyaSans.className} text-black py-4`}>Introduction</h1>
+                    <h1 className={`${alegreyaSans.className} text-black py-4 font-bold`}>Introduction</h1>
                 </div>
 
                 
@@ -33,7 +33,7 @@ export default function Page() {
                 </div>
                 
                 <div className="text-center text-2xl mt-4">
-                    <h1 className={`${alegreyaSans.className} text-black py-4`}> About Us </h1>
+                    <h1 className={`${alegreyaSans.className} text-black py-4 font-bold`}> About Us </h1>
                 </div>
 
                 <div className={`${roboto.className} text-bg text-justify mb-16 px-16 py-2 text-black md:mx-64 sm:mx-2`}>

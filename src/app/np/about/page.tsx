@@ -11,7 +11,7 @@ export default function Page() {
             >
                 <Image 
                     key="aboutus"
-                    src="images/about-us-section.jpg"
+                    src="/images/about-us-section.jpg"
                     alt="about us"
                     fill
                     className="object-cover"

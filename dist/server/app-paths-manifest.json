@@ -1,9 +1,9 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/en/page": "app/en/page.js",
-  "/en/team/page": "app/en/team/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/np/litigations/page": "app/np/litigations/page.js",
   "/np/page": "app/np/page.js",
+  "/np/resources/page": "app/np/resources/page.js",
   "/np/team/page": "app/np/team/page.js",
-  "/page": "app/page.js"
+  "/np/work/page": "app/np/work/page.js"
 }

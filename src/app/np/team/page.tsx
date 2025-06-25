@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <div className={`${alegreyaSans.className} w-full flex flex-col flex-grow bg-white items-center`}>
       <div className="text-center text-2xl">
-          <h1 className={`${alegreyaSans.className} text-black font-bold py-4 mt-4`}>Our Team</h1>
+          <h1 className={`${alegreyaSans.className} text-black font-bold py-4 mt-4`}>हाम्रो टोली</h1>
       </div>
 
       {/* First row of team */}
