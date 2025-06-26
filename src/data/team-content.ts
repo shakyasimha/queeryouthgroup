@@ -10,7 +10,7 @@ type TeamMembers = {
 
 type TeamLocale = {
     en: TeamMembers;
-    np: TeamMembers;
+    ne: TeamMembers;
 }
 
 export const teamMember: TeamLocale = {
@@ -21,7 +21,7 @@ export const teamMember: TeamLocale = {
             "image": "/images/rukshana.jpg",
         },
         "nishant": {
-            "name": "Nishant Shah",
+            "name": "Nishant Sah",
             "role": "Executive Officer Assistance",
             "image": "/images/nishant.jpg",
         },
@@ -45,20 +45,20 @@ export const teamMember: TeamLocale = {
             "role": "Office Assitance",
             "image": "/images/sudip.jpg",
         },
-        "ankit": {
+        "ankita": {
             "name": "Ankit Regmi",
             "role": "Legal Assitant (Trainee)",
             "image": "/images/ankita.jpg",
         },
     },
-    "np": {
+    "ne": {
         "rukshana": {
             "name": "रुक्शना कपाली",
             "role": "प्रमुख कार्यकारी अधिकृत",
             "image": "/images/rukshana.jpg",
         },
         "nishant": {
-            "name": "निशान्त शाह",
+            "name": "निशान्त साह",
             "role": "कार्यकारी निर्देशक सहायक",
             "image": "/images/nishant.jpg",
         },
@@ -82,7 +82,7 @@ export const teamMember: TeamLocale = {
             "role": "कार्यालय सहयोगी",
             "image": "/images/sudip.jpg",
         },
-        "ankit": {
+        "ankita": {
             "name": "अंकित रेग्मी",
             "role": "कानूनी सहायक (तालिम श्रमिक)",
             "image": "/images/ankita.jpg",
