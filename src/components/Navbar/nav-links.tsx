@@ -23,7 +23,7 @@ export default function NavLinks({ className, links, lang }: NavLinksProps) {
     const getLocalizedHref = (href: string) => {
         // Special case for home route
         if (href === '/') return lang === 'en' ? '/' : '/ne';
-        return lang === 'en' ? href : `/np${href}`;
+        return lang === 'en' ? href : `/ne${href}`;
     };
 
     // Handle active route detection
@@ -33,7 +33,7 @@ export default function NavLinks({ className, links, lang }: NavLinksProps) {
         }
         return lang === 'en' 
             ? pathname === href
-            : pathname === `/np${href}`;
+            : pathname === `/ne${href}`;
     };
 
     return (
