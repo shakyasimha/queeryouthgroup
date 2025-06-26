@@ -1,13 +1,1 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/about/page": "app/about/page.js",
-  "/dictionary/page": "app/dictionary/page.js",
-  "/research/page": "app/research/page.js",
-  "/page": "app/page.js",
-  "/litigations/page": "app/litigations/page.js",
-  "/team/page": "app/team/page.js",
-  "/resources/page": "app/resources/page.js",
-  "/publications/page": "app/publications/page.js",
-  "/work/page": "app/work/page.js"
-}
+{}

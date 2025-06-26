@@ -13,7 +13,7 @@ interface Link {
 interface NavLinksProps {
     className?: string;
     links: Link[];
-    lang: "en" | "np";
+    lang: "en" | "ne";
 }
 
 export default function NavLinks({ className, links, lang }: NavLinksProps) {
@@ -22,14 +22,14 @@ export default function NavLinks({ className, links, lang }: NavLinksProps) {
     // Handle language prefix for links
     const getLocalizedHref = (href: string) => {
         // Special case for home route
-        if (href === '/') return lang === 'en' ? '/' : '/np';
+        if (href === '/') return lang === 'en' ? '/' : '/ne';
         return lang === 'en' ? href : `/np${href}`;
     };
 
     // Handle active route detection
     const isActive = (href: string) => {
         if (href === '/') {
-            return pathname === '/' || pathname === '/np';
+            return pathname === '/' || pathname === '/ne';
         }
         return lang === 'en' 
             ? pathname === href

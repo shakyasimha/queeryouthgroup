@@ -9,7 +9,7 @@ import { alegreyaSans } from "@/ui/fonts";
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { navbarLinks } from "@/data/navbar-content";
 
-export default function Navbar({ lang = "en" }: { lang?: "en" | "np" }) {
+export default function Navbar({ lang = "en" }: { lang?: "en" | "ne" }) {
     const [isClick, setisClick] = useState(false);
     const links = navbarLinks[lang];
     const title = lang === "en" ? "Queer Youth Group" : "क्वेयर युथ ग्रुप";

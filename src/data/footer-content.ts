@@ -1,4 +1,24 @@
-export const footerContent = {
+export type FooterContentSection = {
+  title: string;
+  address: string;
+  email: string;
+  phone: string;
+  sections: {
+    resources: string;
+    links: string;
+    connect: string;
+  };
+  resources: { name: string; href: string }[];
+  links: { name: string; href: string }[];
+  socialMedia: { name: string; icon: string; href: string }[];
+  copyright: string;
+};
+
+export type Locale = 'en' | 'ne';
+
+export type FooterContent = Record<Locale, FooterContentSection>;
+
+export const footerContent: FooterContent = {
   en: {
     title: "Queer Youth Group",
     address: "Yala Dhwakha (Patandhoka), Lalitpur-11, Nepal",
@@ -26,7 +46,7 @@ export const footerContent = {
     ],
     copyright: `© ${new Date().getFullYear()} Queer Youth Group. All rights reserved.`,
   },
-  np: {
+  ne: {
     title: "क्वेयर युथ ग्रुप",
     address: "यल ध्वखा (पाटनधोका), ललितपुर-११, नेपाल",
     email: "communications.qyg@gmail.com",

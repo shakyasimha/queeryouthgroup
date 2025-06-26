@@ -8,7 +8,7 @@ import { footerContent } from "@/data/footer-content";
 // Dont forget to use getLocalizedHref here if necessary 
 
 
-export default function Footer({ lang = "en" }: { lang?: "en" | "np" }) {
+export default function Footer({ lang = "en" }: { lang?: "en" | "ne" }) {
   const content = footerContent[lang];
 
   return (

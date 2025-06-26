@@ -1,3 +1,14 @@
+export type NavbarLink = {
+  name: string; 
+  href: string; 
+}
+
+export type NavbarLinkSection = NavbarLink[];
+
+export type Locale = 'en' | 'ne';
+
+export type NavbarLinks = Record<Locale, NavbarLinkSection>;
+
 export const navbarLinks = {
   en: [
     { name: 'Home', href: '/' },
@@ -9,7 +20,7 @@ export const navbarLinks = {
     { name: 'Publications', href: '/publications' },
     { name: 'Dictionary', href: '/dictionary' }
   ],
-  np: [
+  ne: [
     { name: 'गृहपृष्ठ', href: '/' },
     { name: 'हाम्रो बारेमा', href: '/about' },
     { name: 'हाम्रो टोली', href: '/team' },
