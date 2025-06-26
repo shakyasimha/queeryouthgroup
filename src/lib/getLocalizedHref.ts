@@ -28,12 +28,12 @@ export const getLocalizedHref = (href: string, lang: Language): string => {
 
   // Handle home route
   if (href === '/') {
-    return lang === 'en' ? '/' : '/np';
+    return lang === 'en' ? '/' : '/ne';
   }
 
   // Normalize the href (remove trailing slashes)
   const normalizedHref = href.endsWith('/') ? href.slice(0, -1) : href;
 
   // Add language prefix for non-English
-  return lang === 'en' ? normalizedHref : `/np${normalizedHref}`;
+  return lang === 'en' ? normalizedHref : `/ne${normalizedHref}`;
 };
