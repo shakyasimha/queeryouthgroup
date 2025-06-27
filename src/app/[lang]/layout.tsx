@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const locales = ["en", "ne"];
 type Locale = typeof locales[number];
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: Readonly<{
