@@ -16,7 +16,7 @@ export default getRequestConfig(async ({requestLocale}) => {
 
     try {
         // Option 1: Using request (works consistently)
-        messages = require(`@/messages/${locale}.json`);
+        messages = (await import(`@/messages/${locale}.json`));
 
         // Option 2: Using dynamic import (alternative)
         // messages = (await import(`@/messages/${locale}.json`)).default;
@@ -24,7 +24,7 @@ export default getRequestConfig(async ({requestLocale}) => {
         console.error(`Failed to load messages for locale ${locale}`);
 
         // Fallback to default locale messages
-        messages = require(`@/messages/${routing.defaultLocale}.json`);
+        messages = (await import(`@/messages/${routing.defaultLocale}.json`));
     }
 
     return {
