@@ -1,9 +1,15 @@
 import { alegreyaSans, roboto } from "@/ui/fonts";
 import { useTranslations } from "next-intl";
 
+type Section = {
+  title: string;
+  content: string;
+};
+
 export default function Page() {
     const t = useTranslations('WorkPage');
-    const sections = t.raw('sections');
+    const sections = JSON.parse(JSON.stringify(t('sections'))) as Section[];
+;
 
     return(
         <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
