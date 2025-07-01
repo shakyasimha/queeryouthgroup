@@ -1,11 +1,1 @@
-{
-  "/[locale]/about/page": "app/[locale]/about/page.js",
-  "/[locale]/dictionary/page": "app/[locale]/dictionary/page.js",
-  "/[locale]/litigations/page": "app/[locale]/litigations/page.js",
-  "/[locale]/page": "app/[locale]/page.js",
-  "/[locale]/publications/page": "app/[locale]/publications/page.js",
-  "/[locale]/resources/page": "app/[locale]/resources/page.js",
-  "/[locale]/team/page": "app/[locale]/team/page.js",
-  "/[locale]/work/page": "app/[locale]/work/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
-}
+{}
