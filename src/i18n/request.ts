@@ -3,7 +3,7 @@ import {hasLocale} from 'next-intl';
 import {routing} from './routing';
 
 // type for messages
-type Message = typeof import('@/messages/en.json');
+// type Message = typeof import('@/messages/en.json');
 
 export default getRequestConfig(async ({requestLocale}) => {
   // Typically corresponds to the `[locale]` segment
