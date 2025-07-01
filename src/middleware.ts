@@ -1,36 +1,11 @@
-// middleware.ts
-import { NextRequest, NextResponse } from "next/server";
+import createMiddleware from "next-intl/middleware";
+import { routing } from "./i18n/routing";
 
-const locales = ['en', 'ne'];
-const defaultLocale = 'en';
-
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  // Skip static files and API
-  if (
-    pathname.startsWith('/api') ||
-    pathname.startsWith('/_next') ||
-    pathname.includes('.') // static files
-  ) {
-    return NextResponse.next();
-  }
-
-  // If path is `/`, redirect to `/en`
-  if (pathname === '/') {
-    return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url));
-  }
-
-  // Check if first path segment is a valid locale
-  const pathLocale = pathname.split('/')[1];
-
-  if (!locales.includes(pathLocale)) {
-    return NextResponse.redirect(new URL(`/${defaultLocale}${pathname}`, request.url));
-  }
-
-  return NextResponse.next();
-}
+export default createMiddleware(routing);
 
 export const config = {
-  matcher: ['/((?!_next|favicon.ico|.*\\..*).*)'],
+  // Match all pathnames except for 
+  // - .. if they start with '/api', '/trpc', '/_next', or '/_vercel'
+  // - .. the ones containing dots (eg 'favicon.ico')
+  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
 };

@@ -1,0 +1,105 @@
+{
+  "AboutPage": {
+    "heroImageAlt": "Group photo of QYG members at an event",
+    "introduction": {
+      "title": "Introduction",
+      "content": "Queer Youth Group (QYG) is a youth-led, not-for-profit collective dedicated to advocating for the rights and dignity of queer individuals in Nepal Since its founding, QYG has been at the forefront of policy advocacy, awareness campaigns, and community support for people of marginalized sexual orientation, gender identity, and sex characteristics (PoMSOGIESC).\n\nDriven by a vision of equity and justice, QYG works to advance the social and legal recognition of gender diversity through strategic litigation, education, and resource development. Our initiatives span strategic litigation, education, and the development of accessible resources. We actively promote language justice, inclusive public policies, and gender-affirmative healthcare.\n\nThrough community engagement, Pride celebrations, and continuous advocacy, QYG strives to build a society where all gender and sexual minorities can live with pride, safety, and equal rights."
+    },
+    "aboutUs": {
+      "title": "About Us",
+      "content": "Queer Youth Group (QYG) was founded on December 5, 2018, as a loose network. It was started by Rukshana Kapali, Dipesh Shrestha, and Badal Lama to create leadership opportunities for young people in the gender and sexual minority movement.\n\nIn 2020, QYG was officially registered as a not-for-profit organization. Our core belief is that sexual orientation, gender identity, and sex characteristics exist on a spectrum. They are fluid and not fixed in a rigid structure. These identities should not be limit to a box.\n\nWe take an intersectional approach in our work, meaning we recognize that gender and sexual minorities experience different challenges based on other factors like language, ethnicity, skin color, geography, and physical ability. These social and structural inequalities are deeply connected to issues of gender and sexuality. That's why we also focus on addressing discrimination related to language, ethnicity, disability, economy, and geography.\n\nOur goal is to promote a broader and more inclusive understanding of gender and sexuality in Nepali society. We work through advocacy, education, and resource-building to bring positive change. Our efforts include policy, awareness campaigns, resource creation, and strengthening movements for gender and sexual minorities."
+    }
+  },
+  "TeamPage": {
+    "title": "Our Team",
+    "members": {
+      "rukshana": {
+        "name": "Rukshana Kapali",
+        "role": "Chief Executive Officer",
+        "image": "/images/rukshana.jpg"
+      },
+      "nishant": {
+        "name": "Nishant Sah",
+        "role": "Executive Officer Assistance",
+        "image": "/images/nishant.jpg"
+      },
+      "rita": {
+        "name": "Rita Chalise",
+        "role": "Finance Officer",
+        "image": "/images/rita.jpg"
+      },
+      "chhesang": {
+        "name": "Chhesang Ghising",
+        "role": "Program Officer",
+        "image": "/images/chhesing.jpg"
+      },
+      "nangboong": {
+        "name": "Nangboong Rai",
+        "role": "Information and Communication Officer",
+        "image": "/images/nangboong.jpg"
+      },
+      "sudip": {
+        "name": "Sudip Chaudhary",
+        "role": "Office Assistance",
+        "image": "/images/sudip.jpg"
+      },
+      "ankit": {
+        "name": "Ankit Regmi",
+        "role": "Legal Assistant (Trainee)",
+        "image": "/images/ankita.jpg"
+      }
+    },
+    "rows": {
+      "first": ["rukshana", "rita", "nishant"],
+      "second": ["chhesang", "nangboong", "sudip", "ankit"]
+    }
+  },
+  "WorkPage": {
+    "title": "Our Work",
+    "subtitle": "Driving Change For Queer Rights In Nepal",
+    "paragraph": "At Queer Youth Group (QYG), our commitment to advancing the rights and dignity of queer individuals in Nepal is realized through a multifaceted approach. We actively engage in several key areas to foster a more equitable, just, and inclusive society for all gender and sexual minorities.",
+    "listIntro": "Our core areas of work include:",
+    "sections": [
+      {
+        "title": "Gender-Affirmative Healthcare",
+        "content": "Gender-affirmative healthcare is fundamental to the well-being and self-actualization of transgender and gender-diverse individuals. This essential care encompasses a range of social, psychological, behavioral, or medical interventions, as defined by the World Health Organization (WHO), to support and affirm an individual's gender identity. This can include Hormone Replacement Therapy (HRT), various feminization or masculinization surgeries (e.g., facial, voice), body hair removal/growth, and reconstructive surgeries. We recognize that the absence of such care can lead to gender dysphoria. QYG is committed to policy reform to ensure access to gender-affirmative healthcare in Nepal."
+      },
+      {
+        "title": "Lavender Linguistics",
+        "content": "Language plays a crucial role in affirming identity and ensuring dignity. QYG champions the linguistic rights of People of Marginalized Sexual Orientation, Gender Identity, and Sex Characteristics (PoMSOGIESC), also known as gender and sexual minorities. Our work in this area focuses on: Including inclusive terms and their definitions in the Nepali official dictionary. Establishing proper language for the identity of transgender people. Advocating for legal provisions against the misgendering of trans and gender-diverse individuals."
+      },
+      {
+        "title": "Legal and Administrative Reform",
+        "content": "QYG actively campaigns for the rights of PoMSOGIESC by engaging with government agencies. We advocate for crucial legal and administrative reforms through: Formal requests for consultations. Providing comments on policy drafts that directly affect our community."
+      },
+      {
+        "title": "Watchdog",
+        "content": "We serve as a vigilant watchdog, closely monitoring media and news pertaining to PoMSOGIESC issues across digital platforms. In this role, we: Demonstrate solidarity on issues aligned with our mission. File reports or complaints when interventions are required due to misinformation, discrimination, or rights violations."
+      },
+      {
+        "title": "Events",
+        "content": "As part of our broader campaign and advocacy efforts, QYG regularly organizes a variety of events, both physical and online. These events serve as platforms for awareness, community building, and mobilization."
+      },
+      {
+        "title": "Communications and Dissemination",
+        "content": "Effective communication is vital to our mission. QYG actively engages with various government agencies by: Sharing knowledge, resources, and publications on queer issues. Disseminating information to foster understanding and encourage informed policy-making."
+      },
+      {
+        "title": "Organizational Development",
+        "content": "To ensure our long-term impact and adapt to evolving needs, QYG is committed to ongoing organizational development. This involves continuously: Reviewing and refining our strategy. Optimizing our organizational structure. Adapting our working modalities to enhance QYG's capabilities for sustainability and growth. Driving transformative change rooted in our core organizational values."
+      }
+    ]
+  },
+  "resourcePage": {
+    "title": "Legal Resources"
+  },
+  "litigationPage": {
+    "title": "Litigations"
+  },
+  "publicationPage": {
+    "title": "Publications"
+  },
+  "dictionaryPage": {
+    "title": "SOGEISC Dictionary"
+  }
+}

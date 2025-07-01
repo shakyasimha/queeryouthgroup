@@ -1,11 +1,16 @@
 import { alegreyaSans, roboto } from "@/ui/fonts"
+import { useTranslations } from "next-intl"
 
 export default function Page() {
+    const t = useTranslations('litigationPage');
+
     return(
         <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
             <div className="flex flex-col items-center min-h-[30vh] mt-4">
                 <div className="text-center text-2xl">
-                    <h1 className={`${alegreyaSans.className} text-black py-4 font-bold`}>Publications</h1>
+                    <h1 className={`${alegreyaSans.className} text-black py-4 font-bold`}>
+                        {t('title')}
+                    </h1>
                 </div>
 
                 <div className={`${roboto.className} text-bg text-justify px-16 py-2 text-black md:mx-64 sm:mx-2`}>
