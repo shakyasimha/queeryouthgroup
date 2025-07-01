@@ -8,8 +8,7 @@ type Section = {
 
 export default function Page() {
     const t = useTranslations('WorkPage');
-    const sections = JSON.parse(JSON.stringify(t('sections'))) as Section[];
-;
+    const sections = Object.values(t.raw('sections')) as Section[];
 
     return(
         <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
