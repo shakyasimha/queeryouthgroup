@@ -8,6 +8,7 @@ import { useState } from "react";
 import { alegreyaSans } from "@/ui/fonts";
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { navbarLinks } from "@/data/navbar-content";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Navbar({ lang = "en" }: { lang?: "en" | "ne" }) {
     const [isClick, setisClick] = useState(false);
@@ -37,15 +38,17 @@ export default function Navbar({ lang = "en" }: { lang?: "en" | "ne" }) {
                 </Link>
 
                 {/* Desktop nav links */}
-                <div className="hidden md:block">
+                <div className="hidden md:flex items-center gap-2">
                     <NavLinks 
                         links={links}
                         lang={lang}
                     />
+                    <LanguageSwitcher />
                 </div>
 
                 {/* Mobile menu button */}
-                <div className="md:hidden flex items-center">
+                <div className="md:hidden flex items-center gap-2">
+                    <LanguageSwitcher />
                     <button 
                         className="text-[#b53a57] text-2xl transition duration-300 ease-in-out"
                         onClick={toggleNavbar}
