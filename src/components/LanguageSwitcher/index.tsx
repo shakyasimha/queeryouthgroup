@@ -1,11 +1,25 @@
 "use client";
-import { useState } from "react";
+// import { useState } from "react";
+import { useLocale } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function LanguageSwitcher() {
-    const [buttonText, setButtonText] = useState('');
+    // const [buttonText, setButtonText] = useState('नेपा');
 
+    const router = useRouter();
+    const pathname = usePathname();
+    const currentLocale = useLocale();
+    
+    const targetLocale = currentLocale === 'en' ? 'ne' : 'en';
+    const buttonText = currentLocale == 'en' ? 'नेपा' : 'EN';
+    
     const handleClick = () => {
-        setButtonText(prevText => prevText === 'EN' ? 'नेपा' : 'EN');
+        const segments = pathname.split('/');
+        segments[1] = targetLocale;
+        const newPath = segments.join('/') || '/';
+        router.push(newPath);
+
+        // setButtonText(prevText => prevText === 'नेपा' ? 'EN' : 'नेपा');
     }
 
     return (
