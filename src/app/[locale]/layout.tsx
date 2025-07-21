@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -36,6 +37,9 @@ export default async function RootLayout({
       </head>
       <body className="min-h-screen w-full flex flex-col flex-grow">
         <NextIntlClientProvider>
+          {/* Header */}
+          <Header />
+          
           {/* Navbar content */}
           <Navbar lang={locale} />
 

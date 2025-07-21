@@ -1,21 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import NavLinks from "@/components/Navbar/nav-links";
 import clsx from "clsx";
 import { useState } from "react";
-import { alegreyaSans } from "@/ui/fonts";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { navbarLinks } from "@/data/navbar-content";
-import { FaPhone, FaEnvelope, FaFacebook, FaInstagram } from "react-icons/fa";
-import { FaXTwitter, FaLocationDot } from "react-icons/fa6";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaXTwitter} from "react-icons/fa6";
+// import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Navbar({ lang = "en" }: { lang?: "en" | "ne" }) {
   const [isClick, setIsClick] = useState(false);
   const links = navbarLinks[lang];
-  const title = lang === "en" ? "Queer Youth Group" : "क्वेयर युथ ग्रुप";
+//   const title = lang === "en" ? "Queer Youth Group" : "क्वेयर युथ ग्रुप";
 
   const toggleNavbar = (): void => {
     setIsClick(!isClick);
