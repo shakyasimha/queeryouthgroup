@@ -8,6 +8,8 @@ import { useState } from "react";
 import { alegreyaSans } from "@/ui/fonts";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { navbarLinks } from "@/data/navbar-content";
+import { FaPhone, FaEnvelope, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaXTwitter, FaLocationDot } from "react-icons/fa6";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Navbar({ lang = "en" }: { lang?: "en" | "ne" }) {
@@ -22,22 +24,6 @@ export default function Navbar({ lang = "en" }: { lang?: "en" | "ne" }) {
   return (
     <nav className="bg-[#F5EFE0] border-gray-200 relative">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        {/* Logo and title */}
-        {/* 
-        <Link key="logo" href="/">
-          <div className="flex items-center justify-between">
-            <Image 
-              src="/qyg-logo.svg"
-              alt="Logo"
-              width={32}
-              height={32}
-            />
-            <span className={`${alegreyaSans.className} font-bold text-[#D41367] whitespace-nowrap p-4 text-xl`}>
-              {title}
-            </span>
-          </div>
-        </Link> 
-        */}
 
         {/* Desktop nav links */}
         <div className="hidden md:flex items-center justify-center gap-2 w-full">
@@ -66,28 +52,42 @@ export default function Navbar({ lang = "en" }: { lang?: "en" | "ne" }) {
 
         {/* Mobile sliding menu */}
         <div
-          className={clsx(
-            "md:hidden w-3/4 h-screen bg-[#F5EFE0] fixed top-0 right-0 shadow-md z-10 transition-transform duration-300 ease-in-out transform",
-            isClick ? "translate-x-0" : "translate-x-full"
-          )}
+            className={clsx(
+                "md:hidden w-3/4 h-screen bg-[#F5EFE0] fixed top-0 right-0 shadow-md z-10 transition-transform duration-300 ease-in-out transform flex flex-col justify-between",
+                isClick ? "translate-x-0" : "translate-x-full"
+            )}
         >
-          {/* Close button (top-right) */}
-          <button
-            className="absolute top-4 right-4 text-[#b53a57] text-2xl p-2"
-            onClick={toggleNavbar}
-            aria-label="Close menu"
-          >
-            <FaTimes />
-          </button>
 
-          {/* Nav links with extra padding to avoid overlap with close button */}
-          <div className="pt-16 px-4 pb-4">
-            <NavLinks
-              className="flex-col space-y-2"
-              links={links}
-              lang={lang}
-            />
-          </div>
+            {/* Close button (top-right) */}
+            <button
+                className="absolute top-4 right-4 text-[#b53a57] text-2xl p-2"
+                onClick={toggleNavbar}
+                aria-label="Close menu"
+            >
+                <FaTimes />
+            </button>
+
+            {/* Nav links with extra padding to avoid overlap with close button */}
+            <div className="pt-16 px-4 pb-4">
+                <NavLinks
+                className="flex-col space-y-2"
+                links={links}
+                lang={lang}
+                />
+            </div>
+
+            {/* Social media contacts and links */}
+            <div className="flex flex-row justify-center gap-6 pb-6 text-[#333]">
+                <Link href="https://www.facebook.com/QYGnepal" target="_blank" rel="noopener noreferrer">
+                    <FaFacebook size={24} />
+                </Link>
+                <Link href="https://www.instagram.com/qygnepal/" target="_blank" rel="noopener noreferrer">
+                    <FaInstagram size={24} />
+                </Link>
+                <Link href="https://twitter.com/qygnepal/" target="_blank" rel="noopener noreferrer">
+                    <FaXTwitter size={24} />
+                </Link>
+            </div>
         </div>
       </div>
     </nav>
