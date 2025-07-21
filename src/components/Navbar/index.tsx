@@ -53,7 +53,7 @@ export default function Navbar({ lang = "en" }: { lang?: "en" | "ne" }) {
         {/* Mobile sliding menu */}
         <div
             className={clsx(
-                "md:hidden w-3/4 h-screen bg-[#F5EFE0] fixed top-0 right-0 shadow-md z-10 transition-transform duration-300 ease-in-out transform flex flex-col justify-between",
+                "md:hidden w-3/4 min-h-[100dvh] bg-[#F5EFE0] fixed top-0 right-0 shadow-md z-50 transition-transform duration-300 ease-in-out transform flex flex-col justify-between overflow-visible",
                 isClick ? "translate-x-0" : "translate-x-full"
             )}
         >
@@ -77,7 +77,7 @@ export default function Navbar({ lang = "en" }: { lang?: "en" | "ne" }) {
             </div>
 
             {/* Social media contacts and links */}
-            <div className="flex flex-row justify-center gap-6 pb-6 text-[#333]">
+            <div className="flex justify-center gap-6 pb-6 text-[#333]">
                 <Link href="https://www.facebook.com/QYGnepal" target="_blank" rel="noopener noreferrer">
                     <FaFacebook size={24} />
                 </Link>
