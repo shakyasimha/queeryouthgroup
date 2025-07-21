@@ -18,7 +18,8 @@ export const navbarLinks = {
     { name: 'Legal Resources', href: '/resources' },
     { name: 'Litigations', href: '/litigations' },
     { name: 'Publications', href: '/publications' },
-    { name: 'Dictionary', href: '/dictionary' }
+    { name: 'Dictionary', href: '/dictionary' },
+    { name: 'Pride', href: '/pride' },
   ],
   ne: [
     { name: 'गृहपृष्ठ', href: '/' },
@@ -28,6 +29,7 @@ export const navbarLinks = {
     { name: 'कानूनी स्रोतहरू', href: '/resources' },
     { name: 'मुद्दाहरू', href: '/litigations' },
     { name: 'प्रकाशनहरू', href: '/publications' },
-    { name: 'शब्दकोश', href: '/dictionary' }
+    { name: 'शब्दकोश', href: '/dictionary' },
+    { name: 'गौरव', href: '/pride' }
   ]
 };
