@@ -1,9 +1,11 @@
 import { alegreyaSans, roboto } from "@/ui/fonts";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 type Section = {
   title: string;
   content: string;
+  image: string;
 };
 
 export default function Page() {
@@ -29,19 +31,42 @@ export default function Page() {
                     <p className="mt-2">
                         {t('listIntro')}
                     </p>
-                    <div className="mt-2 mb-16">
-                        <ol className="list-decimal pl-6"> 
-                            {sections.map((section, index) => (
-                                <li key={index}>
-                                    <h3>
-                                        {section.title}
-                                    </h3>
-                                    <p className="my-2">
-                                        {section.content}
-                                    </p>
-                                </li>
-                            ))}
-                        </ol>    
+                    <div className="mt-2 mb-16 space-y-8">
+                        {sections.map((section, index) => (
+                            <div key={index} className="flex flex-col md:flex-row gap-6 items-start">
+                                {/* Numbering */}
+                                <div className="flex items-start">
+                                    <span className={`${alegreyaSans.className} text-3xl font-bold text-[#d41367]`}>
+                                        {index + 1}.
+                                    </span>
+                                </div>
+                                
+                                {/* Content + Image */}
+                                <div className="flex-1">
+                                    <div className="flex flex-col lg:flex-row gap-6">
+                                        <div className="flex-1">
+                                            <h3 className={`${alegreyaSans.className} text-xl font-bold mb-2`}>
+                                                {section.title}
+                                            </h3>
+                                            <p className="my-2">
+                                                {section.content}
+                                            </p>
+                                        </div>
+                                        
+                                        {/* Image */}
+                                        <div className="lg:w-1/3 flex-shrink-0">
+                                            <Image
+                                                src={section.image}
+                                                alt={section.title}
+                                                width={300}
+                                                height={200}
+                                                className="rounded-lg object-cover w-full h-auto"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

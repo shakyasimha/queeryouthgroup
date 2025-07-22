@@ -34,6 +34,21 @@ export default function Header() {
                                 <span className={`${alegreyaSans.className} font-bold whitespace-nowrap text-xl text-center`}>
                                     𑐎𑑂𑐰𑐾𑐫𑐬 𑐫𑐸𑐠 𑐐𑑂𑐬𑐸𑐥
                                 </span>
+                                <span className={`${alegreyaSans.className} font-bold whitespace-nowrap text-xl text-center`}>
+                                    ཀྭཡེར་ཡུཐ་གྲུཔ ཀྭ་ཡེར་ ཡུཐ་ གྲུཔ
+                                </span>
+                                {/* <span className={`${alegreyaSans.className} font-bold whitespace-nowrap text-xl text-center`}>
+                                    𑂍𑂹𑂫𑂨𑂵𑂩 𑂨𑂳𑂟 𑂏𑂹𑂩𑂳𑂣
+                                </span>
+                                <span className={`${alegreyaSans.className} font-bold whitespace-nowrap text-xl text-center`}>
+                                    𑂍𑂹𑂫𑂨𑂵𑂩 𑂨𑂳𑂟 𑂏𑂹𑂩𑂳𑂣
+                                </span>
+                                <span className={`${alegreyaSans.className} font-bold whitespace-nowrap text-xl text-center`}>
+                                    𑒏𑓂𑒫𑒨𑒹𑒩 𑒨𑒳𑒟 𑒑𑓂𑒩𑒳𑒣
+                                </span>
+                                <span className={`${alegreyaSans.className} font-bold whitespace-nowrap text-xl text-center`}>
+                                    کْوَییرَ یُتھَ گْرُپ
+                                </span> */}
                             </div>
                         </div>
                     </div>
