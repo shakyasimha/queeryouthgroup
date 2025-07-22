@@ -1,4 +1,20 @@
 {
+  "VisionTab": {
+    "tabContent": {
+        "vision": {
+        "title": "Vision",
+        "content": "We envision a just, equitable, and inclusive Nepali society where all individuals—regardless of sexual orientation, gender identity, or sex characteristics—live with pride, dignity, safety, and equal rights. Our vision centers on a world where gender and sexual minorities are fully respected, protected, and celebrated."
+      },
+      "mission": {
+        "title": "Mission",
+        "content": "Our mission is to advance the rights and dignity of queer individuals in Nepal through advocacy, inclusive education, legal reform, and community-building. We are committed to fostering the social and legal recognition of gender and sexual minorities by developing accessible, intersectional resources and engaging in strategic actions that create lasting impact."
+      },
+      "goal": {
+        "title": "Goal",
+        "content": "To ensure the rights and interests of individuals with marginalized sexual orientation, gender identity, and sex characteristics (queer population) by engaging in policy and legal advocacy, thereby establishing their rights through legal recognition."
+      }
+    }
+  },
   "AboutPage": {
     "heroImageAlt": "Group photo of QYG members at an event",
     "introduction": {

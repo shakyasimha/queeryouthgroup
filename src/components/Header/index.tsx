@@ -16,8 +16,8 @@ export default function Header() {
                             <Image 
                                 src="/qyg-logo.svg"
                                 alt="Logo"
-                                width={32}
-                                height={32}
+                                width={80}
+                                height={80}
                                 className="block mt-1 md:mt-0"
                             />
                         </Link>

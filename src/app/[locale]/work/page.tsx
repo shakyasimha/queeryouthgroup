@@ -25,44 +25,35 @@ export default function Page() {
                 </div>
 
                 <div className={`${roboto.className} text-bg text-justify px-4 py-2 text-black md:mx-64 sm:mx-2`}>
-                    <p>
-                        {t('paragraph')}
-                    </p>
-                    <p className="mt-2">
-                        {t('listIntro')}
-                    </p>
+                    <p>{t('paragraph')}</p>
+                    <p className="mt-2">{t('listIntro')}</p>
+                    
                     <div className="mt-2 mb-16 space-y-8">
                         {sections.map((section, index) => (
-                            <div key={index} className="flex flex-col md:flex-row gap-6 items-start">
-                                {/* Numbering */}
-                                <div className="flex items-start">
-                                    <span className={`${alegreyaSans.className} text-3xl font-bold text-[#d41367]`}>
-                                        {index + 1}.
-                                    </span>
-                                </div>
-                                
-                                {/* Content + Image */}
-                                <div className="flex-1">
-                                    <div className="flex flex-col lg:flex-row gap-6">
-                                        <div className="flex-1">
-                                            <h3 className={`${alegreyaSans.className} text-xl font-bold mb-2`}>
-                                                {section.title}
-                                            </h3>
-                                            <p className="my-2">
-                                                {section.content}
-                                            </p>
-                                        </div>
-                                        
-                                        {/* Image */}
-                                        <div className="lg:w-1/3 flex-shrink-0">
-                                            <Image
-                                                src={section.image}
-                                                alt={section.title}
-                                                width={300}
-                                                height={200}
-                                                className="rounded-lg object-cover w-full h-auto"
-                                            />
-                                        </div>
+                            <div 
+                                key={index} 
+                                className="rounded-xl shadow-md overflow-hidden bg-white"
+                            >
+                                <div className="flex flex-col lg:flex-row">
+                                    {/* Image - Top on mobile, Left on desktop */}
+                                    <div className="lg:w-2/5">
+                                        <Image
+                                            src={section.image}
+                                            alt={section.title}
+                                            width={600}
+                                            height={400}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    
+                                    {/* Content - Always right side */}
+                                    <div className="lg:w-3/5 p-6 bg-[#F5EFE0]">
+                                        <h3 className={`${alegreyaSans.className} text-xl font-bold mb-4 text-[#d41367]`}>
+                                            {section.title}
+                                        </h3>
+                                        <p className="text-gray-700">
+                                            {section.content}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
