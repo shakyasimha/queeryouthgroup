@@ -1,4 +1,4 @@
-import { Open_Sans, Noto_Sans, Noto_Sans_Newa, Alegreya_Sans, Amethysta, Roboto } from "next/font/google";
+import { Open_Sans, Noto_Sans, Noto_Sans_Newa, Alegreya_Sans, Amethysta, Roboto, Gulzar, Jomolhari } from "next/font/google";
 
 export const openSans = Open_Sans({
     subsets: ["latin"],
@@ -29,3 +29,13 @@ export const roboto = Roboto({
     subsets: ["latin"],
     weight: ["400", "500", "600", "700"],
 });
+
+export const gulzar = Gulzar({
+    subsets: ["arabic"],
+    weight: ["400"]
+});
+
+export const jomolhari = Jomolhari({
+    subsets: ["tibetan"],
+    weight: ["400"]
+})
