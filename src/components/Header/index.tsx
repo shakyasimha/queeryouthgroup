@@ -28,7 +28,7 @@ export default function Header() {
                                 <span className={`${alegreyaSans.className} font-bold whitespace-nowrap text-xl text-center`}>
                                     Queer Youth Group
                                 </span>
-                                <span className={`${alegreyaSans.className} hidden font-bold whitespace-nowrap text-xl text-center`}>
+                                <span className={`${alegreyaSans.className} hidden font-bold whitespace-nowrap text-xl md:text-center`}>
                                     क्वेयर युथ ग्रुप
                                 </span>
                                 <span className={`${notoSansNewa.className} font-bold whitespace-nowrap text-xl text-center`}>
@@ -50,7 +50,7 @@ export default function Header() {
                                     𑒏𑓂𑒫𑒨𑒹𑒩 𑒨𑒳𑒟 𑒑𑓂𑒩𑒳𑒣
                                 </span>
                                 <span className={`${jomolhari.className} font-bold whitespace-nowrap text-xl text-center`}>
-                                    ཀྭཡེར་ཡུཐ་གྲུཔ ཀྭ་ཡེར་ ཡུཐ་ གྲུཔ
+                                    ཀྭཡེར་ཡུཐ་གྲུཔ
                                 </span>
                             </div>
                         </div>

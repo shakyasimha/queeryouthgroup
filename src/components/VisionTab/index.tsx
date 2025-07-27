@@ -10,7 +10,7 @@ export default function VisionTab() {
 
   return (
     <div className="w-full max-w-3xl mx-auto mb-12"> {/* Added mb-12 for bottom spacing */}
-      <div className={`${alegreyaSans.className} flex flex-col lg:flex-row min-h-[200px] bg-[white] rounded-xl shadow-lg overflow-hidden`}>
+      <div className={`${alegreyaSans.className} flex flex-col lg:flex-row min-h-[300px] bg-white rounded-xl shadow-lg overflow-hidden`}>
         {/* Tabs on left */}
         <div className="flex lg:flex-col border-b lg:border-b-0 lg:border-r border-gray-200 bg-white text-[#d41367]">
           {(['vision', 'mission', 'goal'] as const).map((tab) => (
