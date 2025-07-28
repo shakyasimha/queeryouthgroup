@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { alegreyaSans, roboto } from "@/ui/fonts";
+import { alegreyaSans } from "@/ui/fonts";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import clsx from "clsx";
 
 type Section = {
   title: string;
@@ -36,15 +37,19 @@ export default function Page() {
             const isLastAndAlone =
               sections.length % 3 === 1 && index === sections.length - 1;
 
+            const isActive = index === activeIndex;
+
             return (
-              <button
+              <div
                 key={index}
+                className={clsx(
+                  "bg-[#f5efe0] rounded-xl shadow-md hover:shadow-lg transition p-4 flex flex-col items-center justify-start",
+                  isLastAndAlone && "lg:col-start-2",
+                  "cursor-pointer"
+                )}
                 onClick={() =>
-                  setActiveIndex(index === activeIndex ? null : index)
+                  setActiveIndex(isActive ? null : index)
                 }
-                className={`cursor-pointer bg-[#f5efe0] rounded-xl shadow-md hover:shadow-lg transition p-4 flex flex-col items-center justify-center ${
-                  isLastAndAlone ? "lg:col-start-2" : ""
-                }`}
               >
                 <div className="w-24 h-24">
                   <Image
@@ -60,7 +65,19 @@ export default function Page() {
                 >
                   {section.title}
                 </h3>
-              </button>
+
+                {/* Expandable Content */}
+                <div
+                  className={clsx(
+                    "overflow-hidden transition-all duration-500 ease-in-out text-center mt-4",
+                    isActive ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+                  )}
+                >
+                  <p className={`${alegreyaSans.className} text-black text-sm`}>
+                    {section.content}
+                  </p>
+                </div>
+              </div>
             );
           })}
         </div>
