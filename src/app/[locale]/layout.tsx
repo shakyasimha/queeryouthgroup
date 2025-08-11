@@ -38,7 +38,7 @@ export default async function RootLayout({
       <body className="min-h-screen w-full flex flex-col flex-grow">
         <NextIntlClientProvider>
           {/* Header */}
-          <Header />
+          <Header lang={locale}/>
           
           {/* Navbar content */}
           <Navbar lang={locale} />
