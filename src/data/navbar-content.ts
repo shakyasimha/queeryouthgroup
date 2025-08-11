@@ -18,8 +18,8 @@ export const navbarLinks: NavbarLinks = {
       href: '',
       children: [
         { name: 'Who We Are', href: '/about' },
-        { name: 'Our Journey', href: '/journey' },
-        { name: 'Our Team', href: '/team' },
+        { name: 'Our Journey', href: '/about/journey' },
+        { name: 'Our Team', href: '/about/team' },
       ],
     },
     { name: 'Our Works', href: '/work' },
@@ -47,8 +47,8 @@ export const navbarLinks: NavbarLinks = {
       href: '/about',
       children: [
         { name: 'हामी को हौं', href: '/about' },
-        { name: 'हाम्रो यात्रा', href: '/journey' },
-        { name: 'हाम्रो टोली', href: '/team' },
+        { name: 'हाम्रो यात्रा', href: '/about/journey' },
+        { name: 'हाम्रो टोली', href: '/about/team' },
       ],
     },
     { name: 'हाम्रो कार्यहरू', href: '/work' },

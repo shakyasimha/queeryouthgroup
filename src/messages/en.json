@@ -29,6 +29,9 @@
       "content": "Queer Youth Group (QYG) was founded on December 5, 2018, as a loose network. It was started by Rukshana Kapali, Dipesh Shrestha, and Badal Lama to create leadership opportunities for young people in the gender and sexual minority movement.\n\nIn 2020, QYG was officially registered as a not-for-profit organization. Our core belief is that sexual orientation, gender identity, and sex characteristics exist on a spectrum. They are fluid and not fixed in a rigid structure. These identities should not be limit to a box.\n\nWe take an intersectional approach in our work, meaning we recognize that gender and sexual minorities experience different challenges based on other factors like language, ethnicity, skin color, geography, and physical ability. These social and structural inequalities are deeply connected to issues of gender and sexuality. That's why we also focus on addressing discrimination related to language, ethnicity, disability, economy, and geography.\n\nOur goal is to promote a broader and more inclusive understanding of gender and sexuality in Nepali society. We work through advocacy, education, and resource-building to bring positive change. Our efforts include policy, awareness campaigns, resource creation, and strengthening movements for gender and sexual minorities."
     }
   },
+  "journeyPage": {
+    "title": "Our Journey"
+  },
   "TeamPage": {
     "title": "Our Team",
     "members": {
@@ -127,5 +130,20 @@
   },
   "dictionaryPage": {
     "title": "SOGEISC Dictionary"
+  },
+  "pridePage": {
+    "title": "Nepal Pride Parade"
+  },
+  "prideChallengesPage": {
+    "title": "Challenges of Nepal Pride Parade"
+  },
+  "prideMediaPage": {
+    "title": "Media"
+  },
+  "prideTimelinePage": {
+    "title": "Timeline of Nepal Pride Parade"
+  },
+  "prideOrganizerPage": {
+    "title": "Organizers of Nepal Pride Parade"
   }
 }

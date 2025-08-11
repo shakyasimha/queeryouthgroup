@@ -2,7 +2,7 @@ import { alegreyaSans, roboto } from "@/ui/fonts";
 import { useTranslations } from "next-intl";
 
 export default function Page() {
-    const t = useTranslations('pridePage');
+    const t = useTranslations('prideOrganizerPage');
 
     return(
         <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
