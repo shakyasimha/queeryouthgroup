@@ -15,7 +15,7 @@ export const navbarLinks: NavbarLinks = {
     { name: 'Home', href: '/' },
     {
       name: 'About Us',
-      href: '/about',
+      href: '',
       children: [
         { name: 'Who We Are', href: '/about' },
         { name: 'Our Journey', href: '/journey' },
@@ -27,7 +27,17 @@ export const navbarLinks: NavbarLinks = {
     { name: 'Litigations', href: '/litigations' },
     { name: 'Publications', href: '/publications' },
     { name: 'Dictionary', href: '/dictionary' },
-    { name: 'Nepal Pride Parade', href: '/pride' },
+    {
+      name: 'Nepal Pride Parade',
+      href: '',
+      children: [
+        { name: 'Overview', href: '/pride' },
+        { name: 'Timeline', href: '/pride/timeline' },
+        { name: 'Organizers', href: '/pride/organizers' },
+        { name: 'Challenges & Achievements', href: '/pride/challenges' },
+        { name: 'Media & Resources', href: '/pride/media' },
+      ],
+    },
   ],
 
   ne: [
@@ -37,7 +47,7 @@ export const navbarLinks: NavbarLinks = {
       href: '/about',
       children: [
         { name: 'हामी को हौं', href: '/about' },
-        { name: 'हाम्रो यात्रा', href: '/about#journey' },
+        { name: 'हाम्रो यात्रा', href: '/journey' },
         { name: 'हाम्रो टोली', href: '/team' },
       ],
     },
@@ -46,6 +56,16 @@ export const navbarLinks: NavbarLinks = {
     { name: 'मुद्दाहरू', href: '/litigations' },
     { name: 'प्रकाशनहरू', href: '/publications' },
     { name: 'शब्दकोश', href: '/dictionary' },
-    { name: 'नेपाल गौरव जात्रा', href: '/pride' },
+    {
+      name: 'नेपाल गौरव जात्रा',
+      href: '/pride',
+      children: [
+        { name: 'परिचय', href: '/pride' },
+        { name: 'समयरेखा', href: '/pride/timeline' },
+        { name: 'आयोजकहरू', href: '/pride/organizers' },
+        { name: 'चुनौतीहरू र उपलब्धिहरू', href: '/pride/challenges' },
+        { name: 'मिडिया र स्रोतहरू', href: '/pride/media' },
+      ],
+    },
   ],
 };

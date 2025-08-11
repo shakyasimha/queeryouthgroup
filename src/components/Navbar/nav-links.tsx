@@ -57,66 +57,87 @@ export default function NavLinks({ className, links, lang }: NavLinksProps) {
         return (
           <li key={link.name} className={clsx("relative", !isVertical && "group")}>
             <div
-              className={clsx("flex items-center", isVertical && "cursor-pointer")}
-              onClick={() => {
-                if (hasChildren && isVertical) toggleDropdown(link.name);
+              className={clsx("flex items-center", isVertical && hasChildren && "cursor-pointer")}
+              onClick={(e) => {
+                if (hasChildren && isVertical) {
+                  e.preventDefault();
+                  toggleDropdown(link.name);
+                }
               }}
             >
-              <Link
-                href={localizedHref}
-                className={clsx(
-                  "flex items-center px-2 py-2 text-[#d13467] rounded-md transition duration-300 ease-in-out hover:bg-[#d13467] hover:text-white",
-                  { "text-white bg-[#d13467] font-bold": active }
-                )}
-              >
-                <p className="block">{link.name}</p>
-              </Link>
+              {link.href && (!hasChildren || !isVertical) ? (
+                <Link
+                  href={localizedHref}
+                  className={clsx(
+                    "flex items-center px-2 py-2 text-[#d13467] rounded-md transition duration-300 ease-in-out hover:bg-[#d13467] hover:text-white",
+                    { "text-white bg-[#d13467] font-bold": active }
+                  )}
+                  onClick={(e) => {
+                    // For desktop dropdowns, prevent navigation and let hover handle the dropdown
+                    if (hasChildren && !isVertical) {
+                      e.preventDefault();
+                    }
+                  }}
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  className={clsx(
+                    "flex items-center w-full px-2 py-2 text-left text-[#d13467] rounded-md transition duration-300 ease-in-out hover:bg-[#d13467] hover:text-white",
+                    { "text-white bg-[#d13467] font-bold": isOpen && isVertical }
+                  )}
+                >
+                  {link.name}
+                </button>
+              )}
             </div>
 
-            {/* Desktop Hover Dropdown */}
+            {/* Desktop hover dropdown */}
             {hasChildren && !isVertical && (
-            <ul className="absolute top-full mt-1 bg-[#F5EFE0] shadow-md rounded-md p-2 z-50 min-w-[180px] hidden group-hover:block">
-                {link.children!.map(child => {
-                const childHref = getLocalizedHref(child.href);
-                const childActive = isActive(child.href);
-                return (
+              <ul className="absolute top-full left-0 bg-[#F5EFE0] shadow-md rounded-md p-2 z-50 min-w-[180px] hidden group-hover:block">
+                {link.children!.map((child) => {
+                  const childHref = getLocalizedHref(child.href);
+                  const childActive = isActive(child.href);
+                  return (
                     <li key={child.name}>
-                    <Link
+                      <Link
                         href={childHref}
                         className={clsx(
-                        "block px-3 py-2 text-sm text-[#d13467] hover:bg-[#d13467] hover:text-white rounded-md transition",
-                        { "text-white bg-[#d13467] font-bold": childActive }
+                          "block px-3 py-2 text-sm text-[#d13467] hover:bg-[#d13467] hover:text-white rounded-md transition",
+                          { "text-white bg-[#d13467] font-bold": childActive }
                         )}
-                    >
+                      >
                         {child.name}
-                    </Link>
+                      </Link>
                     </li>
-                );
+                  );
                 })}
-            </ul>
+              </ul>
             )}
 
-            {/* Mobile Expandable List */}
+            {/* Mobile dropdown */}
             {hasChildren && isVertical && isOpen && (
-            <ul className="bg-white rounded-md shadow pl-4 mt-1 space-y-1">
-                {link.children!.map(child => {
-                const childHref = getLocalizedHref(child.href);
-                const childActive = isActive(child.href);
-                return (
+              <ul className="bg-white rounded-md shadow pl-4 mt-1 space-y-1 transition-all duration-300 ease-in-out">
+                {link.children!.map((child) => {
+                  const childHref = getLocalizedHref(child.href);
+                  const childActive = isActive(child.href);
+                  return (
                     <li key={child.name}>
-                    <Link
+                      <Link
                         href={childHref}
                         className={clsx(
-                        "block px-2 py-1 text-[#d13467] rounded-md hover:bg-[#d13467] hover:text-white transition",
-                        { "text-white bg-[#d13467] font-bold": childActive }
+                          "block px-2 py-1 text-[#d13467] rounded-md hover:bg-[#d13467] hover:text-white transition",
+                          { "text-white bg-[#d13467] font-bold": childActive }
                         )}
-                    >
+                      >
                         {child.name}
-                    </Link>
+                      </Link>
                     </li>
-                );
+                  );
                 })}
-            </ul>
+              </ul>
             )}
           </li>
         );

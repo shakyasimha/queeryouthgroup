@@ -9,7 +9,7 @@ export default function VisionTab() {
   const t = useTranslations('VisionTab.tabContent');
 
   return (
-    <div className="w-full max-w-3xl mx-auto mb-12"> {/* Added mb-12 for bottom spacing */}
+    <div className="w-full max-w-5xl mx-auto mb-16 px-4"> {/* Wider max width and padding */}
       <div className={`${alegreyaSans.className} flex flex-col lg:flex-row min-h-[300px] bg-white rounded-xl shadow-lg overflow-hidden`}>
         {/* Tabs on left */}
         <div className="flex lg:flex-col border-b lg:border-b-0 lg:border-r border-gray-200 bg-white text-[#d41367]">
@@ -17,7 +17,7 @@ export default function VisionTab() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-3 text-left font-bold transition-colors duration-200
+              className={`px-6 py-4 text-left text-base lg:text-lg font-bold transition-colors duration-200
                 ${activeTab === tab 
                   ? 'bg-[#f5efe0] text-[#d41367]' 
                   : 'hover:bg-[#f5efe0] hover:text-black'
@@ -29,9 +29,9 @@ export default function VisionTab() {
         </div>
 
         {/* Content on right */}
-        <div className="flex-1 p-6 bg-[#F5EFE0]">
+        <div className="flex-1 px-8 py-6 bg-[#F5EFE0]"> {/* Increased padding */}
           <div className="h-full flex flex-col justify-center">
-            <p className="text-gray-700 font-bold">
+            <p className="text-gray-700 text-base lg:text-lg font-bold leading-relaxed">
               {t(`${activeTab}.content`)}
             </p>
           </div>
