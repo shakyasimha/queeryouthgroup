@@ -1,24 +1,101 @@
 import { alegreyaSans, roboto } from "@/ui/fonts";
-import { useTranslations } from "next-intl";
 
-export default function Page() {
-    const t = useTranslations('pridePage');
+// Base slugs for each section
+const OVERVIEW_SLUG = "overview-of-pride-parade";
+const INTRO_SLUG = "nepal-pride-parade";
 
-    return(
-        <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
-            <div className="flex flex-col items-center min-h-[30vh] mt-4">
-                <div className="text-center text-2xl">
-                    <h1 className={`${alegreyaSans.className} text-black py-4 font-bold`}>
-                        {t('title')}
+// Fetch function with fallback
+async function getPostWithFallback(locale: string, baseSlug: string) {
+    const slugsToTry = [
+        `${baseSlug}-${locale}`,
+        ...(locale !== 'en' ? [`${baseSlug}-en`] : []),
+        baseSlug
+    ];
+
+    for (const slug of slugsToTry) {
+        try {
+            console.log(`Attempting to fetch: ${slug}`);
+
+            const res = await fetch(
+                `https://queeryouthgroup.org.np/wp-json/wp/v2/posts?slug=${slug}`,
+                { 
+                    cache: "no-store",
+                    headers: { 'Content-Type': 'application/json' }
+                }
+            );
+
+            if (res.ok) {
+                const posts = await res.json();
+                if (posts && posts.length > 0) {
+                    console.log(`Successfully fetched post with slug: ${slug}`);
+                    return posts[0];
+                }
+            }
+        } catch (error) {
+            console.error(`Error fetching slug ${slug}:`, error);
+            continue;
+        }
+    }
+
+    throw new Error(`No post found for slugs: ${slugsToTry.join(', ')}`);
+}
+
+interface PageProps {
+    params: Promise<{ locale: string }>;
+}
+
+export default async function Page({ params }: PageProps) {
+    const { locale } = await params;
+
+    try {
+        // Fetch both posts
+        const [overviewPost, introPost] = await Promise.all([
+            getPostWithFallback(locale, OVERVIEW_SLUG),
+            getPostWithFallback(locale, INTRO_SLUG),
+        ]);
+
+        return (
+            <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
+                
+                {/* Overview Section */}
+                <section className="flex flex-col items-center min-h-[30vh] mt-4">
+                    <h1 className={`${alegreyaSans.className} text-black py-4 font-bold text-2xl`}>
+                        Overview of Pride Parade
                     </h1>
-                </div>
+                    <div 
+                        className={`${roboto.className} text-justify px-16 py-2 text-black md:mx-64 sm:mx-2`}
+                        dangerouslySetInnerHTML={{ __html: overviewPost.content.rendered }}
+                    />
+                </section>
 
-                <div className={`${roboto.className} text-bg text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8`}>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {/* Introduction Section */}
+                <section className="flex flex-col items-center min-h-[30vh]">
+                    <h1 className={`${alegreyaSans.className} text-black py-4 font-bold text-2xl`}>
+                        History of Nepal Pride Parade
+                    </h1>
+                    <div 
+                        className={`${roboto.className} text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8`}
+                        dangerouslySetInnerHTML={{ __html: introPost.content.rendered }}
+                    />
+                </section>
+
+            </div>
+        );
+
+    } catch (error) {
+        console.error('Error loading posts:', error);
+
+        return (
+            <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
+                <div className="flex flex-col items-center min-h-[30vh] mt-4">
+                    <h1 className={`${alegreyaSans.className} text-red-600 py-4 font-bold text-2xl`}>
+                        Content not available
+                    </h1>
+                    <p className={`${roboto.className} text-gray-600 px-16 py-2`}>
+                        Sorry, the content could not be loaded at this time.
                     </p>
                 </div>
             </div>
-        </div>
-    )
+        );
+    }
 }

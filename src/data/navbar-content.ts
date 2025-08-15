@@ -35,7 +35,7 @@ export const navbarLinks: NavbarLinks = {
       name: 'Our Work',
       href: '/about/work',
       children: [
-        { name: 'Litigation', href: '/work/litigation' },
+        { name: 'Litigation', href: '/work/litigations' },
         { name: 'Legal and Policy Reform', href: '/work/legal-policy-reform' },
         { name: 'Multilingualism', href: '/work/multilingualism' },
         { name: 'Research & Knowledge Building', href: '/work/research' },
@@ -79,7 +79,7 @@ export const navbarLinks: NavbarLinks = {
       name: 'हाम्रो बारेमा',
       href: '',
       children: [
-        { name: 'परिचय', href: '/about/introduction' },
+        { name: 'परिचय', href: '/about' },
         { name: 'इतिहास', href: '/about/history' },
         { name: 'उद्देश्य', href: '/about/objective' },
         {
@@ -97,7 +97,7 @@ export const navbarLinks: NavbarLinks = {
       name: 'हाम्रा कार्य',
       href: '',
       children: [
-        { name: 'मुद्दाहरू', href: '/work/litigation' },
+        { name: 'मुद्दाहरू', href: '/work/litigations' },
         { name: 'कानूनी तथा नीतिगत सुधार', href: '/work/legal-policy-reform' },
         { name: 'बहुभाषिकता', href: '/work/multilingualism' },
         { name: 'अनुसन्धान तथा ज्ञान निर्माण', href: '/work/research' },
