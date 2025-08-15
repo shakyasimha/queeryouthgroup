@@ -1,8 +1,8 @@
-import { alegreyaSans, roboto } from "@/ui/fonts";
-import { useTranslations } from "next-intl";
+import { alegreyaSans, roboto } from "@/ui/fonts"
+import { useTranslations } from "next-intl"
 
 export default function Page() {
-    const t = useTranslations('resourcePage');
+    const t = useTranslations('publicationPage');
 
     return(
         <div className="w-full flex flex-col flex-grow bg-[#fafafc]">

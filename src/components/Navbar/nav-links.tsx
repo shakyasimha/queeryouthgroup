@@ -75,7 +75,7 @@ export default function NavLinks({ className, links, lang }: NavLinksProps) {
                 <Link
                   href={localizedHref}
                   className={clsx(
-                    "flex items-center px-3 py-3 text-xl text-[#d13467] rounded-md transition duration-300 ease-in-out hover:bg-[#d13467] hover:text-white",
+                    "flex items-center px-3 py-3 text-lg text-[#d13467] rounded-md transition duration-300 ease-in-out hover:bg-[#d13467] hover:text-white",
                     { "text-white bg-[#d13467] font-bold": active }
                   )}
                   onClick={(e) => {
@@ -91,7 +91,7 @@ export default function NavLinks({ className, links, lang }: NavLinksProps) {
                 <button
                   type="button"
                   className={clsx(
-                    "flex items-center w-full px-3 py-3 text-xl text-left text-[#d13467] rounded-md transition duration-300 ease-in-out hover:bg-[#d13467] hover:text-white",
+                    "flex items-center w-full px-3 py-3 text-lg text-left text-[#d13467] rounded-md transition duration-300 ease-in-out hover:bg-[#d13467] hover:text-white",
                     { "text-white bg-[#d13467] font-bold": isOpen && isVertical }
                   )}
                 >
@@ -119,14 +119,14 @@ export default function NavLinks({ className, links, lang }: NavLinksProps) {
                         <Link
                           href={childHref}
                           className={clsx(
-                            "block px-3 py-2 text-sm text-[#d13467] hover:bg-[#d13467] hover:text-white rounded-md transition",
+                            "block px-3 py-2 text-lg text-[#d13467] hover:bg-[#d13467] hover:text-white rounded-md transition",
                             { "text-white bg-[#d13467] font-bold": childActive }
                           )}
                         >
                           {child.name}
                         </Link>
                       ) : (
-                        <div className="flex items-center justify-between px-3 py-2 text-sm text-[#d13467] hover:bg-[#d13467] hover:text-white rounded-md transition cursor-pointer">
+                        <div className="flex items-center justify-between px-3 py-2 text-lg text-[#d13467] hover:bg-[#d13467] hover:text-white rounded-md transition cursor-pointer">
                           {child.name}
                           {hasGrandchildren && <span className="text-xs ml-2">▶</span>}
                         </div>
@@ -134,7 +134,7 @@ export default function NavLinks({ className, links, lang }: NavLinksProps) {
 
                       {/* Desktop sub-sub dropdown (appears on the right) */}
                       {hasGrandchildren && (
-                        <ul className="absolute top-0 left-full ml-1 bg-[#F5EFE0] shadow-md rounded-md p-2 z-50 min-w-[160px] hidden group-hover/sub:block">
+                        <ul className="absolute top-0 left-full bg-[#F5EFE0] shadow-md rounded-md p-2 z-50 min-w-[160px] hidden group-hover/sub:block">
                           {child.children!.map((grandchild) => {
                             const grandchildHref = getLocalizedHref(grandchild.href);
                             const grandchildActive = isActive(grandchild.href);
@@ -144,7 +144,7 @@ export default function NavLinks({ className, links, lang }: NavLinksProps) {
                                 <Link
                                   href={grandchildHref}
                                   className={clsx(
-                                    "block px-3 py-2 text-sm text-[#d13467] hover:bg-[#d13467] hover:text-white rounded-md transition",
+                                    "block px-3 py-2 text-lg text-[#d13467] hover:bg-[#d13467] hover:text-white rounded-md transition",
                                     { "text-white bg-[#d13467] font-bold": grandchildActive }
                                   )}
                                 >
