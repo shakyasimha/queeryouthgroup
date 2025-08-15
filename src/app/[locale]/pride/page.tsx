@@ -60,7 +60,7 @@ export default async function Page({ params }: PageProps) {
                 {/* Overview Section */}
                 <section className="flex flex-col items-center min-h-[30vh] mt-4">
                     <h1 className={`${alegreyaSans.className} text-black py-4 font-bold text-2xl`}>
-                        Overview of Pride Parade
+                        {overviewPost.title?.rendered}
                     </h1>
                     <div 
                         className={`${roboto.className} text-justify px-16 py-2 text-black md:mx-64 sm:mx-2`}
@@ -71,7 +71,7 @@ export default async function Page({ params }: PageProps) {
                 {/* Introduction Section */}
                 <section className="flex flex-col items-center min-h-[30vh]">
                     <h1 className={`${alegreyaSans.className} text-black py-4 font-bold text-2xl`}>
-                        History of Nepal Pride Parade
+                        {introPost.title?.rendered}
                     </h1>
                     <div 
                         className={`${roboto.className} text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8`}

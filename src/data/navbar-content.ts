@@ -44,7 +44,7 @@ export const navbarLinks: NavbarLinks = {
           href: '/about/events',
           children: [
             { name: 'Discussion Series', href: '/work/events/discussion' },
-            { name: 'Pride', href: '/work/events/pride' },
+            { name: 'Pride', href: '/pride' },
           ],
         },
         {
@@ -106,7 +106,7 @@ export const navbarLinks: NavbarLinks = {
           href: '',
           children: [
             { name: 'विचार-विमर्श श्रृङ्खला', href: '/work/events/discussion' },
-            { name: 'गौरव', href: '/work/events/pride' },
+            { name: 'गौरव', href: '/pride' },
           ],
         },
         {
