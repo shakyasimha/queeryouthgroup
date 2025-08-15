@@ -1,5 +1,4 @@
 import { alegreyaSans, roboto } from "@/ui/fonts";
-import { getTranslations } from "next-intl/server";
 
 // Base slug without locale suffix
 const BASE_SLUG = "legal-policy-reform";
@@ -93,7 +92,6 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
     const { locale } = await params;
-    const t = await getTranslations('pridePage');
     
     try {
         // Use the fallback version for better error handling
@@ -131,11 +129,11 @@ export default async function Page({ params }: PageProps) {
                 <div className="flex flex-col items-center min-h-[30vh] mt-4">
                     <div className="text-center text-2xl">
                         <h1 className={`${alegreyaSans.className} text-red-600 py-4 font-bold`}>
-                            {t('errorTitle') || 'Content not available'}
+                            {'Content not available'}
                         </h1>
                     </div>
                     <p className={`${roboto.className} text-gray-600 px-16 py-2`}>
-                        {t('errorMessage') || 'Sorry, the content could not be loaded at this time.'}
+                        {'Sorry, the content could not be loaded at this time.'}
                     </p>
                 </div>
             </div>
