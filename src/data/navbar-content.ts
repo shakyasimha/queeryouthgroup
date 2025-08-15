@@ -22,7 +22,7 @@ export const navbarLinks: NavbarLinks = {
         { name: 'Objective', href: '/about/objective' },
         {
           name: 'Our Team',
-          href: '',
+          href: '/about/team',
           children: [
             { name: 'Board Members', href: '/about/team/board' },
             { name: 'Staff Members', href: '/about/team/staff' },
@@ -33,7 +33,7 @@ export const navbarLinks: NavbarLinks = {
     },
     {
       name: 'Our Work',
-      href: '',
+      href: '/about/work',
       children: [
         { name: 'Litigation', href: '/work/litigation' },
         { name: 'Legal and Policy Reform', href: '/work/legal-policy-reform' },
@@ -41,7 +41,7 @@ export const navbarLinks: NavbarLinks = {
         { name: 'Research & Knowledge Building', href: '/work/research' },
         {
           name: 'Events',
-          href: '',
+          href: '/about/events',
           children: [
             { name: 'Discussion Series', href: '/work/events/discussion' },
             { name: 'Pride', href: '/work/events/pride' },
@@ -49,7 +49,7 @@ export const navbarLinks: NavbarLinks = {
         },
         {
           name: 'Resources',
-          href: '',
+          href: '/about/resources',
           children: [
             { name: 'Legal Resources', href: '/work/resources/legal' },
             { name: 'Publications', href: '/work/resources/publications' },
