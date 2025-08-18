@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -57,8 +58,8 @@ export default function Notice() {
         loop={true}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+          nextEl: ".custom-next",
+          prevEl: ".custom-prev",
         }}
         className="w-full h-full"
       >
@@ -77,9 +78,13 @@ export default function Notice() {
           </SwiperSlide>
         ))}
 
-        {/* Custom arrows */}
-        <div className="swiper-button-prev !left-2 !w-8 !h-8 after:!text-xl after:!text-white after:!opacity-80 hover:after:!opacity-100 !hidden group-hover:!block"></div>
-        <div className="swiper-button-next !right-2 !w-8 !h-8 after:!text-xl after:!text-white after:!opacity-80 hover:after:!opacity-100 !hidden group-hover:!block"></div>
+        {/* Custom Chevron Arrows */}
+        <button className="custom-prev absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-black/30 rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-black/50">
+          <ChevronLeft size={24} />
+        </button>
+        <button className="custom-next absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-black/30 rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-black/50">
+          <ChevronRight size={24} />
+        </button>
       </Swiper>
     </div>
   );
