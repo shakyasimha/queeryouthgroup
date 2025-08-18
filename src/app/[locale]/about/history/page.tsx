@@ -1,5 +1,5 @@
 import { alegreyaSans, roboto } from "@/ui/fonts";
-import { getTranslations } from "next-intl/server";
+// import { getTranslations } from "next-intl/server";
 
 // Base slug without locale suffix
 const BASE_SLUG = "our-history";
@@ -93,7 +93,7 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
     const { locale } = await params;
-    const t = await getTranslations('pridePage');
+    // const t = await getTranslations('pridePage');
     
     try {
         // Use the fallback version for better error handling
