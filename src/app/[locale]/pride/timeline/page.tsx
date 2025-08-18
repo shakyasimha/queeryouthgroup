@@ -27,7 +27,7 @@ interface PageParams {
 }
 
 interface TimelinePageProps {
-  params: PageParams;
+  params: Promise<PageParams>;
 }
 
 // Timeline Event Component
@@ -210,7 +210,8 @@ const NepalPrideTimeline: React.FC = () => {
 
 // Generate metadata with translations
 export async function generateMetadata({ params }: TimelinePageProps): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'prideTimelinePage' });
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'prideTimelinePage' });
   
   return {
     title: t('title'),
@@ -225,7 +226,9 @@ export async function generateMetadata({ params }: TimelinePageProps): Promise<M
 }
 
 // Page Component with locale support
-export default function TimelinePage() {
+export default async function TimelinePage({ params }: TimelinePageProps) {
+  const { locale } = await params;
+  
   return (
     <main>
       <NepalPrideTimeline />
