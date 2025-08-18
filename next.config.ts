@@ -8,6 +8,14 @@ const nextConfig: NextConfig = {
   // images: {
   //   unoptimized: true, // Disable Next.js image optimization; might remove later
   // },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "queeryouthgroup.org.np",
+      },
+    ],
+  },
 };
 
 const withNextIntl = createNextIntlPlugin(); 

@@ -1,33 +1,64 @@
 "use client";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import Image from 'next/image';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-
-const images = [
-  '/images/banda-notice-08.jpg',
-  '/images/banda-notice-09-09-09.jpg',
-];
+import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import Image from "next/image";
+import "swiper/css";
+import "swiper/css/navigation";
 
 export default function Notice() {
+  const [images, setImages] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchNoticeImages() {
+      try {
+        // Wordpress slug is here
+        const res = await fetch(
+          "https://queeryouthgroup.org.np/wp-json/wp/v2/posts?slug=notice"
+        );
+        const data = await res.json();
+
+        if (data.length > 0) {
+          const content = data[0].content.rendered;
+
+          // Regex to extract all <img src="..."> URLs
+          const imgRegex = /<img[^>]+src=["']([^"']+)["']/g;
+          const urls: string[] = [];
+          let match;
+          while ((match = imgRegex.exec(content)) !== null) {
+            urls.push(match[1]);
+          }
+
+          setImages(urls);
+        }
+      } catch (err) {
+        console.error("Error fetching notice images:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchNoticeImages();
+  }, []);
+
+  // Don't render anything if loading or no images found
+  if (isLoading || images.length === 0) {
+    return null;
+  }
+
   return (
     <div className="w-[400px] h-[400px] lg:h-[800px] lg:w-[800px] relative group">
       <Swiper
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Autoplay, Navigation]}
         spaceBetween={0}
         slidesPerView={1}
         loop={true}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        pagination={false} // Disabled round pagination buttons
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
         navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
         }}
         className="w-full h-full"
       >
@@ -45,33 +76,11 @@ export default function Notice() {
             </div>
           </SwiperSlide>
         ))}
-        
-        {/* Custom minimal arrows */}
+
+        {/* Custom arrows */}
         <div className="swiper-button-prev !left-2 !w-8 !h-8 after:!text-xl after:!text-white after:!opacity-80 hover:after:!opacity-100 !hidden group-hover:!block"></div>
         <div className="swiper-button-next !right-2 !w-8 !h-8 after:!text-xl after:!text-white after:!opacity-80 hover:after:!opacity-100 !hidden group-hover:!block"></div>
       </Swiper>
-
-      <style jsx global>{`
-        .swiper-button-prev:after, 
-        .swiper-button-next:after {
-          font-size: 1.5rem;
-          color: white;
-          text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
-        .swiper-button-prev,
-        .swiper-button-next {
-          background: rgba(0,0,0,0.2);
-          backdrop-filter: blur(2px);
-          border-radius: 50%;
-          width: 2rem;
-          height: 2rem;
-          transition: all 0.3s ease;
-        }
-        .swiper-button-prev:hover,
-        .swiper-button-next:hover {
-          background: rgba(0,0,0,0.4);
-        }
-      `}</style>
     </div>
   );
 }
