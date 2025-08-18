@@ -43,6 +43,7 @@ export const footerContent: FooterContent = {
       { name: "Facebook", icon: "FaFacebook", href: "https://www.facebook.com/QYGnepal" },
       { name: "Instagram", icon: "FaInstagram", href: "https://www.instagram.com/qygnepal/" },
       { name: "Twitter", icon: "FaXTwitter", href: "https://twitter.com/qygnepal/" },
+      { name: "Tiktok", icon: "FaTiktok", href: "https://www.tiktok.com/@queeryouthgroup/"}
     ],
     copyright: `© ${new Date().getFullYear()} Queer Youth Group. All rights reserved.`,
   },

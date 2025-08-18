@@ -1,12 +1,8 @@
 import Link from "next/link";
 import { openSans, alegreyaSans } from "@/ui/fonts";
-import { FaPhone, FaEnvelope, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 import { FaXTwitter, FaLocationDot } from "react-icons/fa6";
 import { footerContent } from "@/data/footer-content";
-// import { getLocalizedHref } from "@/lib/getLocalizedHref";
-
-// Dont forget to use getLocalizedHref here if necessary 
-
 
 export default function Footer({ lang = "en" }: { lang?: "en" | "ne" }) {
   const content = footerContent[lang];
@@ -83,13 +79,21 @@ export default function Footer({ lang = "en" }: { lang?: "en" | "ne" }) {
                 FaFacebook,
                 FaInstagram,
                 FaXTwitter,
+                FaTiktok
               };
               const Icon = icons[item.icon as keyof typeof icons];
               
               return (
-                <Link key={item.name} href={item.href} className="hover:text-[#333]/80">
+                <a 
+                  key={item.name} 
+                  href={item.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-[#333]/80"
+                  aria-label={`Visit our ${item.name}`}
+                >
                   {Icon && <Icon size={24} />}
-                </Link>
+                </a>
               );
             })}
           </div>
