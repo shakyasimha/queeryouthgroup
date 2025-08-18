@@ -34,7 +34,7 @@ const Welcome = () => {
     }, []);
 
     return(
-        <div className="mt-8 mb-8 text-center"> 
+        <div className="mt-16 mb-16 text-center"> 
             <h2 className={`
                 ${alegreyaSans.className}
                 text-[#333] text-2xl
