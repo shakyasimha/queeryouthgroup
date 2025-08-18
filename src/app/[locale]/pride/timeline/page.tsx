@@ -1,6 +1,8 @@
 // app/[locale]/pride/timeline/page.tsx
 import React from 'react';
 import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 
 // Type definitions
 interface TimelineEventData {
@@ -18,6 +20,14 @@ interface TimelineEventProps {
   details?: string[];
   isLeft: boolean;
   hasEvent: boolean;
+}
+
+interface PageParams {
+  locale: string;
+}
+
+interface TimelinePageProps {
+  params: PageParams;
 }
 
 // Timeline Event Component
@@ -89,25 +99,27 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
 
 // Main Timeline Component
 const NepalPrideTimeline: React.FC = () => {
+  const t = useTranslations('prideTimelinePage');
+
   const events: TimelineEventData[] = [
     {
       year: "2019",
-      title: "Nepal Pride Parade 2019: Inaugural Milestone",
-      date: "June 29, 2019",
+      title: t('events.2019.title'),
+      date: t('events.2019.date'),
       details: [
-        "Queer Youth Group (QYG) organized the first-ever Nepal Pride Parade in collaboration with Queer Rights Collective (QRC) and Campaign for Change (CFC).",
-        "This historic event marked the beginning of organized Pride celebrations in Nepal."
+        t('events.2019.details.0'),
+        t('events.2019.details.1')
       ],
       hasEvent: true
     },
     {
       year: "2020",
-      title: "Online Pride Parade",
-      date: "June 13, 2020",
+      title: t('events.2020.title'),
+      date: t('events.2020.date'),
       details: [
-        "Held virtually due to the COVID-19 pandemic",
-        "Would have been the second annual Nepal Pride Parade",
-        "Took place across various online platforms throughout the day"
+        t('events.2020.details.0'),
+        t('events.2020.details.1'),
+        t('events.2020.details.2')
       ],
       hasEvent: true
     },
@@ -129,11 +141,11 @@ const NepalPrideTimeline: React.FC = () => {
     },
     {
       year: "2025",
-      title: "Seventh Nepal Pride Parade",
-      date: "June 14, 2025",
+      title: t('events.2025.title'),
+      date: t('events.2025.date'),
       details: [
-        "Queer Youth Group (QYG), in collaboration with Queer Rights Collective (QRC), successfully hosted the seventh Nepal Pride Parade (NPP) at Narayan Chaur, Naxal, Kathmandu.",
-        "This year's Pride marked a significant milestone as it was the first time QYG independently led the overall coordination and execution of the program, with QRC offering strategic support."
+        t('events.2025.details.0'),
+        t('events.2025.details.1')
       ],
       hasEvent: true
     }
@@ -145,11 +157,10 @@ const NepalPrideTimeline: React.FC = () => {
         {/* Header Section */}
         <div className="text-center mb-12 pt-8">
           <h1 className="text-4xl md:text-5xl font-bold text-pink-800 mb-4">
-            Nepal Pride Parade Timeline
+            {t('title')}
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            A journey through the milestones of LGBTQ+ pride celebrations in Nepal, 
-            showcasing the evolution of community organizing and visibility.
+            {t('subtitle')}
           </p>
         </div>
         
@@ -189,7 +200,7 @@ const NepalPrideTimeline: React.FC = () => {
         {/* Footer Section */}
         <div className="text-center mt-12 pt-8 border-t border-pink-200">
           <p className="text-gray-500 text-sm">
-            Celebrating diversity, equality, and the ongoing fight for LGBTQ+ rights in Nepal
+            {t('footerText')}
           </p>
         </div>
       </div>
@@ -197,20 +208,24 @@ const NepalPrideTimeline: React.FC = () => {
   );
 };
 
-// Metadata for the page
-export const metadata: Metadata = {
-  title: 'Nepal Pride Parade Timeline | LGBTQ+ History',
-  description: 'Explore the history and milestones of Nepal Pride Parade from 2019 to 2025, showcasing the journey of LGBTQ+ rights and community organizing in Nepal.',
-  keywords: 'Nepal Pride, LGBTQ+, Pride Parade, Queer Youth Group, Nepal LGBTQ+ history',
-  openGraph: {
-    title: 'Nepal Pride Parade Timeline',
-    description: 'A comprehensive timeline of Nepal Pride Parade events from 2019-2025',
-    type: 'website',
-  },
-};
+// Generate metadata with translations
+export async function generateMetadata({ params }: TimelinePageProps): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: 'prideTimelinePage' });
+  
+  return {
+    title: t('title'),
+    description: t('subtitle'),
+    keywords: 'Nepal Pride, LGBTQ+, Pride Parade, Queer Youth Group, Nepal LGBTQ+ history',
+    openGraph: {
+      title: t('title'),
+      description: t('subtitle'),
+      type: 'website',
+    },
+  };
+}
 
 // Page Component with locale support
-export default function TimelinePage() {
+export default function TimelinePage({ params }: TimelinePageProps) {
   return (
     <main>
       <NepalPrideTimeline />
