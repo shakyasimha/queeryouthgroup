@@ -4,6 +4,7 @@ import Slideshow from "@/components/Slideshow";
 import Welcome from "@/components/Welcome";
 import Notice from "@/components/Notice";
 import VisionTab from "@/components/VisionTab";
+import PublicationsCarousel from "@/components/Report";
 
 export default function Home() {
   return (
@@ -24,6 +25,11 @@ export default function Home() {
         <Notice />
       </div>
 
+      {/* Publications */}
+      <div className="mb-32 mt-16 text-center">
+        <PublicationsCarousel /> 
+      </div> 
+        
     </main>
   );
 }

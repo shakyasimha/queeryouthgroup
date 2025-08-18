@@ -15,6 +15,9 @@
       }
     }
   },
+  "HomepageReport": {
+    "title": "Publications"
+  },
   "AboutPage": {
     "heroImageAlt": "Group photo of QYG members at an event",
     "introduction": {
