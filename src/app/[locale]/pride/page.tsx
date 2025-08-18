@@ -1,44 +1,10 @@
 import { alegreyaSans, roboto } from "@/ui/fonts";
+import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback";
 
 // Base slugs for each section
 const OVERVIEW_SLUG = "overview-of-pride-parade";
 const INTRO_SLUG = "nepal-pride-parade";
 
-// Fetch function with fallback
-async function getPostWithFallback(locale: string, baseSlug: string) {
-    const slugsToTry = [
-        `${baseSlug}-${locale}`,
-        ...(locale !== 'en' ? [`${baseSlug}-en`] : []),
-        baseSlug
-    ];
-
-    for (const slug of slugsToTry) {
-        try {
-            console.log(`Attempting to fetch: ${slug}`);
-
-            const res = await fetch(
-                `https://queeryouthgroup.org.np/wp-json/wp/v2/posts?slug=${slug}`,
-                { 
-                    cache: "no-store",
-                    headers: { 'Content-Type': 'application/json' }
-                }
-            );
-
-            if (res.ok) {
-                const posts = await res.json();
-                if (posts && posts.length > 0) {
-                    console.log(`Successfully fetched post with slug: ${slug}`);
-                    return posts[0];
-                }
-            }
-        } catch (error) {
-            console.error(`Error fetching slug ${slug}:`, error);
-            continue;
-        }
-    }
-
-    throw new Error(`No post found for slugs: ${slugsToTry.join(', ')}`);
-}
 
 interface PageProps {
     params: Promise<{ locale: string }>;
@@ -50,8 +16,8 @@ export default async function Page({ params }: PageProps) {
     try {
         // Fetch both posts
         const [overviewPost, introPost] = await Promise.all([
-            getPostWithFallback(locale, OVERVIEW_SLUG),
-            getPostWithFallback(locale, INTRO_SLUG),
+            getLocalizedPostWithFallback(locale, OVERVIEW_SLUG),
+            getLocalizedPostWithFallback(locale, INTRO_SLUG),
         ]);
 
         return (

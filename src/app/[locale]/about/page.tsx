@@ -1,5 +1,5 @@
 import { alegreyaSans, roboto } from "@/ui/fonts";
-import { getTranslations } from "next-intl/server";
+// import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 // Base slugs
@@ -48,7 +48,7 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
     const { locale } = await params;
-    const t = await getTranslations('AboutPage');
+    // const t = await getTranslations('AboutPage');
 
     try {
         // Fetch both sections
