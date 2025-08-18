@@ -73,7 +73,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({
   return (
     <div className={`flex items-center mb-8 relative ${isLeft ? 'flex-row-reverse' : ''}`}>
       <div className="flex-1 px-6">
-        <div className={`bg-pink-50 p-6 rounded-lg shadow-md border-l-4 border-pink-600 hover:shadow-lg transition-shadow duration-300 ${isLeft ? 'text-right border-r-4 border-l-0' : ''}`}>
+        <div className={`bg-[#F5EFE0] p-6 rounded-lg shadow-md border-l-4 border-pink-600 hover:shadow-lg transition-shadow duration-300 ${isLeft ? 'text-right border-r-4 border-l-0' : ''}`}>
           {title && (
             <h3 className="text-xl font-bold text-pink-800 mb-2">{title}</h3>
           )}
