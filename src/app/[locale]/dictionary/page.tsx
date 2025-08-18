@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createClient } from '@/utils/supabase/client'
 
 // Define the type for your dictionary entry
 interface DictionaryEntry {
@@ -25,24 +25,31 @@ export default function DictionaryPage() {
   const [error, setError] = useState<string | null>(null)
   const [language, setLanguage] = useState<'en' | 'ne'>('en') // Toggle between English and Nepali
 
-  const supabase = createClientComponentClient()
+  const supabase = createClient()
 
   // Fetch dictionary entries from Supabase
   const fetchEntries = async () => {
     try {
       setLoading(true)
+      console.log('Fetching from Supabase...')
+      
       const { data, error } = await supabase
-        .from('dictionary') // Replace 'dictionary' with your actual table name
+        .from('dictionary_terms') // Updated to correct table name
         .select('*')
         .order('english', { ascending: true })
 
+      console.log('Supabase response:', { data, error })
+
       if (error) {
+        console.error('Supabase error:', error)
         throw error
       }
 
       setEntries(data || [])
       setFilteredEntries(data || [])
+      console.log('Entries loaded:', data?.length)
     } catch (err) {
+      console.error('Fetch error:', err)
       setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
       setLoading(false)
@@ -131,11 +138,11 @@ export default function DictionaryPage() {
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-4 mb-4">
             <h1 className="text-4xl font-bold text-gray-900">
-              {language === 'en' ? 'Nepali Dictionary' : 'नेपाली शब्दकोश'}
+              {language === 'en' ? 'SOGIESC Dictionary' : 'SOGIESC शब्दकोश'}
             </h1>
             <button
               onClick={toggleLanguage}
-              className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors text-sm font-medium"
+              className="bg-[#d41367] text-white px-4 py-2 rounded-lg hover:bg-[#d41367]/50 transition-colors text-sm font-medium"
             >
               {language === 'en' ? 'नेपाली' : 'English'}
             </button>
@@ -167,7 +174,7 @@ export default function DictionaryPage() {
             <div className="flex gap-2">
               <button
                 onClick={handleSearch}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                className="bg-[#d41367] text-white px-6 py-2 rounded-lg hover:bg-[#d41367]/50 transition-colors font-medium"
               >
                 {language === 'en' ? 'Search' : 'खोज्नुहोस्'}
               </button>
