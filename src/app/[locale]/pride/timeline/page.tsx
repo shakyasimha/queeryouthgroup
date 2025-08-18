@@ -225,7 +225,7 @@ export async function generateMetadata({ params }: TimelinePageProps): Promise<M
 }
 
 // Page Component with locale support
-export default function TimelinePage({ params }: TimelinePageProps) {
+export default function TimelinePage() {
   return (
     <main>
       <NepalPrideTimeline />
