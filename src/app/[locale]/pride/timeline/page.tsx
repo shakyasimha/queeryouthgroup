@@ -20,10 +20,6 @@ interface TimelineEventProps {
   hasEvent: boolean;
 }
 
-interface PageParams {
-  locale: string;
-}
-
 // Timeline Event Component
 const TimelineEvent: React.FC<TimelineEventProps> = ({ 
   year, 
