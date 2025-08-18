@@ -24,10 +24,6 @@ interface PageParams {
   locale: string;
 }
 
-interface TimelinePageProps {
-  params: PageParams;
-}
-
 // Timeline Event Component
 const TimelineEvent: React.FC<TimelineEventProps> = ({ 
   year, 
@@ -172,9 +168,9 @@ const NepalPrideTimeline: React.FC = () => {
           {events.map((event: TimelineEventData, index: number) => {
             // Custom positioning logic
             let isLeft: boolean;
-            if (event.year === "2022" || event.year === "2024") {
+            if (event.year === "2021" || event.year === "2023") {
               isLeft = false; // Right side
-            } else if (event.year === "2021" || event.year === "2023") {
+            } else if (event.year === "2022" || event.year === "2024") {
               isLeft = true; // Left side
             } else {
               isLeft = index % 2 === 0; // Default alternating pattern for other years
@@ -218,7 +214,7 @@ export const metadata: Metadata = {
 };
 
 // Page Component with locale support
-export default function TimelinePage({ params }: TimelinePageProps) {
+export default function TimelinePage() {
   return (
     <main>
       <NepalPrideTimeline />

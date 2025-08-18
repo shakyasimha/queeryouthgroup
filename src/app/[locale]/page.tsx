@@ -21,12 +21,12 @@ export default function Home() {
       <VisionTab />
 
       {/* Notice section */}
-      <div className="mb-32 mt-16 text-center">
+      <div className="mb-16 mt-16 text-center">
         <Notice />
       </div>
 
       {/* Publications */}
-      <div className="mb-32 mt-16 text-center">
+      <div className="mb-32 text-center">
         <PublicationsCarousel /> 
       </div> 
         

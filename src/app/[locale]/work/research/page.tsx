@@ -1,5 +1,4 @@
 import { alegreyaSans, roboto } from "@/ui/fonts";
-import { getLocalizedPost } from "@/lib/getLocalizedPost";
 import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback";
 
 // Base slug without locale suffix
