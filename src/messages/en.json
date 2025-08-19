@@ -168,12 +168,36 @@
       },
       "alumni": {
         "title": "Alumni",
-        "list": [
-          "Karan Karki",
-          "Prathna Dixit",
-          "Pratik Thapa",
-          "Niksuh Kunwar Thapa",
-          "Ankita Regmi"
+        "members": [
+          {
+            "name": "Karan Karki",
+            "image": ""
+          },
+          {
+            "name": "Prathna Dixit",
+            "image": ""
+          },
+          {
+            "name": "Pratik Thapa",
+            "image": ""
+          },
+          {
+            "name": "Niksuh Kuwar Thapa", 
+            "image": ""
+          },
+          {
+            "name": "Ankita Regmi",
+            "image": ""
+          }
+        ]
+      },
+      "staff": {
+        "title": "Staff Members",
+        "members": [
+          {
+            "name": "",
+            "image": ""
+          }
         ]
       }
   },
