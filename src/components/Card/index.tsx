@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { alegreyaSans } from "@/ui/fonts";
 import { User } from "lucide-react";

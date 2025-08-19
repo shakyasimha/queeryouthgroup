@@ -46,116 +46,117 @@
     "title": "Our Journey"
   },
   "TeamPage": {
-      "title": "Our Team",
+      "title": "हाम्रो टोली",
       "departments": {
-        "boardMembers": {
-          "title": "सञ्चालक समिति",
-          "members": [
-            {
-              "name": "दिपेश",
-              "role": "अध्यक्ष",
-              "pronoun": "उनी/उनीहरू"
-            },
-            {
-              "name": "बादल (सफल) लामा",
-              "pronoun": "उनीहरू"
-            },
-            {
-              "name": "एसजे",
-              "pronoun": "उनीहरू"
-            },
-            {
-              "name": "प्रतिक्ष",
-              "pronoun": "उनी"
-            },
-            {
-              "name": "मोनीषा",
-              "pronoun": "उनीहरू"
-            }
-          ]
-        },
+          "boardMembers": {
+            "title": "सञ्चालक समिति",
+            "members": [
+              {
+                "name": "दिपेश",
+                "role": "अध्यक्ष",
+                "pronoun": "He/They"
+              },
+              {
+                "name": "बादल (सफल) लामा",
+                "pronoun": "They/Them"
+              },
+              {
+                "name": "Sj",
+                "pronoun": "They/Them"
+              },
+              {
+                "name": "प्रतीक",
+                "pronoun": "He/Him"
+              },
+              {
+                "name": "मोनिषा",
+                "pronoun": "They/Them"
+              }
+            ]
+          },
         "executive": {
-          "title": "Executive Team",
+          "title": "कार्यकारी टोली",
           "members": {
             "rukshana": {
-              "name": "Rukshana Kapali",
-              "role": "Chief Executive Officer (CEO)",
+              "name": "रुक्शना कपाली",
+              "role": "प्रमुख कार्यकारी अधिकृत",
               "pronoun": "She/Her",
               "email": "queeryouthgroup.nepal@gmail.com",
-              "image": "/images/rukshana.jpg"
+              "image": "/images/team/rukshana.jpg"
             }
           }
         },
         "legal": {
-          "title": "Legal Department",
+          "title": "कानूनी विभाग",
           "members": {
             "nishant": {
-              "name": "Nishant Shah",
-              "role": "Executive Officer Assistant",
+              "name": "निशान्त साह",
+              "role": "कार्यकारी निर्देशक सहायक",
               "pronoun": "He/Him",
               "email": "nishantshah.gyg@gmail.com",
-              "image": "/images/nishant.jpg"
+              "image": "/images/team/nishant.jpg"
             },
             "ankita": {
-              "name": "Sam Dhakal",
-              "role": "Legal Assistant (Trainee)",
+              "name": "सम धकाल",
+              "role": "कानूनी सहायक (तालिम श्रमिक)",
               "pronoun": "He/Him",
               "email": "legal.qyg@gmail.com",
-              "image": "/images/ankita.jpg"
+              "image": "/images/team/samangkita-dhakal.jpeg"
             }
           }
         },
         "finance": {
-          "title": "Finance Department",
+          "title": "वित्त विभाग",
           "members": {
             "rita": {
-              "name": "Rita Chalise",
-              "role": "Finance Officer",
+              "name": "रीता चलिसे",
+              "role": "लेखा अधिकृत",
               "pronoun": "She/Her",
               "email": "finance.qyg@gmail.com",
-              "image": "/images/rita.jpg"
+              "image": "/images/team/rita.jpg"
             }
           }
         },
         "program": {
-          "title": "Program Department",
+          "title": "कार्यक्रम विभाग",
           "members": {
             "chhesang": {
-              "name": "Chhesang Ghising",
-              "role": "Program Officer",
+              "name": "छेसाङ घिसिङ",
+              "role": "कार्यक्रम अधिकृत",
               "pronoun": "He/Him",
               "email": "chhesang.qyg@gmail.com",
-              "image": "/images/chhesing.jpg"
+              "image": "/images/team/chhesing.jpg"
             },
             "sudip": {
-              "name": "Sudip Chaudhary",
-              "role": "Office Assistant",
+              "name": "सुदीप चौधरी",
+              "role": "कार्यालय सहयोगी",
               "pronoun": "He/Him",
               "email": "sudip.qyg@gmail.com",
-              "image": "/images/sudip.jpg"
+              "image": "/images/team/sudip.jpg"
             }
           }
         },
         "communication": {
-          "title": "Information and Communication Department",
+          "title": "सूचना तथा सञ्चार विभाग",
           "members": {
             "nangboong": {
-              "name": "Adesh (Nangboong) Rai",
-              "role": "Information and Communication Officer",
+              "name": "आदेश (नाङबुङ) राई",
+              "role": "सूचना तथा सञ्चार अधिकृत",
               "pronoun": "He/Him",
               "email": "communications.qyg@gmail.com",
-              "image": "/images/nangboong.jpg"
+              "image": "/images/team/nangboong.jpg"
             }
           }
         }
       },
       "alumni": {
-        "title": "Alumni",
+        "title": "पूर्व सदस्यहरू",
         "list": [
-          "Karan Karki",
-          "Prathna Dixit",
-          "Pratik Thapa and Niksuh Kuwar Thapa",
-          "Ankita Regmi"
+          "करण कार्की",
+          "प्रार्थना दीक्षित",
+          "प्रतिक थापा",
+          "निक्सु कुँवर थापा",
+          "अंकिता रेग्मी"
         ]
       }
   },

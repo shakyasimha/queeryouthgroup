@@ -48,117 +48,132 @@
   "journeyPage": {
     "title": "Our Journey"
   },
-  "TeamPage": {
-      "title": "हाम्रो टोली",
+    "TeamPage": {
+      "title": "Our Team",
       "departments": {
-          "boardMembers": {
-            "title": "Board Members",
-            "members": [
-              {
-                "name": "Dipesh",
-                "role": "President",
-                "pronoun": "He/They"
-              },
-              {
-                "name": "Badal (Safal) Lama",
-                "pronoun": "They/Them"
-              },
-              {
-                "name": "Sj",
-                "pronoun": "They/Them"
-              },
-              {
-                "name": "Pratik",
-                "pronoun": "He/Him"
-              },
-              {
-                "name": "Monisha",
-                "pronoun": "They/Them"
-              }
-            ]
-          },
+        "boardMembers": {
+          "title": "Board Members",
+          "members": [
+            {
+              "name": "Badal (Safal) Lama",
+              "role": " ",
+              "pronoun": "They/Them",
+              "email": "queeryouthgroup.nepal@gmail.com",
+              "image": ""
+            },
+            {
+              "name": "Sj",
+              "role": " ",
+              "pronoun": "They/Them",
+              "email": "queeryouthgroup.nepal@gmail.com",
+              "image": ""
+            },
+            {
+              "name": "Pratik",
+              "role": " ",
+              "pronoun": "He/Him",
+              "email": "queeryouthgroup.nepal@gmail.com",
+              "image": ""
+            },
+            {
+              "name": "Monisha",
+              "role": " ",
+              "pronoun": "They/Them",
+              "email": "queeryouthgroup.nepal@gmail.com",
+              "image": ""
+            }
+          ]
+        },
         "executive": {
-          "title": "कार्यकारी टोली",
+          "title": "Executive Team",
           "members": {
+            "dipesh": {
+              "name": "Dipesh",
+              "role": "President",
+              "pronoun": "He/They",
+              "email": "queeryouthgroup.nepal@gmail.com",
+              "image": ""
+            },
             "rukshana": {
-              "name": "रुक्शना कपाली",
-              "role": "प्रमुख कार्यकारी अधिकृत",
+              "name": "Rukshana Kapali",
+              "role": "Chief Executive Officer (CEO)",
               "pronoun": "She/Her",
               "email": "queeryouthgroup.nepal@gmail.com",
-              "image": "/images/rukshana.jpg"
+              "image": "/images/team/rukshana.jpg"
             }
           }
         },
         "legal": {
-          "title": "कानूनी विभाग",
+          "title": "Legal Department",
           "members": {
             "nishant": {
-              "name": "निशान्त साह",
-              "role": "कार्यकारी निर्देशक सहायक",
+              "name": "Nishant Shah",
+              "role": "Executive Officer Assistant",
               "pronoun": "He/Him",
               "email": "nishantshah.gyg@gmail.com",
-              "image": "/images/nishant.jpg"
+              "image": "/images/team/nishant.jpg"
             },
             "ankita": {
-              "name": "सम धकाल",
-              "role": "कानूनी सहायक (तालिम श्रमिक)",
+              "name": "Sam Dhakal",
+              "role": "Legal Assistant (Trainee)",
               "pronoun": "He/Him",
               "email": "legal.qyg@gmail.com",
-              "image": "/images/ankita.jpg"
+              "image": "/images/team/samangkita-dhakal.jpg"
             }
           }
         },
         "finance": {
-          "title": "वित्त विभाग",
+          "title": "Finance Department",
           "members": {
             "rita": {
-              "name": "रीता चलिसे",
-              "role": "लेखा अधिकृत",
+              "name": "Rita Chalise",
+              "role": "Finance Officer",
               "pronoun": "She/Her",
               "email": "finance.qyg@gmail.com",
-              "image": "/images/rita.jpg"
+              "image": "/images/team/rita.jpg"
             }
           }
         },
         "program": {
-          "title": "कार्यक्रम विभाग",
+          "title": "Program Department",
           "members": {
             "chhesang": {
-              "name": "छेसाङ घिसिङ",
-              "role": "कार्यक्रम अधिकृत",
+              "name": "Chhesang Ghising",
+              "role": "Program Officer",
               "pronoun": "He/Him",
               "email": "chhesang.qyg@gmail.com",
-              "image": "/images/chhesing.jpg"
+              "image": "/images/team/chhesing.jpg"
             },
             "sudip": {
-              "name": "सुदीप चौधरी",
-              "role": "कार्यालय सहयोगी",
+              "name": "Sudip Chaudhary",
+              "role": "Office Assistant",
               "pronoun": "He/Him",
               "email": "sudip.qyg@gmail.com",
-              "image": "/images/sudip.jpg"
+              "image": "/images/team/sudip.jpg"
             }
           }
         },
         "communication": {
-          "title": "सूचना तथा सञ्चार विभाग",
+          "title": "Information and Communication Department",
           "members": {
             "nangboong": {
-              "name": "आदेश (नाङबुङ) राई",
-              "role": "सूचना तथा सञ्चार अधिकृत",
+              "name": "Adesh (Nangboong) Rai",
+              "role": "Information and Communication Officer",
               "pronoun": "He/Him",
               "email": "communications.qyg@gmail.com",
-              "image": "/images/nangboong.jpg"
+              "image": "/images/team/nangboong.jpg"
             }
           }
         }
       },
       "alumni": {
-        "title": "पूर्व सदस्यहरू",
+        "title": "Alumni",
         "list": [
-          "करण कार्की",
-          "प्रार्थना डिक्सिट",
-          "प्रतिक थापा र निक्सुह कुँवर थापा",
-          "अंकिता रेग्मी"
+          "Karan Karki",
+          "Prathna Dixit",
+          "Pratik Thapa",
+          "Niksuh Kunwar Thapa",
+          "Ankita Regmi"
         ]
       }
   },
