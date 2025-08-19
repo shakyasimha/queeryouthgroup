@@ -185,11 +185,26 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
     }
   }, [state]);
 
+  // Mouse tracking for reading guide and mask
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const updateMousePosition = (e: MouseEvent) => {
+      document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+    };
+
+    if (state.cursor === 'reading-guide' || state.cursor === 'reading-mask') {
+      window.addEventListener('mousemove', updateMousePosition);
+      return () => window.removeEventListener('mousemove', updateMousePosition);
+    }
+  }, [state.cursor]);
+
   // Apply accessibility settings to the DOM
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const root = document.documentElement;
+    const html = document.documentElement;
     const body = document.body;
     
     // Remove all accessibility classes first
@@ -208,16 +223,22 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
       'accessibility-cursor-reading-mask',
       'accessibility-saturation-low',
       'accessibility-saturation-heavy',
-      'accessibility-saturation-desaturate'
+      'accessibility-saturation-desaturate',
+      'accessibility-text-scale-2',
+      'accessibility-text-scale-3',
+      'accessibility-text-scale-4',
+      'accessibility-line-height',
+      'accessibility-letter-spacing',
+      'accessibility-text-align'
     ];
     
     classesToRemove.forEach(className => {
+      html.classList.remove(className);
       body.classList.remove(className);
     });
 
     // Apply CSS custom properties
-    root.style.setProperty('--accessibility-text-scale', state.textSize.toString());
-    root.style.setProperty('--accessibility-line-height', state.lineHeight.toString());
+    html.style.setProperty('--accessibility-line-height', state.lineHeight.toString());
     
     // Text spacing
     const spacingMap = {
@@ -226,10 +247,15 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
       moderate: '0.1em',
       heavy: '0.15em'
     };
-    root.style.setProperty('--accessibility-letter-spacing', spacingMap[state.textSpacing]);
+    html.style.setProperty('--accessibility-letter-spacing', spacingMap[state.textSpacing]);
     
     // Text alignment
-    root.style.setProperty('--accessibility-text-align', state.textAlign);
+    html.style.setProperty('--accessibility-text-align', state.textAlign);
+    
+    // FIXED: Apply text scaling to HTML element instead of individual elements
+    if (state.textSize !== 1) {
+      html.classList.add(`accessibility-text-scale-${state.textSize}`);
+    }
     
     // Apply contrast
     if (state.contrast !== 'normal') {
@@ -265,41 +291,19 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
       body.classList.add(`accessibility-saturation-${state.saturation}`);
     }
 
-    // Create and inject CSS for dynamic styles that can't be handled by classes
-    let styleElement = document.getElementById('accessibility-dynamic-styles');
-    if (!styleElement) {
-      styleElement = document.createElement('style');
-      styleElement.id = 'accessibility-dynamic-styles';
-      document.head.appendChild(styleElement);
+    // Apply utility classes for spacing and alignment
+    if (state.lineHeight !== 1) {
+      body.classList.add('accessibility-line-height');
+    }
+    
+    if (state.textSpacing !== 'normal') {
+      body.classList.add('accessibility-letter-spacing');
+    }
+    
+    if (state.textAlign !== 'left') {
+      body.classList.add('accessibility-text-align');
     }
 
-    const dynamicCSS = `
-      /* Dynamic accessibility styles */
-      .accessibility-text-scale * {
-        font-size: calc(1em * ${state.textSize}) !important;
-      }
-      
-      .accessibility-line-height * {
-        line-height: calc(${state.lineHeight} * 1.2) !important;
-      }
-      
-      .accessibility-letter-spacing * {
-        letter-spacing: ${spacingMap[state.textSpacing]} !important;
-      }
-      
-      .accessibility-text-align * {
-        text-align: ${state.textAlign} !important;
-      }
-    `;
-
-    styleElement.textContent = dynamicCSS;
-
-    // Apply classes to body to enable the styles
-    body.classList.add('accessibility-text-scale');
-    body.classList.add('accessibility-line-height'); 
-    body.classList.add('accessibility-letter-spacing');
-    body.classList.add('accessibility-text-align');
-    
   }, [state]);
 
   return (
