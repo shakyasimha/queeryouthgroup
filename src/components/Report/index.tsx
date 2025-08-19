@@ -26,18 +26,20 @@ export default function PublicationsCarousel() {
   const [isLoading, setIsLoading] = useState(true);
   const [imageError, setImageError] = useState<Record<number, boolean>>({});
   
-  // Try to get translations, with fallback
-  let t;
-  let title = "Publications"; // Default fallback
+  // Always call useTranslations at the top level
+  const t = useTranslations('HomepageReport');
   
-  try {
-    t = useTranslations('HomepageReport');
-    title = t('title');
-  } catch (error) {
-    console.warn('Translation not found for HomepageReport, using fallback');
-    // Use fallback title based on locale
-    title = "Publications"; // You can add locale detection here if needed
-  }
+  // Get title with fallback handling
+  const getTitle = () => {
+    try {
+      return t('title');
+    } catch {
+      console.warn('Translation not found for HomepageReport, using fallback');
+      return "Publications"; // Fallback title
+    }
+  };
+
+  const title = getTitle();
 
   useEffect(() => {
     const publicationsData: Publication[] = [
@@ -52,7 +54,7 @@ export default function PublicationsCarousel() {
       },
       {
         id: 2,
-        title: "यौन अभिमुखिकरण र लैङ्गिक पहिचान",
+        title: "यौन अभिमुखीकरण र लैङ्गिक पहिचान",
         description: "Basic concepts of gender and sexuality",
         year: 2021,
         imagePath: "/images/publication/Basic_SOGIESC_Nepali cover.jpg",

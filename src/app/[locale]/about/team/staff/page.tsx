@@ -4,10 +4,20 @@ import { useTranslations } from 'next-intl';
 import { alegreyaSans } from "@/ui/fonts";
 import Card from "@/components/Card";
 
+interface StaffMember {
+  name: string;
+  image?: string;
+}
+
+interface Staff {
+  title: string;
+  members: StaffMember[];
+}
+
 export default function StaffPage() {
   const t = useTranslations('TeamPage');
-  const staff = t.raw('staff');
-  const staffTitle = staff.title;
+  const staff: Staff = t.raw('staff');
+  const staffTitle: string = staff.title;
 
   return (
     <div className={`${alegreyaSans.className} w-full flex flex-col flex-grow bg-white items-center`}>
@@ -19,7 +29,7 @@ export default function StaffPage() {
 
       {/* Staff Members */}
       <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 p-4 mb-8">
-        {staff.members.map((member: any, index: number) => (
+        {staff.members.map((member: StaffMember, index: number) => (
           <Card 
             key={index}
             image={member.image || null}
