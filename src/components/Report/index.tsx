@@ -25,7 +25,19 @@ export default function PublicationsCarousel() {
   const [publications, setPublications] = useState<Publication[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [imageError, setImageError] = useState<Record<number, boolean>>({});
-  const t = useTranslations('HomepageReport');
+  
+  // Try to get translations, with fallback
+  let t;
+  let title = "Publications"; // Default fallback
+  
+  try {
+    t = useTranslations('HomepageReport');
+    title = t('title');
+  } catch (error) {
+    console.warn('Translation not found for HomepageReport, using fallback');
+    // Use fallback title based on locale
+    title = "Publications"; // You can add locale detection here if needed
+  }
 
   useEffect(() => {
     const publicationsData: Publication[] = [
@@ -81,7 +93,7 @@ export default function PublicationsCarousel() {
     <div className="w-full mx-auto max-w-[94vw] sm:max-w-[90vw] md:max-w-3xl lg:max-w-4xl">
       {/* Title Section - Above the box */}
       <h2 className={`${alegreyaSans.className} text-xl font-bold text-center mb-6 text-black sm:text-2xl md:text-3xl`}>
-        {t('title')}
+        {title}
       </h2>
 
       {/* Carousel Box */}

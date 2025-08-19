@@ -1,23 +1,4 @@
 {
-  "VisionTab": {
-    "tabContent": {
-        "vision": {
-        "title": "Vision",
-        "content": "We envision a just, equitable, and inclusive Nepali society where all individuals—regardless of sexual orientation, gender identity, or sex characteristics—live with pride, dignity, safety, and equal rights. Our vision centers on a world where gender and sexual minorities are fully respected, protected, and celebrated."
-      },
-      "mission": {
-        "title": "Mission",
-        "content": "Our mission is to advance the rights and dignity of queer individuals in Nepal through advocacy, inclusive education, legal reform, and community-building. We are committed to fostering the social and legal recognition of gender and sexual minorities by developing accessible, intersectional resources and engaging in strategic actions that create lasting impact."
-      },
-      "goal": {
-        "title": "Goal",
-        "content": "To ensure the rights and interests of individuals with marginalized sexual orientation, gender identity, and sex characteristics (queer population) by engaging in policy and legal advocacy, thereby establishing their rights through legal recognition."
-      }
-    }
-  },
-  "HomepageReport": {
-    "title": "Publications"
-  },
   "AboutPage": {
     "heroImageAlt": "Group photo of QYG members at an event",
     "introduction": {
@@ -31,6 +12,38 @@
       "title": "Our History",
       "content": "Queer Youth Group (QYG) was founded on December 5, 2018, as a loose network. It was started by Rukshana Kapali, Dipesh Shrestha, and Badal Lama to create leadership opportunities for young people in the gender and sexual minority movement.\n\nIn 2020, QYG was officially registered as a not-for-profit organization. Our core belief is that sexual orientation, gender identity, and sex characteristics exist on a spectrum. They are fluid and not fixed in a rigid structure. These identities should not be limit to a box.\n\nWe take an intersectional approach in our work, meaning we recognize that gender and sexual minorities experience different challenges based on other factors like language, ethnicity, skin color, geography, and physical ability. These social and structural inequalities are deeply connected to issues of gender and sexuality. That's why we also focus on addressing discrimination related to language, ethnicity, disability, economy, and geography.\n\nOur goal is to promote a broader and more inclusive understanding of gender and sexuality in Nepali society. We work through advocacy, education, and resource-building to bring positive change. Our efforts include policy, awareness campaigns, resource creation, and strengthening movements for gender and sexual minorities."
     }
+  },
+    "VisionTab": {
+    "tabContent": {
+      "vision": {
+        "title": "Vision",
+        "content": "We envision a just, equitable, and inclusive Nepali society where all individuals—regardless of sexual orientation, gender identity, or sex characteristics—live with pride, dignity, safety, and equal rights. Our vision centers on a world where gender and sexual minorities are fully respected, protected, and celebrated."
+      },
+      "mission": {
+        "title": "Mission",
+        "content": "Our mission is to advance the rights and dignity of queer individuals in Nepal through advocacy, inclusive education, legal reform, and community-building. We are committed to fostering the social and legal recognition of gender and sexual minorities by developing accessible, intersectional resources and engaging in strategic actions that create lasting impact."
+      },
+      "goal": {
+        "title": "Goals",
+        "items": [
+          {
+            "title": "Legal Advocacy & Rights",
+            "content": "To ensure the rights and interests of individuals with marginalized sexual orientation, gender identity, and sex characteristics (queer population) by engaging in policy and legal advocacy, thereby establishing their rights through legal recognition."
+          },
+          {
+            "title": "Accessible Awareness Materials",
+            "content": "To create accessible awareness-raising, informative, and educational materials about the queer population in multiple languages—including disability-friendly formats—and distribute them globally."
+          },
+          {
+            "title": "Intersectional Research & Advocacy",
+            "content": "To conduct research, documentation, and advocacy on intersectionality within the queer community, focusing on Dalits, persons with disabilities, indigenous groups, ethnic minorities, and others."
+          }
+        ]
+      }
+    }
+  },
+  "HomepageReport": {
+    "title": "Publications"
   },
   "journeyPage": {
     "title": "Our Journey"
