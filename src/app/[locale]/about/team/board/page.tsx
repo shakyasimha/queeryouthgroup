@@ -4,19 +4,41 @@ import { useTranslations } from 'next-intl';
 import { alegreyaSans } from "@/ui/fonts";
 import Card from "@/components/Card";
 
+interface Member {
+  name: string;
+  role?: string;
+  pronoun?: string;
+  email?: string;
+  image?: string;
+}
+
+interface Department {
+  title: string;
+  members: Member[] | Record<string, Member>;
+}
+
+interface Departments {
+  boardMembers: Department;
+  executive: Department;
+  legal: Department;
+  finance: Department;
+  program: Department;
+  communication: Department;
+}
+
 export default function BoardPage() {
   const t = useTranslations('TeamPage');
-  const departments = t.raw('departments');
-  const pageTitle = t('title');
+  const departments: Departments = t.raw('departments');
+  const pageTitle: string = t('title');
 
   // Define the order of departments
-  const departmentOrder = [
+  const departmentOrder: (keyof Departments)[] = [
+    'boardMembers',
     'executive', 
     'legal',
     'finance',
     'program',
-    'communication',
-    'boardMembers'
+    'communication'
   ];
 
   return (
@@ -46,7 +68,7 @@ export default function BoardPage() {
               {/* Handle different data structures */}
               {Array.isArray(department.members) ? (
                 // For boardMembers (array format)
-                department.members.map((member: any, index: number) => (
+                department.members.map((member: Member, index: number) => (
                   <Card 
                     key={index}
                     image={member.image || null}
@@ -58,7 +80,7 @@ export default function BoardPage() {
                 ))
               ) : (
                 // For other departments (object format)
-                Object.entries(department.members).map(([memberKey, member]: [string, any]) => (
+                Object.entries(department.members).map(([memberKey, member]: [string, Member]) => (
                   <Card 
                     key={memberKey}
                     image={member.image || null}

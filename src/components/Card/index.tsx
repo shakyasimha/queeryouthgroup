@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Image from "next/image";
 import { alegreyaSans } from "@/ui/fonts";
@@ -15,16 +15,9 @@ interface CardProps {
 
 export default function Card({ image, name, role, pronoun, email }: CardProps) {
     const [imageError, setImageError] = useState(false);
-    const [imageLoaded, setImageLoaded] = useState(false);
 
     const handleImageError = () => {
         setImageError(true);
-        setImageLoaded(true);
-    };
-
-    const handleImageLoad = () => {
-        setImageLoaded(true);
-        setImageError(false);
     };
 
     return (
@@ -41,7 +34,7 @@ export default function Card({ image, name, role, pronoun, email }: CardProps) {
                         height={350}
                         className="object-cover w-full h-full"
                         onError={handleImageError}
-                        onLoad={handleImageLoad}
+
                     />
                 )}
             </div>
