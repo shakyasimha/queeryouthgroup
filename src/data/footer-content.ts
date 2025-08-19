@@ -71,7 +71,8 @@ export const footerContent: FooterContent = {
       { name: "फेसबुक", icon: "FaFacebook", href: "https://www.facebook.com/QYGnepal" },
       { name: "इन्स्टाग्राम", icon: "FaInstagram", href: "https://www.instagram.com/qygnepal/" },
       { name: "ट्विटर", icon: "FaXTwitter", href: "https://twitter.com/qygnepal/" },
+      { name: "टिकटक", icon: "FaTiktok", href: "https://www.tiktok.com/@queeryouthgroup/"}
     ],
-    copyright: `© ${new Date().getFullYear()} क्वियर युवा समूह. सर्वाधिकार सुरक्षित।`,
+    copyright: `© ${new Date().getFullYear()} क्वेयर युथ ग्रुप। सर्वाधिकार सुरक्षित।`,
   },
 };

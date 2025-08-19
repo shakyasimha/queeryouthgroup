@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import NavLinks from "@/components/Navbar/nav-links";
+import LanguageSwitcher from "@/components/LanguageSwitcher"; // Add this import
 import clsx from "clsx";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { navbarLinks } from "@/data/navbar-content";
-import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 export default function Navbar({ lang = "en" }: { lang?: "en" | "ne" }) {
@@ -21,16 +22,27 @@ export default function Navbar({ lang = "en" }: { lang?: "en" | "ne" }) {
     <nav className="bg-[#F5EFE0] border-gray-200 relative">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
-        {/* Desktop nav links */}
-        <div className="hidden md:flex items-center justify-center gap-2 w-full">
-          <NavLinks links={links} lang={lang} />
+        {/* Desktop layout */}
+        <div className="hidden md:flex items-center w-full relative">
+          {/* Nav links centered */}
+          <div className="flex items-center justify-center w-full">
+            <NavLinks links={links} lang={lang} />
+          </div>
+          
+          {/* Language switcher positioned absolutely on the right */}
+          <div className="absolute right-0">
+            <LanguageSwitcher />
+          </div>
         </div>
 
-        {/* Mobile menu button */}
-        <div className="md:hidden flex items-center justify-end flex-1">
+        {/* Mobile layout */}
+        <div className="md:hidden flex items-center justify-end w-full gap-3">
+          {/* Language switcher and Mobile menu button grouped together on the right */}
+          <LanguageSwitcher />
           <button
             className="text-[#b53a57] text-2xl transition duration-300 ease-in-out"
             onClick={toggleNavbar}
+            aria-label="Toggle menu"
           >
             {isClick ? <FaTimes /> : <FaBars />}
           </button>
@@ -80,6 +92,9 @@ export default function Navbar({ lang = "en" }: { lang?: "en" | "ne" }) {
             </Link>
             <Link href="https://twitter.com/qygnepal/" target="_blank" rel="noopener noreferrer">
               <FaXTwitter size={24} />
+            </Link>
+            <Link href="https://www.tiktok.com/@queeryouthgroup/" target="_blank" rel="noopener noreferrer" className="hover:text-[#DD4285] transition duration-300 ease-in-out">
+              <FaTiktok size={24} />
             </Link>
           </div>
         </div>
