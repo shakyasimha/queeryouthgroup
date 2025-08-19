@@ -16,7 +16,7 @@ interface Alumni {
 
 export default function AlumniPage() {
   const t = useTranslations('TeamPage');
-  const alumni: Alumni = t.raw('alumni');
+  const alumni: Alumni = t.raw('alumni') as Alumni;
   const alumniTitle: string = alumni.title;
 
   return (
@@ -27,8 +27,8 @@ export default function AlumniPage() {
         </h1>
       </div>
 
-      {/* Alumni Members */}
-      <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 p-4 mb-8">
+      {/* Alumni Members - Center aligned on mobile, flex-wrap on larger screens */}
+      <div className="flex flex-col items-center md:flex-row md:flex-wrap md:justify-center gap-4 p-4 mb-8">
         {alumni.members.map((member: AlumniMember, index: number) => (
           <Card 
             key={index}

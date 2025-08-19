@@ -48,42 +48,15 @@
   "journeyPage": {
     "title": "Our Journey"
   },
-    "TeamPage": {
+  "TeamRootPage": {
+      "title": "Our Team Links",
+      "boardLink": "Our Board",
+      "alumniLink": "Alumni",
+      "staffLink": "Our Staff"
+  },
+  "TeamPage": {
       "title": "Our Team",
       "departments": {
-        "boardMembers": {
-          "title": "Board Members",
-          "members": [
-            {
-              "name": "Badal (Safal) Lama",
-              "role": " ",
-              "pronoun": "They/Them",
-              "email": "queeryouthgroup.nepal@gmail.com",
-              "image": ""
-            },
-            {
-              "name": "Sj",
-              "role": " ",
-              "pronoun": "They/Them",
-              "email": "queeryouthgroup.nepal@gmail.com",
-              "image": ""
-            },
-            {
-              "name": "Pratik",
-              "role": " ",
-              "pronoun": "He/Him",
-              "email": "queeryouthgroup.nepal@gmail.com",
-              "image": ""
-            },
-            {
-              "name": "Monisha",
-              "role": " ",
-              "pronoun": "They/Them",
-              "email": "queeryouthgroup.nepal@gmail.com",
-              "image": ""
-            }
-          ]
-        },
         "executive": {
           "title": "Executive Team",
           "members": {
@@ -164,6 +137,39 @@
               "image": "/images/team/nangboong.jpg"
             }
           }
+        },
+        "boardMembers": {
+          "title": "Board Members",
+          "members": [
+            {
+              "name": "Badal (Safal) Lama",
+              "role": " ",
+              "pronoun": "They/Them",
+              "email": "queeryouthgroup.nepal@gmail.com",
+              "image": ""
+            },
+            {
+              "name": "Sj",
+              "role": " ",
+              "pronoun": "They/Them",
+              "email": "queeryouthgroup.nepal@gmail.com",
+              "image": ""
+            },
+            {
+              "name": "Pratik",
+              "role": " ",
+              "pronoun": "He/Him",
+              "email": "queeryouthgroup.nepal@gmail.com",
+              "image": ""
+            },
+            {
+              "name": "Monisha",
+              "role": " ",
+              "pronoun": "They/Them",
+              "email": "queeryouthgroup.nepal@gmail.com",
+              "image": ""
+            }
+          ]
         }
       },
       "alumni": {

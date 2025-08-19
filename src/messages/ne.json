@@ -45,35 +45,15 @@
   "journeyPage": {
     "title": "Our Journey"
   },
+  "TeamRootPage": {
+      "title": "हाम्रो टोलीका लिङ्कहरू",
+      "boardLink": "सञ्चालक समिति",
+      "alumniLink": "पूर्व सदस्य",
+      "staffLink": "कार्य सदस्य"
+  },
   "TeamPage": {
       "title": "हाम्रो टोली",
       "departments": {
-          "boardMembers": {
-            "title": "सञ्चालक समिति",
-            "members": [
-              {
-                "name": "दिपेश",
-                "role": "अध्यक्ष",
-                "pronoun": "He/They"
-              },
-              {
-                "name": "बादल (सफल) लामा",
-                "pronoun": "They/Them"
-              },
-              {
-                "name": "Sj",
-                "pronoun": "They/Them"
-              },
-              {
-                "name": "प्रतीक",
-                "pronoun": "He/Him"
-              },
-              {
-                "name": "मोनिषा",
-                "pronoun": "They/Them"
-              }
-            ]
-          },
         "executive": {
           "title": "कार्यकारी टोली",
           "members": {
@@ -147,7 +127,33 @@
               "image": "/images/team/nangboong.jpg"
             }
           }
-        }
+        },
+        "boardMembers": {
+            "title": "सञ्चालक समिति",
+            "members": [
+              {
+                "name": "दिपेश",
+                "role": "अध्यक्ष",
+                "pronoun": "He/They"
+              },
+              {
+                "name": "बादल (सफल) लामा",
+                "pronoun": "They/Them"
+              },
+              {
+                "name": "Sj",
+                "pronoun": "They/Them"
+              },
+              {
+                "name": "प्रतीक",
+                "pronoun": "He/Him"
+              },
+              {
+                "name": "मोनिषा",
+                "pronoun": "They/Them"
+              }
+            ]
+          }
       },
       "alumni": {
         "title": "पूर्व सदस्यहरू",

@@ -1,8 +1,9 @@
 import { alegreyaSans, roboto } from "@/ui/fonts"
 import { useTranslations } from "next-intl"
+import Link from "next/link"
 
 export default function Page() {
-    const t = useTranslations('publicationPage');
+    const t = useTranslations('TeamRootPage');
 
     return(
         <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
@@ -14,9 +15,17 @@ export default function Page() {
                 </div>
 
                 <div className={`${roboto.className} text-bg text-justify px-16 py-2 text-black md:mx-64 sm:mx-2`}>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+                    <div className="flex flex-col space-y-4">
+                        <Link href="/about/team/board" className="text-black hover:text-black-600 hover:underline">
+                            {t('boardLink')}
+                        </Link>
+                        <Link href="/about/team/alumni" className="text-black hover:text-black-600 hover:underline">
+                            {t('alumniLink')}
+                        </Link>
+                        <Link href="/about/team/staff" className="text-black hover:text-black-600 hover:underline">
+                            {t('staffLink')}
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

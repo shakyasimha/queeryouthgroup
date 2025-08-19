@@ -28,7 +28,7 @@ interface Departments {
 
 export default function BoardPage() {
   const t = useTranslations('TeamPage');
-  const departments: Departments = t.raw('departments');
+  const departments: Departments = t.raw('departments') as Departments;
   const pageTitle: string = t('title');
 
   // Define the order of departments
@@ -63,8 +63,8 @@ export default function BoardPage() {
               </h2>
             </div>
 
-            {/* Department Members */}
-            <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 px-4">
+            {/* Department Members - Center aligned on mobile, flex-wrap on larger screens */}
+            <div className="flex flex-col items-center md:flex-row md:flex-wrap md:justify-center gap-4 px-4">
               {/* Handle different data structures */}
               {Array.isArray(department.members) ? (
                 // For boardMembers (array format)
@@ -80,7 +80,7 @@ export default function BoardPage() {
                 ))
               ) : (
                 // For other departments (object format)
-                Object.entries(department.members).map(([memberKey, member]: [string, Member]) => (
+                Object.entries(department.members).map(([memberKey, member]) => (
                   <Card 
                     key={memberKey}
                     image={member.image || null}

@@ -16,7 +16,7 @@ interface Staff {
 
 export default function StaffPage() {
   const t = useTranslations('TeamPage');
-  const staff: Staff = t.raw('staff');
+  const staff: Staff = t.raw('staff') as Staff;
   const staffTitle: string = staff.title;
 
   return (
@@ -27,8 +27,8 @@ export default function StaffPage() {
         </h1>
       </div>
 
-      {/* Staff Members */}
-      <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 p-4 mb-8">
+      {/* Staff Members - Center aligned on mobile, flex-wrap on larger screens */}
+      <div className="flex flex-col items-center md:flex-row md:flex-wrap md:justify-center gap-4 p-4 mb-8">
         {staff.members.map((member: StaffMember, index: number) => (
           <Card 
             key={index}
