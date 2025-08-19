@@ -60,9 +60,7 @@ export default async function RootLayout({
             <Footer lang={locale} />
 
             {/* Accessibility Widget */}
-            <div style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: 10000 }}>
-              <AccessibilityWidget lang={locale as "en" | "ne"} />
-            </div>
+            <AccessibilityWidget lang={locale as "en" | "ne"} />
           </NextIntlClientProvider>
         </AccessibilityProvider>
       </body>

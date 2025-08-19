@@ -5,7 +5,7 @@ import { useAccessibility } from './AccessibilityProvider';
 import { 
   Accessibility, 
   Eye, 
-  EyeOff, 
+  // EyeOff, 
   Type, 
   Pause, 
   Play, 
