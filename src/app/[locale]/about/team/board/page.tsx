@@ -31,14 +31,14 @@ export default function BoardPage() {
   const departments: Departments = t.raw('departments') as Departments;
   const pageTitle: string = t('title');
 
-  // Define the order of departments
+  // Updated order - departments first, then board members
   const departmentOrder: (keyof Departments)[] = [
-    'boardMembers',
-    'executive', 
+    'executive',
     'legal',
     'finance',
     'program',
-    'communication'
+    'communication',
+    'boardMembers'  // Now board members come last
   ];
 
   return (
@@ -65,12 +65,11 @@ export default function BoardPage() {
 
             {/* Department Members - Center aligned on mobile, flex-wrap on larger screens */}
             <div className="flex flex-col items-center md:flex-row md:flex-wrap md:justify-center gap-4 px-4">
-              {/* Handle different data structures */}
-              {Array.isArray(department.members) ? (
-                // For boardMembers (array format)
-                department.members.map((member: Member, index: number) => (
+              {!Array.isArray(department.members) ? (
+                // For departments (object format)
+                Object.entries(department.members).map(([memberKey, member]) => (
                   <Card 
-                    key={index}
+                    key={memberKey}
                     image={member.image || null}
                     name={member.name}
                     role={member.role || ''}
@@ -79,10 +78,10 @@ export default function BoardPage() {
                   />
                 ))
               ) : (
-                // For other departments (object format)
-                Object.entries(department.members).map(([memberKey, member]) => (
+                // For boardMembers (array format)
+                department.members.map((member: Member, index: number) => (
                   <Card 
-                    key={memberKey}
+                    key={index}
                     image={member.image || null}
                     name={member.name}
                     role={member.role || ''}
