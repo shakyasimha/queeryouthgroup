@@ -1,48 +1,35 @@
+// alumni/page.tsx
+
 import { useTranslations } from 'next-intl';
 import { alegreyaSans } from "@/ui/fonts";
-import Card from "@/components/Card";
 
-export default function TeamPage() {
+export default function AlumniPage() {
   const t = useTranslations('TeamPage');
-  const members = t.raw('members');
-  const rows = t.raw('rows');
+  const alumniList = t.raw('alumni.list');
+  const alumniTitle = t('alumni.title');
 
   return (
     <div className={`${alegreyaSans.className} w-full flex flex-col flex-grow bg-white items-center`}>
       <div className="text-center text-2xl">
         <h1 className={`${alegreyaSans.className} text-black font-bold py-4 mt-4`}>
-          {t('title')}
+          {alumniTitle}
         </h1>
       </div>
 
-      {/* First row of team */}
-      <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 p-4 mb-4">
-        {rows.first.map((memberKey: string) => {
-          const member = members[memberKey];
-          return (
-            <Card 
-              key={memberKey}
-              image={member.image}
-              name={member.name}
-              role={member.role}
-            />
-          );
-        })}
-      </div>
-
-      {/* Second row of team */}
-      <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 p-4 mb-8">
-        {rows.second.map((memberKey: string) => {
-          const member = members[memberKey];
-          return (
-            <Card 
-              key={memberKey}
-              image={member.image}
-              name={member.name}
-              role={member.role}
-            />
-          );
-        })}
+      {/* Alumni List */}
+      <div className="max-w-4xl mx-auto p-8">
+        <div className="bg-[#f5efe0] rounded-lg p-6 shadow">
+          <ul className="space-y-3">
+            {alumniList.map((alumniName: string, index: number) => (
+              <li 
+                key={index}
+                className="text-lg text-black border-b border-gray-200 pb-2 last:border-b-0"
+              >
+                {alumniName}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

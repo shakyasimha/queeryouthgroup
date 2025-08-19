@@ -13,7 +13,7 @@
       "content": "Queer Youth Group (QYG) was founded on December 5, 2018, as a loose network. It was started by Rukshana Kapali, Dipesh Shrestha, and Badal Lama to create leadership opportunities for young people in the gender and sexual minority movement.\n\nIn 2020, QYG was officially registered as a not-for-profit organization. Our core belief is that sexual orientation, gender identity, and sex characteristics exist on a spectrum. They are fluid and not fixed in a rigid structure. These identities should not be limit to a box.\n\nWe take an intersectional approach in our work, meaning we recognize that gender and sexual minorities experience different challenges based on other factors like language, ethnicity, skin color, geography, and physical ability. These social and structural inequalities are deeply connected to issues of gender and sexuality. That's why we also focus on addressing discrimination related to language, ethnicity, disability, economy, and geography.\n\nOur goal is to promote a broader and more inclusive understanding of gender and sexuality in Nepali society. We work through advocacy, education, and resource-building to bring positive change. Our efforts include policy, awareness campaigns, resource creation, and strengthening movements for gender and sexual minorities."
     }
   },
-    "VisionTab": {
+  "VisionTab": {
     "tabContent": {
       "vision": {
         "title": "Vision",
@@ -49,48 +49,118 @@
     "title": "Our Journey"
   },
   "TeamPage": {
-    "title": "Our Team",
-    "members": {
-      "rukshana": {
-        "name": "Rukshana Kapali",
-        "role": "Chief Executive Officer",
-        "image": "/images/rukshana.jpg"
+      "title": "हाम्रो टोली",
+      "departments": {
+          "boardMembers": {
+            "title": "Board Members",
+            "members": [
+              {
+                "name": "Dipesh",
+                "role": "President",
+                "pronoun": "He/They"
+              },
+              {
+                "name": "Badal (Safal) Lama",
+                "pronoun": "They/Them"
+              },
+              {
+                "name": "Sj",
+                "pronoun": "They/Them"
+              },
+              {
+                "name": "Pratik",
+                "pronoun": "He/Him"
+              },
+              {
+                "name": "Monisha",
+                "pronoun": "They/Them"
+              }
+            ]
+          },
+        "executive": {
+          "title": "कार्यकारी टोली",
+          "members": {
+            "rukshana": {
+              "name": "रुक्शना कपाली",
+              "role": "प्रमुख कार्यकारी अधिकृत",
+              "pronoun": "She/Her",
+              "email": "queeryouthgroup.nepal@gmail.com",
+              "image": "/images/rukshana.jpg"
+            }
+          }
+        },
+        "legal": {
+          "title": "कानूनी विभाग",
+          "members": {
+            "nishant": {
+              "name": "निशान्त साह",
+              "role": "कार्यकारी निर्देशक सहायक",
+              "pronoun": "He/Him",
+              "email": "nishantshah.gyg@gmail.com",
+              "image": "/images/nishant.jpg"
+            },
+            "ankita": {
+              "name": "सम धकाल",
+              "role": "कानूनी सहायक (तालिम श्रमिक)",
+              "pronoun": "He/Him",
+              "email": "legal.qyg@gmail.com",
+              "image": "/images/ankita.jpg"
+            }
+          }
+        },
+        "finance": {
+          "title": "वित्त विभाग",
+          "members": {
+            "rita": {
+              "name": "रीता चलिसे",
+              "role": "लेखा अधिकृत",
+              "pronoun": "She/Her",
+              "email": "finance.qyg@gmail.com",
+              "image": "/images/rita.jpg"
+            }
+          }
+        },
+        "program": {
+          "title": "कार्यक्रम विभाग",
+          "members": {
+            "chhesang": {
+              "name": "छेसाङ घिसिङ",
+              "role": "कार्यक्रम अधिकृत",
+              "pronoun": "He/Him",
+              "email": "chhesang.qyg@gmail.com",
+              "image": "/images/chhesing.jpg"
+            },
+            "sudip": {
+              "name": "सुदीप चौधरी",
+              "role": "कार्यालय सहयोगी",
+              "pronoun": "He/Him",
+              "email": "sudip.qyg@gmail.com",
+              "image": "/images/sudip.jpg"
+            }
+          }
+        },
+        "communication": {
+          "title": "सूचना तथा सञ्चार विभाग",
+          "members": {
+            "nangboong": {
+              "name": "आदेश (नाङबुङ) राई",
+              "role": "सूचना तथा सञ्चार अधिकृत",
+              "pronoun": "He/Him",
+              "email": "communications.qyg@gmail.com",
+              "image": "/images/nangboong.jpg"
+            }
+          }
+        }
       },
-      "nishant": {
-        "name": "Nishant Sah",
-        "role": "Executive Officer Assistance",
-        "image": "/images/nishant.jpg"
-      },
-      "rita": {
-        "name": "Rita Chalise",
-        "role": "Finance Officer",
-        "image": "/images/rita.jpg"
-      },
-      "chhesang": {
-        "name": "Chhesang Ghising",
-        "role": "Program Officer",
-        "image": "/images/chhesing.jpg"
-      },
-      "nangboong": {
-        "name": "Nangboong Rai",
-        "role": "Information and Communication Officer",
-        "image": "/images/nangboong.jpg"
-      },
-      "sudip": {
-        "name": "Sudip Chaudhary",
-        "role": "Office Assistance",
-        "image": "/images/sudip.jpg"
-      },
-      "ankit": {
-        "name": "Ankita Regmi",
-        "role": "Legal Assistant (Trainee)",
-        "image": "/images/ankita.jpg"
+      "alumni": {
+        "title": "पूर्व सदस्यहरू",
+        "list": [
+          "करण कार्की",
+          "प्रार्थना डिक्सिट",
+          "प्रतिक थापा र निक्सुह कुँवर थापा",
+          "अंकिता रेग्मी"
+        ]
       }
-    },
-    "rows": {
-      "first": ["rukshana", "rita", "nishant"],
-      "second": ["chhesang", "nangboong", "sudip", "ankit"]
-    }
   },
   "WorkPage": {
     "title": "Our Work",

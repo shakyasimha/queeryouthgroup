@@ -46,48 +46,118 @@
     "title": "Our Journey"
   },
   "TeamPage": {
-    "title": "हाम्रो टोली",
-    "members": {
-      "rukshana": {
-        "name": "रुक्शना कपाली",
-        "role": "प्रमुख कार्यकारी अधिकृत",
-        "image": "/images/rukshana.jpg"
+      "title": "Our Team",
+      "departments": {
+        "boardMembers": {
+          "title": "सञ्चालक समिति",
+          "members": [
+            {
+              "name": "दिपेश",
+              "role": "अध्यक्ष",
+              "pronoun": "उनी/उनीहरू"
+            },
+            {
+              "name": "बादल (सफल) लामा",
+              "pronoun": "उनीहरू"
+            },
+            {
+              "name": "एसजे",
+              "pronoun": "उनीहरू"
+            },
+            {
+              "name": "प्रतिक्ष",
+              "pronoun": "उनी"
+            },
+            {
+              "name": "मोनीषा",
+              "pronoun": "उनीहरू"
+            }
+          ]
+        },
+        "executive": {
+          "title": "Executive Team",
+          "members": {
+            "rukshana": {
+              "name": "Rukshana Kapali",
+              "role": "Chief Executive Officer (CEO)",
+              "pronoun": "She/Her",
+              "email": "queeryouthgroup.nepal@gmail.com",
+              "image": "/images/rukshana.jpg"
+            }
+          }
+        },
+        "legal": {
+          "title": "Legal Department",
+          "members": {
+            "nishant": {
+              "name": "Nishant Shah",
+              "role": "Executive Officer Assistant",
+              "pronoun": "He/Him",
+              "email": "nishantshah.gyg@gmail.com",
+              "image": "/images/nishant.jpg"
+            },
+            "ankita": {
+              "name": "Sam Dhakal",
+              "role": "Legal Assistant (Trainee)",
+              "pronoun": "He/Him",
+              "email": "legal.qyg@gmail.com",
+              "image": "/images/ankita.jpg"
+            }
+          }
+        },
+        "finance": {
+          "title": "Finance Department",
+          "members": {
+            "rita": {
+              "name": "Rita Chalise",
+              "role": "Finance Officer",
+              "pronoun": "She/Her",
+              "email": "finance.qyg@gmail.com",
+              "image": "/images/rita.jpg"
+            }
+          }
+        },
+        "program": {
+          "title": "Program Department",
+          "members": {
+            "chhesang": {
+              "name": "Chhesang Ghising",
+              "role": "Program Officer",
+              "pronoun": "He/Him",
+              "email": "chhesang.qyg@gmail.com",
+              "image": "/images/chhesing.jpg"
+            },
+            "sudip": {
+              "name": "Sudip Chaudhary",
+              "role": "Office Assistant",
+              "pronoun": "He/Him",
+              "email": "sudip.qyg@gmail.com",
+              "image": "/images/sudip.jpg"
+            }
+          }
+        },
+        "communication": {
+          "title": "Information and Communication Department",
+          "members": {
+            "nangboong": {
+              "name": "Adesh (Nangboong) Rai",
+              "role": "Information and Communication Officer",
+              "pronoun": "He/Him",
+              "email": "communications.qyg@gmail.com",
+              "image": "/images/nangboong.jpg"
+            }
+          }
+        }
       },
-      "nishant": {
-        "name": "निशान्त साह",
-        "role": "कार्यकारी निर्देशक सहायक",
-        "image": "/images/nishant.jpg"
-      },
-      "rita": {
-        "name": "रीता चलिसे",
-        "role": "लेखा अधिकृत",
-        "image": "/images/rita.jpg"
-      },
-      "chhesang": {
-        "name": "छेसाङ घिसिङ",
-        "role": "कार्यक्रम अधिकृत",
-        "image": "/images/chhesing.jpg"
-      },
-      "nangboong": {
-        "name": "नाङबुङ राई",
-        "role": "सूचना तथा सञ्चार अधिकृत",
-        "image": "/images/nangboong.jpg"
-      },
-      "sudip": {
-        "name": "सुदीप चौधरी",
-        "role": "कार्यालय सहयोगी",
-        "image": "/images/sudip.jpg"
-      },
-      "ankit": {
-        "name": "अंकिता रेग्मी",
-        "role": "कानूनी सहायक (तालिम श्रमिक)",
-        "image": "/images/ankita.jpg"
+      "alumni": {
+        "title": "Alumni",
+        "list": [
+          "Karan Karki",
+          "Prathna Dixit",
+          "Pratik Thapa and Niksuh Kuwar Thapa",
+          "Ankita Regmi"
+        ]
       }
-    },
-    "rows": {
-      "first": ["rukshana", "rita", "nishant"],
-      "second": ["chhesang", "nangboong", "sudip", "ankit"]
-    }
   },
   "WorkPage": {
     "title": "हाम्रा कार्यहरू",
