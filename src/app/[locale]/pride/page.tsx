@@ -24,23 +24,23 @@ export default async function Page({ params }: PageProps) {
             <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
                 
                 {/* Overview Section */}
-                <section className="flex flex-col items-center min-h-[30vh] mt-4">
+                <section className="flex flex-col items-center min-h-[30vh] mt-4 mb-4">
                     <h1 className={`${alegreyaSans.className} text-black py-4 font-bold text-2xl`}>
                         {overviewPost.title?.rendered}
                     </h1>
                     <div 
-                        className={`${roboto.className} text-justify px-16 py-2 text-black md:mx-64 sm:mx-2`}
+                        className={`${roboto.className} wordpress-content text-justify px-16 py-2 text-black md:mx-64 sm:mx-2`}
                         dangerouslySetInnerHTML={{ __html: overviewPost.content.rendered }}
                     />
                 </section>
 
                 {/* Introduction Section */}
-                <section className="flex flex-col items-center min-h-[30vh]">
+                <section className="flex flex-col items-center min-h-[30vh] mb-16">
                     <h1 className={`${alegreyaSans.className} text-black py-4 font-bold text-2xl`}>
                         {introPost.title?.rendered}
                     </h1>
                     <div 
-                        className={`${roboto.className} text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8`}
+                        className={`${roboto.className} wordpress-content text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8`}
                         dangerouslySetInnerHTML={{ __html: introPost.content.rendered }}
                     />
                 </section>

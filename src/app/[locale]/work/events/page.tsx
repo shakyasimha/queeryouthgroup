@@ -1,16 +1,16 @@
 import { alegreyaSans, roboto } from "@/ui/fonts";
-import { getTranslations } from "next-intl/server";
 import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback";
+import Image from "next/image";
 
 // Base slug without locale suffix
-const BASE_SLUG = "litigations";
+const BASE_SLUG = "events";
+
 interface PageProps {
     params: Promise<{ locale: string }>;
 }
 
 export default async function Page({ params }: PageProps) {
     const { locale } = await params;
-    const t = await getTranslations('pridePage');
     
     try {
         // Use the fallback version for better error handling
@@ -25,8 +25,17 @@ export default async function Page({ params }: PageProps) {
                         </h1>
                     </div>
 
+                    <div className="flex justify-center mb-4 mt-4">
+                        <Image 
+                            src="/images/icons/events.png"
+                            alt="legal and policy reform"
+                            width={240}
+                            height={240}
+                        />
+                    </div>
+
                     <div 
-                        className={`${roboto.className} text-bg text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8`}
+                        className={`${roboto.className} wordpress-content text-bg text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8`}
                         dangerouslySetInnerHTML={{
                             __html: pridePost.content.rendered,
                         }}
@@ -48,11 +57,11 @@ export default async function Page({ params }: PageProps) {
                 <div className="flex flex-col items-center min-h-[30vh] mt-4">
                     <div className="text-center text-2xl">
                         <h1 className={`${alegreyaSans.className} text-red-600 py-4 font-bold`}>
-                            {t('errorTitle') || 'Content not available'}
+                            {'Content not available'}
                         </h1>
                     </div>
                     <p className={`${roboto.className} text-gray-600 px-16 py-2`}>
-                        {t('errorMessage') || 'Sorry, the content could not be loaded at this time.'}
+                        {'Sorry, the content could not be loaded at this time.'}
                     </p>
                 </div>
             </div>

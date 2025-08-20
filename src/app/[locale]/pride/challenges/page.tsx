@@ -17,7 +17,7 @@ export default async function Page({ params }: PageProps) {
 
         return(
             <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
-                <div className="flex flex-col items-center min-h-[30vh] mt-4">
+                <div className="flex flex-col items-center min-h-[30vh] mt-4 mb-16">
                     <div className="text-center text-2xl">
                         <h1 className={`${alegreyaSans.className} text-black py-4 font-bold`}>
                             {pridePost.title.rendered}
@@ -25,7 +25,7 @@ export default async function Page({ params }: PageProps) {
                     </div>
 
                     <div 
-                        className={`${roboto.className} text-bg text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8 prose prose-lg max-w-none`}
+                        className={`${roboto.className} wordpress-content text-bg text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8 prose prose-lg max-w-none`}
                         dangerouslySetInnerHTML={{
                             __html: pridePost.content.rendered,
                         }}
@@ -44,7 +44,7 @@ export default async function Page({ params }: PageProps) {
         
         return(
             <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
-                <div className="flex flex-col items-center min-h-[30vh] mt-4">
+                <div className="flex flex-col items-center min-h-[30vh] mt-4 mb-16">
                     <div className="text-center text-2xl">
                         <h1 className={`${alegreyaSans.className} text-red-600 py-4 font-bold`}>
                             {'Content not available'}

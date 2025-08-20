@@ -1,5 +1,6 @@
 import { alegreyaSans, roboto } from "@/ui/fonts";
 import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback";
+import Image from "next/image";
 
 // Base slug without locale suffix
 const BASE_SLUG = "legal-policy-reform";
@@ -24,8 +25,17 @@ export default async function Page({ params }: PageProps) {
                         </h1>
                     </div>
 
+                    <div className="flex justify-center mb-4 mt-4">
+                        <Image 
+                            src="/images/icons/legal-administrative-reform.png"
+                            alt="legal and policy reform"
+                            width={240}
+                            height={240}
+                        />
+                    </div>
+
                     <div 
-                        className={`${roboto.className} text-bg text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8`}
+                        className={`${roboto.className} wordpress-content text-bg text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8`}
                         dangerouslySetInnerHTML={{
                             __html: pridePost.content.rendered,
                         }}

@@ -78,18 +78,18 @@ export default async function Page({ params }: PageProps) {
                         {aboutPost.title.rendered}
                     </h1>
                     <div 
-                        className={`${roboto.className} text-justify text-black mb-8`}
+                        className={`${roboto.className} text-justify text-black mb-4`}
                         dangerouslySetInnerHTML={{ __html: aboutPost.content.rendered }}
                     />
                 </div>
 
                 {/* Logo / Ego Section (below image) */}
-                <div className="flex flex-col items-center mt-4 px-16 md:mx-64 sm:mx-2 mb-8">
+                <div className="flex flex-col items-center mt-4 px-16 md:mx-64 sm:mx-2 mb-16">
                     <h1 className={`${alegreyaSans.className} text-black py-4 font-bold text-2xl`}>
                         {logoPost.title.rendered}
                     </h1>
 
-                    <div className="flex justify-center mb-4">
+                    <div className="flex justify-center mb-16">
                         <Image 
                             src="/qyg-logo.svg"
                             alt="organization logo"
