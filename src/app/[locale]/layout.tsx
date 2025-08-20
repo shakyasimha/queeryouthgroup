@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { AccessibilityProvider } from "@/components/AccessibilityWidget/AccessibilityProvider"; // Fixed path
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { AccessibilityProvider } from "@/components/AccessibilityWidget/AccessibilityProvider"; // Fixed path
 import AccessibilityWidget from "@/components/AccessibilityWidget"; // This imports from index.tsx
 import "../globals.css";
 import "@/components/AccessibilityWidget/AccessibilityStyles.css"; // Fixed path
