@@ -1,5 +1,5 @@
 import { alegreyaSans, roboto } from "@/ui/fonts";
-import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback";import Image from "next/image";
+import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback";
 
 // Base slug without locale suffix
 const BASE_SLUG = "objective";
