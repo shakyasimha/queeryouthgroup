@@ -231,10 +231,12 @@
     "title": "Nepal Pride Parade Timeline",
     "subtitle": "A journey through the milestones of LGBTQ+ pride celebrations in Nepal, showcasing the evolution of community organizing and visibility.",
     "footerText": "Celebrating diversity, equality, and the ongoing fight for LGBTQ+ rights in Nepal",
+    "readMore": "Read More",
     "events": {
       "2019": {
         "title": "Nepal Pride Parade 2019: Inaugural Milestone",
         "date": "June 29, 2019",
+        "slug": "nepal-pride-2019",
         "details": [
           "Queer Youth Group (QYG) organized the first-ever Nepal Pride Parade in collaboration with Queer Rights Collective (QRC) and Campaign for Change (CFC).",
           "This historic event marked the beginning of organized Pride celebrations in Nepal."
@@ -243,6 +245,7 @@
       "2020": {
         "title": "Online Pride Parade",
         "date": "June 13, 2020",
+        "slug": "online-pride-2020",
         "details": [
           "Held virtually due to the COVID-19 pandemic",
           "Would have been the second annual Nepal Pride Parade",
@@ -252,6 +255,7 @@
       "2025": {
         "title": "Seventh Nepal Pride Parade",
         "date": "June 14, 2025",
+        "slug": "nepal-pride-2025",
         "details": [
           "Queer Youth Group (QYG), in collaboration with Queer Rights Collective (QRC), successfully hosted the seventh Nepal Pride Parade (NPP) at Narayan Chaur, Naxal, Kathmandu.",
           "This year's Pride marked a significant milestone as it was the first time QYG independently led the overall coordination and execution of the program, with QRC offering strategic support."
