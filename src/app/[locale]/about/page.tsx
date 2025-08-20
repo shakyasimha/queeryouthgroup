@@ -60,7 +60,7 @@ export default async function Page({ params }: PageProps) {
         return (
             <div className="w-full flex flex-grow flex-col bg-[#fafafc]">
                 {/* Image section */}
-                <div 
+                {/* <div 
                     className="w-full h-[300px] sm:h-[350px] md:h-[450px] lg:h-[500px] xl:h-[550px] relative overflow-hidden"
                 >
                     <Image 
@@ -70,7 +70,7 @@ export default async function Page({ params }: PageProps) {
                         fill
                         className="object-cover"
                     />
-                </div>
+                </div> */}
                 
                 {/* About Us Section (above image) */}
                 <div className="flex flex-col items-center mt-4 px-16 md:mx-64 sm:mx-2">

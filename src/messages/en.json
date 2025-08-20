@@ -54,158 +54,135 @@
       "alumniLink": "Alumni",
       "staffLink": "Our Staff"
   },
-  "TeamPage": {
-      "title": "Our Team",
-      "departments": {
-        "executive": {
-          "title": "Executive Team",
-          "members": {
-            "dipesh": {
-              "name": "Dipesh",
-              "role": "President",
-              "pronoun": "He/They",
-              "email": "queeryouthgroup.nepal@gmail.com",
-              "image": ""
-            },
-            "rukshana": {
-              "name": "Rukshana Kapali",
-              "role": "Chief Executive Officer (CEO)",
-              "pronoun": "She/Her",
-              "email": "queeryouthgroup.nepal@gmail.com",
-              "image": "/images/team/rukshana.jpg"
-            }
+  "BoardPage": {
+    "title": "Board Members",
+    "members": [
+      {
+        "name": "Dipesh",
+        "role": "President",
+        "pronoun": "He/They"
+      },
+      {
+        "name": "Badal (Safal) Lama",
+        "pronoun": "They/Them"
+      },
+      {
+        "name": "Sj",
+        "pronoun": "They/Them"
+      },
+      {
+        "name": "Pratik",
+        "pronoun": "He/Him"
+      },
+      {
+        "name": "Monisha",
+        "pronoun": "They/Them"
+      }
+    ]
+  },
+  "StaffPage": {
+    "title": "Staff Members",
+    "departments": {
+      "executive": {
+        "title": "Executive Team",
+        "members": {
+          "rukshana": {
+            "name": "Rukshana Kapali",
+            "role": "Chief Executive Officer (CEO)",
+            "pronoun": "She/Her",
+            "email": "queeryouthgroup.nepal@gmail.com",
+            "image": "/images/team/rukshana.jpg"
           }
-        },
-        "legal": {
-          "title": "Legal Department",
-          "members": {
-            "nishant": {
-              "name": "Nishant Shah",
-              "role": "Executive Officer Assistant",
-              "pronoun": "He/Him",
-              "email": "nishantshah.gyg@gmail.com",
-              "image": "/images/team/nishant.jpg"
-            },
-            "ankita": {
-              "name": "Sam Dhakal",
-              "role": "Legal Assistant (Trainee)",
-              "pronoun": "He/Him",
-              "email": "legal.qyg@gmail.com",
-              "image": "/images/team/samangkita-dhakal.jpg"
-            }
-          }
-        },
-        "finance": {
-          "title": "Finance Department",
-          "members": {
-            "rita": {
-              "name": "Rita Chalise",
-              "role": "Finance Officer",
-              "pronoun": "She/Her",
-              "email": "finance.qyg@gmail.com",
-              "image": "/images/team/rita.jpg"
-            }
-          }
-        },
-        "program": {
-          "title": "Program Department",
-          "members": {
-            "chhesang": {
-              "name": "Chhesang Ghising",
-              "role": "Program Officer",
-              "pronoun": "He/Him",
-              "email": "chhesang.qyg@gmail.com",
-              "image": "/images/team/chhesing.jpg"
-            },
-            "sudip": {
-              "name": "Sudip Chaudhary",
-              "role": "Office Assistant",
-              "pronoun": "He/Him",
-              "email": "sudip.qyg@gmail.com",
-              "image": "/images/team/sudip.jpg"
-            }
-          }
-        },
-        "communication": {
-          "title": "Information and Communication Department",
-          "members": {
-            "nangboong": {
-              "name": "Adesh (Nangboong) Rai",
-              "role": "Information and Communication Officer",
-              "pronoun": "He/Him",
-              "email": "communications.qyg@gmail.com",
-              "image": "/images/team/nangboong.jpg"
-            }
-          }
-        },
-        "boardMembers": {
-          "title": "Board Members",
-          "members": [
-            {
-              "name": "Badal (Safal) Lama",
-              "role": " ",
-              "pronoun": "They/Them",
-              "email": "queeryouthgroup.nepal@gmail.com",
-              "image": ""
-            },
-            {
-              "name": "Sj",
-              "role": " ",
-              "pronoun": "They/Them",
-              "email": "queeryouthgroup.nepal@gmail.com",
-              "image": ""
-            },
-            {
-              "name": "Pratik",
-              "role": " ",
-              "pronoun": "He/Him",
-              "email": "queeryouthgroup.nepal@gmail.com",
-              "image": ""
-            },
-            {
-              "name": "Monisha",
-              "role": " ",
-              "pronoun": "They/Them",
-              "email": "queeryouthgroup.nepal@gmail.com",
-              "image": ""
-            }
-          ]
         }
       },
-      "alumni": {
-        "title": "Alumni",
-        "members": [
-          {
-            "name": "Karan Karki",
-            "image": ""
+      "legal": {
+        "title": "Legal Department",
+        "members": {
+          "nishant": {
+            "name": "Nishant Shah",
+            "role": "Executive Officer Assistant",
+            "pronoun": "He/Him",
+            "email": "nishantshah.gyg@gmail.com",
+            "image": "/images/team/nishant.jpg"
           },
-          {
-            "name": "Prathna Dixit",
-            "image": ""
-          },
-          {
-            "name": "Pratik Thapa",
-            "image": ""
-          },
-          {
-            "name": "Niksuh Kuwar Thapa", 
-            "image": ""
-          },
-          {
-            "name": "Ankita Regmi",
-            "image": ""
+          "ankita": {
+            "name": "Sam Dhakal",
+            "role": "Legal Assistant (Trainee)",
+            "pronoun": "He/Him",
+            "email": "legal.qyg@gmail.com",
+            "image": "/images/team/samangkita-dhakal.jpeg"
           }
-        ]
+        }
       },
-      "staff": {
-        "title": "Staff Members",
-        "members": [
-          {
-            "name": "",
-            "image": ""
+      "finance": {
+        "title": "Finance Department",
+        "members": {
+          "rita": {
+            "name": "Rita Chalise",
+            "role": "Finance Officer",
+            "pronoun": "She/Her",
+            "email": "finance.qyg@gmail.com",
+            "image": "/images/team/rita.jpg"
           }
-        ]
+        }
+      },
+      "program": {
+        "title": "Program Department",
+        "members": {
+          "chhesang": {
+            "name": "Chhesang Ghising",
+            "role": "Program Officer",
+            "pronoun": "He/Him",
+            "email": "chhesang.qyg@gmail.com",
+            "image": "/images/team/chhesing.jpg"
+          },
+          "sudip": {
+            "name": "Sudip Chaudhary",
+            "role": "Office Assistant",
+            "pronoun": "He/Him",
+            "email": "sudip.qyg@gmail.com",
+            "image": "/images/team/sudip.jpg"
+          }
+        }
+      },
+      "communication": {
+        "title": "Information and Communication Department",
+        "members": {
+          "nangboong": {
+            "name": "Adesh (Nangboong) Rai",
+            "role": "Information and Communication Officer",
+            "pronoun": "He/Him",
+            "email": "communications.qyg@gmail.com",
+            "image": "/images/team/nangboong.jpg"
+          }
+        }
       }
+    }
+  },
+  "AlumniPage": {
+    "title": "Alumni",
+    "members": [
+      {
+        "name": "Karan Karki",
+        "image": ""
+      },
+      {
+        "name": "Prathna Dixit",
+        "image": ""
+      },
+      {
+        "name": "Pratik Thapa",
+        "image": ""
+      },
+      {
+        "name": "Niksuh Kuwar Thapa",
+        "image": ""
+      },
+      {
+        "name": "Ankita Regmi",
+        "image": ""
+      }
+    ]
   },
   "WorkPage": {
     "title": "Our Work",

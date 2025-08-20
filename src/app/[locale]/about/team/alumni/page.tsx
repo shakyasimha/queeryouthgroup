@@ -9,15 +9,15 @@ interface AlumniMember {
   image?: string;
 }
 
-interface Alumni {
+interface AlumniPageData {
   title: string;
   members: AlumniMember[];
 }
 
 export default function AlumniPage() {
-  const t = useTranslations('TeamPage');
-  const alumni: Alumni = t.raw('alumni') as Alumni;
-  const alumniTitle: string = alumni.title;
+  const t = useTranslations();
+  const alumniPage: AlumniPageData = t.raw('AlumniPage') as AlumniPageData;
+  const alumniTitle: string = alumniPage.title;
 
   return (
     <div className={`${alegreyaSans.className} w-full flex flex-col flex-grow bg-white items-center`}>
@@ -29,7 +29,7 @@ export default function AlumniPage() {
 
       {/* Alumni Members - Center aligned on mobile, flex-wrap on larger screens */}
       <div className="flex flex-col items-center md:flex-row md:flex-wrap md:justify-center gap-4 p-4 mb-8">
-        {alumni.members.map((member: AlumniMember, index: number) => (
+        {alumniPage.members.map((member: AlumniMember, index: number) => (
           <Card 
             key={index}
             image={member.image || null}

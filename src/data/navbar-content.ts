@@ -39,27 +39,23 @@ export const navbarLinks: NavbarLinks = {
         { name: 'Legal and Policy Reform', href: '/work/legal-policy-reform' },
         { name: 'Multilingualism', href: '/work/multilingualism' },
         { name: 'Research & Knowledge Building', href: '/work/research' },
-        {
-          name: 'Events',
-          href: '/about/events',
-          children: [
-            { name: 'Discussion Series', href: '/work/events/discussion' },
-            { name: 'Pride', href: '/pride' },
-          ],
-        },
-        {
-          name: 'Resources',
-          href: '/about/resources',
-          children: [
-            { name: 'Legal Resources', href: '/work/resources/legal' },
-            { name: 'Publications', href: '/work/resources/publications' },
-            { name: 'Reports', href: '/work/resources/reports' },
-            { name: 'Academic Resources', href: '/work/resources/academic-report' },
-          ],
-        },
+        { name: 'Events', href: '/work/events' },
       ],
     },
-    { name: 'Dictionary', href: '/dictionary' },
+    {
+          name: 'Resources',
+          href: '/resources',
+          children: [
+            { name: 'Legal Resources', href: '/resources/legal' },
+            { name: 'Publications', href: '/resources/publications' },
+            { name: 'Reports', href: '/resources/reports' },
+            { name: 'Academic Resources', href: '/resources/academic-report' },
+          ],
+        },
+    { 
+      name: 'Dictionary', 
+      href: '/dictionary' 
+    },
     {
       name: 'Nepal Pride Parade',
       href: '',
@@ -101,27 +97,23 @@ export const navbarLinks: NavbarLinks = {
         { name: 'कानूनी तथा नीतिगत सुधार', href: '/work/legal-policy-reform' },
         { name: 'बहुभाषिकता', href: '/work/multilingualism' },
         { name: 'अनुसन्धान तथा ज्ञान निर्माण', href: '/work/research' },
-        {
-          name: 'कार्यक्रमहरू',
-          href: '',
-          children: [
-            { name: 'विचार-विमर्श श्रृङ्खला', href: '/work/events/discussion' },
-            { name: 'गौरव', href: '/pride' },
-          ],
-        },
-        {
-          name: 'स्रोतहरू',
-          href: '',
-          children: [
-            { name: 'कानुनी स्रोतहरू', href: '/work/resources/legal' },
-            { name: 'प्रकाशन', href: '/work/resources/publications' },
-            { name: 'प्रतिवेदनहरू', href: '/work/resources/reports' },
-            { name: 'शैक्षिक स्रोतहरू', href: '/work/resources/academic-report' },
-          ],
-        },
+        { name: 'कार्यक्रमहरू', href: '/work/events'},
       ],
     },
-    { name: 'शब्दकोश', href: '/dictionary' },
+    {
+      name: 'स्रोतहरू',
+      href: '',
+      children: [
+        { name: 'कानुनी स्रोतहरू', href: '/resources/legal' },
+        { name: 'प्रकाशन', href: '/resources/publications' },
+        { name: 'प्रतिवेदनहरू', href: '/resources/reports' },
+        { name: 'शैक्षिक स्रोतहरू', href: '/resources/academic-report' },
+      ],
+    },
+    { 
+      name: 'शब्दकोश', 
+      href: '/dictionary' 
+    },
     {
       name: 'नेपाल गौरव यात्रा',
       href: '',
