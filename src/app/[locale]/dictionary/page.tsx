@@ -23,7 +23,8 @@ export default function DictionaryPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [language, setLanguage] = useState<'en' | 'ne'>('en') // Toggle between English and Nepali
+  const [language, setLanguage] = useState<'en' | 'ne'>('en')
+  const [searchMode, setSearchMode] = useState<'prefix' | 'full'>('prefix') // New state for search mode
 
   const supabase = createClient()
 
@@ -34,7 +35,7 @@ export default function DictionaryPage() {
       console.log('Fetching from Supabase...')
       
       const { data, error } = await supabase
-        .from('dictionary_terms') // Updated to correct table name
+        .from('dictionary_terms')
         .select('*')
         .order('english', { ascending: true })
 
@@ -56,30 +57,50 @@ export default function DictionaryPage() {
     }
   }
 
-  // Search functionality
-  const handleSearch = () => {
-    if (!searchTerm.trim()) {
+  // Real-time filtering function
+  const filterEntries = (term: string) => {
+    if (!term.trim()) {
       setFilteredEntries(entries)
       return
     }
 
-    const filtered = entries.filter(entry =>
-      entry.english.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      entry.nepali.includes(searchTerm) ||
-      entry.definition_en.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      entry.definition_ne.includes(searchTerm) ||
-      (entry.etymology_en && entry.etymology_en.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (entry.etymology_ne && entry.etymology_ne.includes(searchTerm)) ||
-      (entry.explanation_en && entry.explanation_en.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (entry.explanation_ne && entry.explanation_ne.includes(searchTerm))
-    )
+    const searchTerm = term.toLowerCase()
+    
+    let filtered: DictionaryEntry[] = []
+
+    if (searchMode === 'prefix') {
+      // Prefix matching - matches words that START with the typed letters
+      filtered = entries.filter(entry =>
+        entry.english.toLowerCase().startsWith(searchTerm) ||
+        entry.nepali.toLowerCase().startsWith(searchTerm)
+      )
+    } else {
+      // Full text search - matches anywhere in the content
+      filtered = entries.filter(entry =>
+        entry.english.toLowerCase().includes(searchTerm) ||
+        entry.nepali.includes(term) ||
+        entry.definition_en.toLowerCase().includes(searchTerm) ||
+        entry.definition_ne.includes(term) ||
+        (entry.etymology_en && entry.etymology_en.toLowerCase().includes(searchTerm)) ||
+        (entry.etymology_ne && entry.etymology_ne.includes(term)) ||
+        (entry.explanation_en && entry.explanation_en.toLowerCase().includes(searchTerm)) ||
+        (entry.explanation_ne && entry.explanation_ne.includes(term))
+      )
+    }
+
     setFilteredEntries(filtered)
   }
 
-  // Handle Enter key press in search input
+  // Handle search input change with real-time filtering
+  const handleSearchChange = (value: string) => {
+    setSearchTerm(value)
+    filterEntries(value)
+  }
+
+  // Handle Enter key press for explicit search
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
-      handleSearch()
+      filterEntries(searchTerm)
     }
   }
 
@@ -92,6 +113,15 @@ export default function DictionaryPage() {
   // Toggle language
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'en' ? 'ne' : 'en')
+  }
+
+  // Toggle search mode
+  const toggleSearchMode = () => {
+    setSearchMode(prev => prev === 'prefix' ? 'full' : 'prefix')
+    // Re-filter with current search term using new mode
+    if (searchTerm) {
+      filterEntries(searchTerm)
+    }
   }
 
   // Fetch entries on component mount
@@ -157,27 +187,52 @@ export default function DictionaryPage() {
 
         {/* Search Section */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          {/* Search Mode Toggle */}
+          <div className="flex justify-center mb-4">
+            <div className="bg-gray-100 rounded-lg p-1 flex">
+              <button
+                onClick={toggleSearchMode}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  searchMode === 'prefix'
+                    ? 'bg-[#d41367] text-white'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                {language === 'en' ? 'Starts With' : 'सुरु हुन्छ'}
+              </button>
+              <button
+                onClick={toggleSearchMode}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  searchMode === 'full'
+                    ? 'bg-[#d41367] text-white'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                {language === 'en' ? 'Full Search' : 'पूर्ण खोज'}
+              </button>
+            </div>
+          </div>
+
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
               <input
                 type="text"
-                placeholder={language === 'en' 
-                  ? "Search for words, definitions, etymology..." 
-                  : "शब्द, परिभाषा, व्युत्पत्ति खोज्नुहोस्..."
+                placeholder={
+                  searchMode === 'prefix'
+                    ? (language === 'en' 
+                        ? "Type letters to find words starting with..." 
+                        : "अक्षरहरू टाइप गर्नुहोस्...")
+                    : (language === 'en' 
+                        ? "Search for words, definitions, etymology..." 
+                        : "शब्द, परिभाषा, व्युत्पत्ति खोज्नुहोस्...")
                 }
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e) => handleSearchChange(e.target.value)}
                 onKeyPress={handleKeyPress}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#d41367] focus:border-[#d41367] outline-none text-black"
               />
             </div>
             <div className="flex gap-2">
-              <button
-                onClick={handleSearch}
-                className="bg-[#d41367] text-white px-6 py-2 rounded-lg hover:bg-[#d41367]/50 transition-colors font-medium"
-              >
-                {language === 'en' ? 'Search' : 'खोज्नुहोस्'}
-              </button>
               {searchTerm && (
                 <button
                   onClick={clearSearch}
@@ -190,12 +245,20 @@ export default function DictionaryPage() {
           </div>
           
           {searchTerm && (
-            <p className="text-sm text-gray-600 mt-3">
-              {language === 'en' 
-                ? `Found ${filteredEntries.length} result${filteredEntries.length !== 1 ? 's' : ''} for "${searchTerm}"`
-                : `"${searchTerm}" का लागि ${filteredEntries.length} परिणाम फेला पर्यो`
-              }
-            </p>
+            <div className="mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <p className="text-sm text-gray-600">
+                {language === 'en' 
+                  ? `Found ${filteredEntries.length} result${filteredEntries.length !== 1 ? 's' : ''} for "${searchTerm}"`
+                  : `"${searchTerm}" का लागि ${filteredEntries.length} परिणाम फेला पर्यो`
+                }
+              </p>
+              <p className="text-xs text-gray-500">
+                {searchMode === 'prefix' 
+                  ? (language === 'en' ? 'Showing words starting with these letters' : 'यी अक्षरहरूले सुरु हुने शब्दहरू देखाउँदै')
+                  : (language === 'en' ? 'Searching all content' : 'सबै सामग्री खोजिँदै')
+                }
+              </p>
+            </div>
           )}
         </div>
 
@@ -205,10 +268,21 @@ export default function DictionaryPage() {
             <div className="bg-white rounded-lg shadow-md p-8 text-center">
               <p className="text-gray-500 text-lg">
                 {searchTerm 
-                  ? (language === 'en' ? 'No entries found matching your search.' : 'खोजसँग मिल्दो कुनै शब्द फेला परेन।')
+                  ? (searchMode === 'prefix'
+                      ? (language === 'en' ? `No words found starting with "${searchTerm}"` : `"${searchTerm}" ले सुरु हुने कुनै शब्द फेला परेन`)
+                      : (language === 'en' ? 'No entries found matching your search.' : 'खोजसँग मिल्दो कुनै शब्द फेला परेन।')
+                    )
                   : (language === 'en' ? 'No entries available.' : 'कुनै शब्द उपलब्ध छैन।')
                 }
               </p>
+              {searchTerm && searchMode === 'prefix' && (
+                <p className="text-sm text-gray-400 mt-2">
+                  {language === 'en' 
+                    ? 'Try switching to "Full Search" for broader results' 
+                    : '"पूर्ण खोज" मा स्विच गरेर व्यापक परिणामहरू प्राप्त गर्नुहोस्'
+                  }
+                </p>
+              )}
             </div>
           ) : (
             filteredEntries.map((entry, index) => (
