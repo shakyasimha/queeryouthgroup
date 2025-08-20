@@ -5,7 +5,6 @@ import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback
 const OVERVIEW_SLUG = "overview-of-pride-parade";
 const INTRO_SLUG = "nepal-pride-parade";
 
-
 interface PageProps {
     params: Promise<{ locale: string }>;
 }
@@ -25,22 +24,22 @@ export default async function Page({ params }: PageProps) {
                 
                 {/* Overview Section */}
                 <section className="flex flex-col items-center min-h-[30vh] mt-4 mb-4">
-                    <h1 className={`${alegreyaSans.className} text-black py-4 font-bold text-2xl`}>
-                        {overviewPost.title?.rendered}
+                    <h1 className={`${alegreyaSans.className} text-3xl text-black py-4 font-bold`}>
+                        {overviewPost.title.rendered}
                     </h1>
                     <div 
-                        className={`${roboto.className} wordpress-content text-justify px-16 py-2 text-black md:mx-64 sm:mx-2`}
+                        className="wordpress-content text-justify px-16 py-2 text-black md:mx-64 sm:mx-2"
                         dangerouslySetInnerHTML={{ __html: overviewPost.content.rendered }}
                     />
                 </section>
 
                 {/* Introduction Section */}
                 <section className="flex flex-col items-center min-h-[30vh] mb-16">
-                    <h1 className={`${alegreyaSans.className} text-black py-4 font-bold text-2xl`}>
-                        {introPost.title?.rendered}
+                    <h1 className={`${alegreyaSans.className} text-3xl text-black py-4 font-bold`}>
+                        {introPost.title.rendered}
                     </h1>
                     <div 
-                        className={`${roboto.className} wordpress-content text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8`}
+                        className="wordpress-content text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8"
                         dangerouslySetInnerHTML={{ __html: introPost.content.rendered }}
                     />
                 </section>
