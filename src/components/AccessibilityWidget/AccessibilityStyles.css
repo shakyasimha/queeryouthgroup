@@ -13,26 +13,52 @@
   color: #e8e8e8 !important;
 }
 
-.accessibility-contrast-dark * {
+/* Dark Mode - Override ALL child elements but exclude navbar, header, footer */
+.accessibility-contrast-dark *:not(nav):not(header):not(footer):not(.navbar):not(.header):not(.footer):not([class*="nav"]):not([class*="header"]):not([class*="footer"]) {
   background-color: inherit !important;
   color: inherit !important;
 }
 
-/* Dark Mode - Navbar Styling */
-.accessibility-contrast-dark .navbar,
+/* Dark Mode - Navbar/Header stays ORIGINAL colors */
 .accessibility-contrast-dark nav,
-.accessibility-contrast-dark header {
-  background-color: #2d2520 !important; /* Darker version of #F5EFE0 */
-  color: #e8e8e8 !important;
-  border-color: #3a3a3a !important;
+.accessibility-contrast-dark header,
+.accessibility-contrast-dark .navbar,
+.accessibility-contrast-dark .header,
+.accessibility-contrast-dark [class*="nav"]:not([class*="main"]):not([class*="content"]),
+.accessibility-contrast-dark [class*="header"]:not([class*="main"]):not([class*="content"]),
+.accessibility-contrast-dark [role="navigation"],
+.accessibility-contrast-dark [role="banner"] {
+  background-color: #F5EFE0 !important; /* Keep ORIGINAL navbar color */
+  color: #333333 !important; /* Dark text for readability */
+  border-color: #ddd !important;
 }
 
-/* Dark Mode - Footer Styling */
+/* Dark Mode - Footer stays ORIGINAL colors */
 .accessibility-contrast-dark footer,
-.accessibility-contrast-dark .footer {
-  background-color: #3d3c4d !important; /* Darker version of #cccffe */
-  color: #e8e8e8 !important;
-  border-color: #4a4a5a !important;
+.accessibility-contrast-dark .footer,
+.accessibility-contrast-dark [class*="footer"] {
+  background-color: #cccffe !important; /* Keep ORIGINAL footer color */
+  color: #333333 !important; /* Dark text for readability */
+  border-color: #aaa !important;
+}
+
+/* Dark Mode - Navbar/Footer links maintain proper contrast */
+.accessibility-contrast-dark nav a,
+.accessibility-contrast-dark header a,
+.accessibility-contrast-dark footer a,
+.accessibility-contrast-dark .navbar a,
+.accessibility-contrast-dark .header a,
+.accessibility-contrast-dark .footer a {
+  color: #d41367 !important; /* Original cranberry color */
+}
+
+.accessibility-contrast-dark nav a:hover,
+.accessibility-contrast-dark header a:hover,
+.accessibility-contrast-dark footer a:hover,
+.accessibility-contrast-dark .navbar a:hover,
+.accessibility-contrast-dark .header a:hover,
+.accessibility-contrast-dark .footer a:hover {
+  color: #b8115a !important; /* Darker cranberry for hover */
 }
 
 /* Dark Mode - Links */
@@ -238,10 +264,12 @@
   height: 100vh;
   background: 
     linear-gradient(
-      transparent calc(var(--mouse-y, 50vh) - 30px),
-      rgba(0,0,0,0.8) calc(var(--mouse-y, 50vh) - 30px),
-      rgba(0,0,0,0.8) calc(var(--mouse-y, 50vh) + 30px),
-      transparent calc(var(--mouse-y, 50vh) + 30px)
+      rgba(0,0,0,0.8) 0%,
+      rgba(0,0,0,0.8) calc(var(--mouse-y, 50vh) - 20px),
+      transparent calc(var(--mouse-y, 50vh) - 20px),
+      transparent calc(var(--mouse-y, 50vh) + 20px),
+      rgba(0,0,0,0.8) calc(var(--mouse-y, 50vh) + 20px),
+      rgba(0,0,0,0.8) 100%
     );
   pointer-events: none;
   z-index: 9998;
