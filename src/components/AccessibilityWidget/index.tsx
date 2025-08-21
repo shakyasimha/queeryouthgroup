@@ -215,10 +215,9 @@ export default function AccessibilityWidget({ lang = "en" }: AccessibilityWidget
         </button>
       </div>
 
-      {/* Backdrop Overlay */}
       {state.isWidgetOpen && (
         <div 
-          className="fixed inset-0 z-[9998] bg-black bg-opacity-50 backdrop-blur-sm transition-opacity duration-300"
+          className="fixed inset-0 z-[9998] bg-white/20 backdrop-blur-md transition-all duration-300"
           onClick={toggleWidget}
         />
       )}
@@ -235,7 +234,7 @@ export default function AccessibilityWidget({ lang = "en" }: AccessibilityWidget
             <Accessibility className="text-white" size={24} />
             <h2 className="text-lg font-bold">{t.accessibility}</h2>
             {state.hasAccessibilityEnabled && (
-              <div className="flex items-center gap-1 px-2 py-1 bg-white bg-opacity-20 text-white rounded-full text-xs backdrop-blur-sm">
+              <div className="flex items-center gap-1 px-2 py-1 bg-white bg-opacity-20 text-black rounded-full text-xs backdrop-blur-sm">
                 <Check size={12} />
                 <span>{t.active}</span>
               </div>
