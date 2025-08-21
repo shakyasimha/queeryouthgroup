@@ -13,33 +13,116 @@
   color: #e8e8e8 !important;
 }
 
-/* Dark Mode - Override ALL child elements but exclude navbar, header, footer */
-.accessibility-contrast-dark *:not(nav):not(header):not(footer):not(.navbar):not(.header):not(.footer):not([class*="nav"]):not([class*="header"]):not([class*="footer"]) {
+/* Dark Mode - Override ALL child elements but exclude navbar, header, footer, timeline, and specific components */
+.accessibility-contrast-dark *:not(nav):not(header):not(footer):not(.navbar):not(.header):not(.footer):not([class*="nav"]):not([class*="header"]):not([class*="footer"]):not(.PublicationsCarousel):not([class*="PublicationsCarousel"]):not(.VisionTab):not([class*="VisionTab"]):not([class*="carousel"]):not([class*="tab"]):not([class*="component"]):not([data-component="VisionTab"]):not([data-component="PublicationsCarousel"]):not([class*="timeline"]):not([data-timeline]):not(.timeline-event):not([class*="pride"]):not([data-component="timeline"]) {
   background-color: inherit !important;
   color: inherit !important;
 }
 
-/* Dark Mode - Navbar/Header stays ORIGINAL colors */
+/* Dark Mode - Navbar/Header/Footer stays ORIGINAL colors */
 .accessibility-contrast-dark nav,
 .accessibility-contrast-dark header,
+.accessibility-contrast-dark footer,
 .accessibility-contrast-dark .navbar,
 .accessibility-contrast-dark .header,
+.accessibility-contrast-dark .footer,
 .accessibility-contrast-dark [class*="nav"]:not([class*="main"]):not([class*="content"]),
 .accessibility-contrast-dark [class*="header"]:not([class*="main"]):not([class*="content"]),
+.accessibility-contrast-dark [class*="footer"]:not([class*="main"]):not([class*="content"]),
 .accessibility-contrast-dark [role="navigation"],
-.accessibility-contrast-dark [role="banner"] {
+.accessibility-contrast-dark [role="banner"],
+.accessibility-contrast-dark [role="contentinfo"] {
   background-color: #F5EFE0 !important; /* Keep ORIGINAL navbar color */
   color: #333333 !important; /* Dark text for readability */
   border-color: #ddd !important;
 }
 
-/* Dark Mode - Footer stays ORIGINAL colors */
-.accessibility-contrast-dark footer,
-.accessibility-contrast-dark .footer,
-.accessibility-contrast-dark [class*="footer"] {
-  background-color: #cccffe !important; /* Keep ORIGINAL footer color */
-  color: #333333 !important; /* Dark text for readability */
-  border-color: #aaa !important;
+/* Dark Mode - VisionTab, PublicationsCarousel, and Timeline stay ORIGINAL colors */
+.accessibility-contrast-dark .PublicationsCarousel,
+.accessibility-contrast-dark [class*="PublicationsCarousel"],
+.accessibility-contrast-dark .VisionTab,
+.accessibility-contrast-dark [class*="VisionTab"],
+.accessibility-contrast-dark [class*="carousel"],
+.accessibility-contrast-dark [class*="tab"],
+.accessibility-contrast-dark [class*="component"],
+.accessibility-contrast-dark [data-component="VisionTab"],
+.accessibility-contrast-dark [data-component="PublicationsCarousel"],
+.accessibility-contrast-dark [class*="timeline"],
+.accessibility-contrast-dark [data-timeline],
+.accessibility-contrast-dark .timeline-event,
+.accessibility-contrast-dark [class*="pride"],
+.accessibility-contrast-dark [data-component="timeline"] {
+  background-color: initial !important;
+  color: initial !important;
+  border-color: initial !important;
+  filter: none !important; /* Ensure no filters are applied */
+}
+
+/* Preserve component children's original styling */
+.accessibility-contrast-dark .PublicationsCarousel *,
+.accessibility-contrast-dark [class*="PublicationsCarousel"] *,
+.accessibility-contrast-dark .VisionTab *,
+.accessibility-contrast-dark [class*="VisionTab"] *,
+.accessibility-contrast-dark [class*="carousel"] *,
+.accessibility-contrast-dark [class*="tab"] *,
+.accessibility-contrast-dark [class*="component"] *,
+.accessibility-contrast-dark [data-component="VisionTab"] *,
+.accessibility-contrast-dark [data-component="PublicationsCarousel"] *,
+.accessibility-contrast-dark [class*="timeline"] *,
+.accessibility-contrast-dark [data-timeline] *,
+.accessibility-contrast-dark .timeline-event *,
+.accessibility-contrast-dark [class*="pride"] *,
+.accessibility-contrast-dark [data-component="timeline"] * {
+  background-color: initial !important;
+  color: initial !important;
+  border-color: initial !important;
+  filter: none !important;
+}
+
+/* Preserve navigation/header/footer children's original styling */
+.accessibility-contrast-dark nav *,
+.accessibility-contrast-dark header *,
+.accessibility-contrast-dark footer *,
+.accessibility-contrast-dark .navbar *,
+.accessibility-contrast-dark .header *,
+.accessibility-contrast-dark .footer * {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+/* Ensure component links maintain original colors */
+.accessibility-contrast-dark .PublicationsCarousel a,
+.accessibility-contrast-dark [class*="PublicationsCarousel"] a,
+.accessibility-contrast-dark .VisionTab a,
+.accessibility-contrast-dark [class*="VisionTab"] a,
+.accessibility-contrast-dark [class*="carousel"] a,
+.accessibility-contrast-dark [class*="tab"] a,
+.accessibility-contrast-dark [class*="component"] a,
+.accessibility-contrast-dark [data-component="VisionTab"] a,
+.accessibility-contrast-dark [data-component="PublicationsCarousel"] a,
+.accessibility-contrast-dark [class*="timeline"] a,
+.accessibility-contrast-dark [data-timeline] a,
+.accessibility-contrast-dark .timeline-event a,
+.accessibility-contrast-dark [class*="pride"] a,
+.accessibility-contrast-dark [data-component="timeline"] a {
+  color: #d41367 !important; /* Original cranberry */
+}
+
+.accessibility-contrast-dark .PublicationsCarousel a:hover,
+.accessibility-contrast-dark [class*="PublicationsCarousel"] a:hover,
+.accessibility-contrast-dark .VisionTab a:hover,
+.accessibility-contrast-dark [class*="VisionTab"] a:hover,
+.accessibility-contrast-dark [class*="carousel"] a:hover,
+.accessibility-contrast-dark [class*="tab"] a:hover,
+.accessibility-contrast-dark [class*="component"] a:hover,
+.accessibility-contrast-dark [data-component="VisionTab"] a:hover,
+.accessibility-contrast-dark [data-component="PublicationsCarousel"] a:hover,
+.accessibility-contrast-dark [class*="timeline"] a:hover,
+.accessibility-contrast-dark [data-timeline] a:hover,
+.accessibility-contrast-dark .timeline-event a:hover,
+.accessibility-contrast-dark [class*="pride"] a:hover,
+.accessibility-contrast-dark [data-component="timeline"] a:hover {
+  color: #b8115a !important; /* Darker cranberry for hover */
 }
 
 /* Dark Mode - Navbar/Footer links maintain proper contrast */
@@ -61,77 +144,77 @@
   color: #b8115a !important; /* Darker cranberry for hover */
 }
 
-/* Dark Mode - Links */
-.accessibility-contrast-dark a:not(.accessibility-widget a) {
+/* Dark Mode - Links (excluding protected components) */
+.accessibility-contrast-dark a:not(.accessibility-widget a):not(.PublicationsCarousel a):not([class*="PublicationsCarousel"] a):not(.VisionTab a):not([class*="VisionTab"] a):not(nav a):not(header a):not(footer a):not(.navbar a):not(.header a):not(.footer a):not([class*="timeline"] a):not([data-timeline] a):not(.timeline-event a):not([class*="pride"] a):not([data-component="timeline"] a) {
   color: #ff6b9d !important; /* Brighter version of #d41367 for better contrast */
   text-decoration: none !important;
 }
 
-.accessibility-contrast-dark a:hover:not(.accessibility-widget a),
-.accessibility-contrast-dark a:focus:not(.accessibility-widget a) {
+.accessibility-contrast-dark a:hover:not(.accessibility-widget a):not(.PublicationsCarousel a:hover):not([class*="PublicationsCarousel"] a:hover):not(.VisionTab a:hover):not([class*="VisionTab"] a:hover):not(nav a:hover):not(header a:hover):not(footer a:hover):not(.navbar a:hover):not(.header a:hover):not(.footer a:hover):not([class*="timeline"] a:hover):not([data-timeline] a:hover):not(.timeline-event a:hover):not([class*="pride"] a:hover):not([data-component="timeline"] a:hover),
+.accessibility-contrast-dark a:focus:not(.accessibility-widget a):not(.PublicationsCarousel a:focus):not([class*="PublicationsCarousel"] a:focus):not(.VisionTab a:focus):not([class*="VisionTab"] a:focus):not(nav a:focus):not(header a:focus):not(footer a:focus):not(.navbar a:focus):not(.header a:focus):not(.footer a:focus):not([class*="timeline"] a:focus):not([data-timeline] a:focus):not(.timeline-event a:focus):not([class*="pride"] a:focus):not([data-component="timeline"] a:focus) {
   color: #ff8fb3 !important; /* Lighter hover state */
   text-decoration: underline !important;
 }
 
-/* Dark Mode - Card/Panel Elements */
-.accessibility-contrast-dark .card,
-.accessibility-contrast-dark .panel,
-.accessibility-contrast-dark .section {
+/* Dark Mode - Card/Panel Elements (excluding protected components) */
+.accessibility-contrast-dark .card:not(.PublicationsCarousel .card):not([class*="PublicationsCarousel"] .card):not(.VisionTab .card):not([class*="VisionTab"] .card),
+.accessibility-contrast-dark .panel:not(.PublicationsCarousel .panel):not([class*="PublicationsCarousel"] .panel):not(.VisionTab .panel):not([class*="VisionTab"] .panel),
+.accessibility-contrast-dark .section:not(.PublicationsCarousel .section):not([class*="PublicationsCarousel"] .section):not(.VisionTab .section):not([class*="VisionTab"] .section) {
   background-color: #2a2a2a !important;
   border-color: #404040 !important;
   color: #e8e8e8 !important;
 }
 
-/* Dark Mode - Form Elements */
-.accessibility-contrast-dark input:not(.accessibility-widget input),
-.accessibility-contrast-dark textarea:not(.accessibility-widget textarea),
-.accessibility-contrast-dark select:not(.accessibility-widget select) {
+/* Dark Mode - Form Elements (excluding protected components) */
+.accessibility-contrast-dark input:not(.accessibility-widget input):not(.PublicationsCarousel input):not([class*="PublicationsCarousel"] input):not(.VisionTab input):not([class*="VisionTab"] input),
+.accessibility-contrast-dark textarea:not(.accessibility-widget textarea):not(.PublicationsCarousel textarea):not([class*="PublicationsCarousel"] textarea):not(.VisionTab textarea):not([class*="VisionTab"] textarea),
+.accessibility-contrast-dark select:not(.accessibility-widget select):not(.PublicationsCarousel select):not([class*="PublicationsCarousel"] select):not(.VisionTab select):not([class*="VisionTab"] select) {
   background-color: #333333 !important;
   color: #e8e8e8 !important;
   border-color: #555555 !important;
 }
 
-.accessibility-contrast-dark input:focus:not(.accessibility-widget input),
-.accessibility-contrast-dark textarea:focus:not(.accessibility-widget textarea),
-.accessibility-contrast-dark select:focus:not(.accessibility-widget select) {
+.accessibility-contrast-dark input:focus:not(.accessibility-widget input):not(.PublicationsCarousel input):not([class*="PublicationsCarousel"] input):not(.VisionTab input):not([class*="VisionTab"] input),
+.accessibility-contrast-dark textarea:focus:not(.accessibility-widget textarea):not(.PublicationsCarousel textarea):not([class*="PublicationsCarousel"] textarea):not(.VisionTab textarea):not([class*="VisionTab"] textarea),
+.accessibility-contrast-dark select:focus:not(.accessibility-widget select):not(.PublicationsCarousel select):not([class*="PublicationsCarousel"] select):not(.VisionTab select):not([class*="VisionTab"] select) {
   border-color: #ff6b9d !important; /* Using the bright cranberry for focus */
   box-shadow: 0 0 0 2px rgba(255, 107, 157, 0.2) !important;
 }
 
-/* Dark Mode - Buttons */
-.accessibility-contrast-dark button:not(.accessibility-widget button),
-.accessibility-contrast-dark .btn:not(.accessibility-widget .btn) {
+/* Dark Mode - Buttons (excluding protected components) */
+.accessibility-contrast-dark button:not(.accessibility-widget button):not(.PublicationsCarousel button):not([class*="PublicationsCarousel"] button):not(.VisionTab button):not([class*="VisionTab"] button),
+.accessibility-contrast-dark .btn:not(.accessibility-widget .btn):not(.PublicationsCarousel .btn):not([class*="PublicationsCarousel"] .btn):not(.VisionTab .btn):not([class*="VisionTab"] .btn) {
   background-color: #ff6b9d !important; /* Bright cranberry */
   color: #ffffff !important;
   border-color: #ff6b9d !important;
 }
 
-.accessibility-contrast-dark button:hover:not(.accessibility-widget button),
-.accessibility-contrast-dark .btn:hover:not(.accessibility-widget .btn) {
+.accessibility-contrast-dark button:hover:not(.accessibility-widget button):not(.PublicationsCarousel button):not([class*="PublicationsCarousel"] button):not(.VisionTab button):not([class*="VisionTab"] button),
+.accessibility-contrast-dark .btn:hover:not(.accessibility-widget .btn):not(.PublicationsCarousel .btn):not([class*="PublicationsCarousel"] .btn):not(.VisionTab .btn):not([class*="VisionTab"] .btn) {
   background-color: #ff8fb3 !important;
   border-color: #ff8fb3 !important;
 }
 
-/* Dark Mode - Tables */
-.accessibility-contrast-dark table:not(.accessibility-widget table) {
+/* Dark Mode - Tables (excluding protected components) */
+.accessibility-contrast-dark table:not(.accessibility-widget table):not(.PublicationsCarousel table):not([class*="PublicationsCarousel"] table):not(.VisionTab table):not([class*="VisionTab"] table) {
   background-color: #2a2a2a !important;
   color: #e8e8e8 !important;
 }
 
-.accessibility-contrast-dark th:not(.accessibility-widget th),
-.accessibility-contrast-dark td:not(.accessibility-widget td) {
+.accessibility-contrast-dark th:not(.accessibility-widget th):not(.PublicationsCarousel th):not([class*="PublicationsCarousel"] th):not(.VisionTab th):not([class*="VisionTab"] th),
+.accessibility-contrast-dark td:not(.accessibility-widget td):not(.PublicationsCarousel td):not([class*="PublicationsCarousel"] td):not(.VisionTab td):not([class*="VisionTab"] td) {
   border-color: #404040 !important;
   background-color: inherit !important;
 }
 
-.accessibility-contrast-dark th:not(.accessibility-widget th) {
+.accessibility-contrast-dark th:not(.accessibility-widget th):not(.PublicationsCarousel th):not([class*="PublicationsCarousel"] th):not(.VisionTab th):not([class*="VisionTab"] th) {
   background-color: #333333 !important;
   color: #e8e8e8 !important;
 }
 
-/* Dark Mode - Code Elements */
-.accessibility-contrast-dark code:not(.accessibility-widget code),
-.accessibility-contrast-dark pre:not(.accessibility-widget pre) {
+/* Dark Mode - Code Elements (excluding protected components) */
+.accessibility-contrast-dark code:not(.accessibility-widget code):not(.PublicationsCarousel code):not([class*="PublicationsCarousel"] code):not(.VisionTab code):not([class*="VisionTab"] code),
+.accessibility-contrast-dark pre:not(.accessibility-widget pre):not(.PublicationsCarousel pre):not([class*="PublicationsCarousel"] pre):not(.VisionTab pre):not([class*="VisionTab"] pre) {
   background-color: #1e1e1e !important;
   color: #f8f8f2 !important;
   border-color: #404040 !important;
@@ -146,12 +229,32 @@
   color: #000000 !important;
 }
 
-.accessibility-contrast-light * {
+.accessibility-contrast-light *:not(nav):not(header):not(footer):not(.navbar):not(.header):not(.footer):not(.PublicationsCarousel):not([class*="PublicationsCarousel"]):not(.VisionTab):not([class*="VisionTab"]):not([class*="carousel"]):not([class*="tab"]):not([class*="component"]):not([data-component="VisionTab"]):not([data-component="PublicationsCarousel"]):not([class*="timeline"]):not([data-timeline]):not(.timeline-event):not([class*="pride"]):not([data-component="timeline"]) {
   background-color: inherit !important;
   color: inherit !important;
 }
 
-.accessibility-contrast-light a:not(.accessibility-widget a) {
+/* Light Mode - Protected components maintain original styling */
+.accessibility-contrast-light .PublicationsCarousel,
+.accessibility-contrast-light [class*="PublicationsCarousel"],
+.accessibility-contrast-light .VisionTab,
+.accessibility-contrast-light [class*="VisionTab"],
+.accessibility-contrast-light [class*="carousel"],
+.accessibility-contrast-light [class*="tab"],
+.accessibility-contrast-light [class*="component"],
+.accessibility-contrast-light [data-component="VisionTab"],
+.accessibility-contrast-light [data-component="PublicationsCarousel"],
+.accessibility-contrast-light [class*="timeline"],
+.accessibility-contrast-light [data-timeline],
+.accessibility-contrast-light .timeline-event,
+.accessibility-contrast-light [class*="pride"],
+.accessibility-contrast-light [data-component="timeline"] {
+  background-color: initial !important;
+  color: initial !important;
+  border-color: initial !important;
+}
+
+.accessibility-contrast-light a:not(.accessibility-widget a):not(.PublicationsCarousel a):not([class*="PublicationsCarousel"] a):not(.VisionTab a):not([class*="VisionTab"] a):not([class*="timeline"] a):not([data-timeline] a):not(.timeline-event a):not([class*="pride"] a):not([data-component="timeline"] a) {
   color: #b8115a !important; /* Darker version of cranberry for better contrast */
 }
 
@@ -163,7 +266,31 @@
   filter: invert(1) hue-rotate(180deg) !important;
 }
 
-.accessibility-contrast-invert img:not(.accessibility-widget img) {
+/* Exclude protected components from inversion */
+.accessibility-contrast-invert .PublicationsCarousel,
+.accessibility-contrast-invert [class*="PublicationsCarousel"],
+.accessibility-contrast-invert .VisionTab,
+.accessibility-contrast-invert [class*="VisionTab"],
+.accessibility-contrast-invert [class*="carousel"],
+.accessibility-contrast-invert [class*="tab"],
+.accessibility-contrast-invert [class*="component"],
+.accessibility-contrast-invert [data-component="VisionTab"],
+.accessibility-contrast-invert [data-component="PublicationsCarousel"],
+.accessibility-contrast-invert [class*="timeline"],
+.accessibility-contrast-invert [data-timeline],
+.accessibility-contrast-invert .timeline-event,
+.accessibility-contrast-invert [class*="pride"],
+.accessibility-contrast-invert [data-component="timeline"],
+.accessibility-contrast-invert nav,
+.accessibility-contrast-invert header,
+.accessibility-contrast-invert footer,
+.accessibility-contrast-invert .navbar,
+.accessibility-contrast-invert .header,
+.accessibility-contrast-invert .footer {
+  filter: invert(1) hue-rotate(180deg) !important; /* Double inversion to restore original */
+}
+
+.accessibility-contrast-invert img:not(.accessibility-widget img):not(.PublicationsCarousel img):not([class*="PublicationsCarousel"] img):not(.VisionTab img):not([class*="VisionTab"] img):not(nav img):not(header img):not(footer img):not([class*="timeline"] img):not([data-timeline] img):not(.timeline-event img):not([class*="pride"] img):not([data-component="timeline"] img) {
   filter: invert(1) hue-rotate(180deg) !important; /* Re-invert images */
 }
 
@@ -283,20 +410,51 @@
   filter: saturate(0.5) !important;
 }
 
+/* Exclude protected components from saturation changes */
+.accessibility-saturation-low .PublicationsCarousel,
+.accessibility-saturation-low [class*="PublicationsCarousel"],
+.accessibility-saturation-low .VisionTab,
+.accessibility-saturation-low [class*="VisionTab"],
+.accessibility-saturation-low nav,
+.accessibility-saturation-low header,
+.accessibility-saturation-low footer {
+  filter: none !important;
+}
+
 .accessibility-saturation-heavy {
   filter: saturate(2) !important;
+}
+
+.accessibility-saturation-heavy .PublicationsCarousel,
+.accessibility-saturation-heavy [class*="PublicationsCarousel"],
+.accessibility-saturation-heavy .VisionTab,
+.accessibility-saturation-heavy [class*="VisionTab"],
+.accessibility-saturation-heavy nav,
+.accessibility-saturation-heavy header,
+.accessibility-saturation-heavy footer {
+  filter: none !important;
 }
 
 .accessibility-saturation-desaturate {
   filter: grayscale(1) !important;
 }
 
+.accessibility-saturation-desaturate .PublicationsCarousel,
+.accessibility-saturation-desaturate [class*="PublicationsCarousel"],
+.accessibility-saturation-desaturate .VisionTab,
+.accessibility-saturation-desaturate [class*="VisionTab"],
+.accessibility-saturation-desaturate nav,
+.accessibility-saturation-desaturate header,
+.accessibility-saturation-desaturate footer {
+  filter: none !important;
+}
+
 /* =============================================================================
    INTERACTIVE FEATURES
    ============================================================================= */
 
-/* Link Highlighting */
-.accessibility-highlight-links a:not(.accessibility-widget a) {
+/* Link Highlighting (excluding protected components) */
+.accessibility-highlight-links a:not(.accessibility-widget a):not(.PublicationsCarousel a):not([class*="PublicationsCarousel"] a):not(.VisionTab a):not([class*="VisionTab"] a) {
   background-color: rgba(255, 107, 157, 0.2) !important; /* Cranberry highlight */
   padding: 2px 4px !important;
   border-radius: 3px !important;
@@ -311,16 +469,16 @@
   scroll-behavior: auto !important;
 }
 
-/* Hide Images */
-.accessibility-hide-images img:not(.accessibility-widget img),
-.accessibility-hide-images picture:not(.accessibility-widget picture),
-.accessibility-hide-images svg:not(.accessibility-widget svg):not([role="button"]):not([role="link"]) {
+/* Hide Images (excluding protected components) */
+.accessibility-hide-images img:not(.accessibility-widget img):not(.PublicationsCarousel img):not([class*="PublicationsCarousel"] img):not(.VisionTab img):not([class*="VisionTab"] img):not(nav img):not(header img):not(footer img),
+.accessibility-hide-images picture:not(.accessibility-widget picture):not(.PublicationsCarousel picture):not([class*="PublicationsCarousel"] picture):not(.VisionTab picture):not([class*="VisionTab"] picture):not(nav picture):not(header picture):not(footer picture),
+.accessibility-hide-images svg:not(.accessibility-widget svg):not([role="button"]):not([role="link"]):not(.PublicationsCarousel svg):not([class*="PublicationsCarousel"] svg):not(.VisionTab svg):not([class*="VisionTab"] svg):not(nav svg):not(header svg):not(footer svg) {
   opacity: 0.1 !important;
   filter: grayscale(1) !important;
 }
 
-.accessibility-hide-images img:not(.accessibility-widget img)::after,
-.accessibility-hide-images picture:not(.accessibility-widget picture)::after {
+.accessibility-hide-images img:not(.accessibility-widget img):not(.PublicationsCarousel img):not([class*="PublicationsCarousel"] img):not(.VisionTab img):not([class*="VisionTab"] img)::after,
+.accessibility-hide-images picture:not(.accessibility-widget picture):not(.PublicationsCarousel picture):not([class*="PublicationsCarousel"] picture):not(.VisionTab picture):not([class*="VisionTab"] picture)::after {
   content: 'Image Hidden';
   position: absolute;
   background: rgba(0,0,0,0.7);
