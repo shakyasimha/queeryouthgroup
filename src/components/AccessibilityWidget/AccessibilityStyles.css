@@ -1,274 +1,368 @@
+/* AccessibilityStyles.css */
+
 /* All @import statements must be at the very top */
 @import url('https://fonts.googleapis.com/css2?family=OpenDyslexic&display=swap');
 
-/* Accessibility Widget Base Styles */
-.accessibility-widget {
-  position: fixed;
-  bottom: 110px;
-  right: 30px;
-  z-index: 9999;
-  background: #fff;
-  border: 2px solid #0066cc;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  width: 300px;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  color: #333;
+/* =============================================================================
+   DARK MODE CONTRAST IMPLEMENTATION
+   ============================================================================= */
+
+/* Dark Mode - Main Implementation */
+.accessibility-contrast-dark {
+  background-color: #1a1a1a !important;
+  color: #e8e8e8 !important;
 }
 
-.accessibility-widget-header {
-  background: #0066cc;
-  color: white;
-  padding: 12px 16px;
-  border-radius: 6px 6px 0 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: bold;
+.accessibility-contrast-dark * {
+  background-color: inherit !important;
+  color: inherit !important;
 }
 
-.accessibility-widget-close {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  padding: 0;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 3px;
+/* Dark Mode - Navbar Styling */
+.accessibility-contrast-dark .navbar,
+.accessibility-contrast-dark nav,
+.accessibility-contrast-dark header {
+  background-color: #2d2520 !important; /* Darker version of #F5EFE0 */
+  color: #e8e8e8 !important;
+  border-color: #3a3a3a !important;
 }
 
-.accessibility-widget-close:hover {
-  background: rgba(255, 255, 255, 0.2);
+/* Dark Mode - Footer Styling */
+.accessibility-contrast-dark footer,
+.accessibility-contrast-dark .footer {
+  background-color: #3d3c4d !important; /* Darker version of #cccffe */
+  color: #e8e8e8 !important;
+  border-color: #4a4a5a !important;
 }
 
-.accessibility-widget-content {
-  padding: 16px;
-  max-height: 400px;
-  overflow-y: auto;
+/* Dark Mode - Links */
+.accessibility-contrast-dark a:not(.accessibility-widget a) {
+  color: #ff6b9d !important; /* Brighter version of #d41367 for better contrast */
+  text-decoration: none !important;
 }
 
-.accessibility-section {
-  margin-bottom: 20px;
-}
-
-.accessibility-section:last-child {
-  margin-bottom: 0;
-}
-
-.accessibility-section h3 {
-  margin: 0 0 12px 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #0066cc;
-}
-
-.accessibility-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.accessibility-button {
-  background: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 12px;
-  transition: all 0.2s;
-  flex: 1;
-  min-width: 80px;
-  text-align: center;
-}
-
-.accessibility-button:hover {
-  background: #e9e9e9;
-  border-color: #bbb;
-}
-
-.accessibility-button.active {
-  background: #0066cc;
-  color: white;
-  border-color: #0066cc;
-}
-
-.accessibility-button.active:hover {
-  background: #0052a3;
-}
-
-.accessibility-toggle {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 10000;
-  background: #0066cc;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  transition: all 0.2s;
-  /* Ensure the button doesn't get cut off */
-  margin: 0;
-  min-width: 60px;
-  min-height: 60px;
-}
-
-.accessibility-toggle:hover {
-  background: #0052a3;
-  transform: scale(1.1);
-}
-
-/* Skip to main content link */
-.accessibility-skip-link {
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  background: #0066cc;
-  color: white;
-  padding: 8px;
-  text-decoration: none;
-  border-radius: 0 0 4px 4px;
-  z-index: 10001;
-  transition: top 0.3s;
-}
-
-.accessibility-skip-link:focus {
-  top: 0;
-}
-
-/* Font Size Adjustments */
-.accessibility-font-small *:not(.accessibility-widget):not(.accessibility-widget *) {
-  font-size: 0.8em !important;
-}
-
-.accessibility-font-large *:not(.accessibility-widget):not(.accessibility-widget *) {
-  font-size: 1.2em !important;
-}
-
-.accessibility-font-extra-large *:not(.accessibility-widget):not(.accessibility-widget *) {
-  font-size: 1.5em !important;
-}
-
-/* Font Types */
-.accessibility-font-dyslexia *:not(.accessibility-widget):not(.accessibility-widget *) {
-  font-family: 'OpenDyslexic', monospace !important;
-}
-
-.accessibility-font-serif *:not(.accessibility-widget):not(.accessibility-widget *) {
-  font-family: 'Times New Roman', serif !important;
-}
-
-.accessibility-font-sans *:not(.accessibility-widget):not(.accessibility-widget *) {
-  font-family: Arial, sans-serif !important;
-}
-
-/* Contrast Modes */
-.accessibility-contrast-high {
-  filter: contrast(150%) !important;
-}
-
-.accessibility-contrast-high *:not(.accessibility-widget):not(.accessibility-widget *) {
-  background: white !important;
-  color: black !important;
-}
-
-.accessibility-contrast-high a:not(.accessibility-widget a) {
-  color: #0000ff !important;
+.accessibility-contrast-dark a:hover:not(.accessibility-widget a),
+.accessibility-contrast-dark a:focus:not(.accessibility-widget a) {
+  color: #ff8fb3 !important; /* Lighter hover state */
   text-decoration: underline !important;
 }
 
-.accessibility-contrast-inverted {
-  filter: invert(1) !important;
+/* Dark Mode - Card/Panel Elements */
+.accessibility-contrast-dark .card,
+.accessibility-contrast-dark .panel,
+.accessibility-contrast-dark .section {
+  background-color: #2a2a2a !important;
+  border-color: #404040 !important;
+  color: #e8e8e8 !important;
 }
 
-.accessibility-contrast-dark {
-  background: #1a1a1a !important;
+/* Dark Mode - Form Elements */
+.accessibility-contrast-dark input:not(.accessibility-widget input),
+.accessibility-contrast-dark textarea:not(.accessibility-widget textarea),
+.accessibility-contrast-dark select:not(.accessibility-widget select) {
+  background-color: #333333 !important;
+  color: #e8e8e8 !important;
+  border-color: #555555 !important;
+}
+
+.accessibility-contrast-dark input:focus:not(.accessibility-widget input),
+.accessibility-contrast-dark textarea:focus:not(.accessibility-widget textarea),
+.accessibility-contrast-dark select:focus:not(.accessibility-widget select) {
+  border-color: #ff6b9d !important; /* Using the bright cranberry for focus */
+  box-shadow: 0 0 0 2px rgba(255, 107, 157, 0.2) !important;
+}
+
+/* Dark Mode - Buttons */
+.accessibility-contrast-dark button:not(.accessibility-widget button),
+.accessibility-contrast-dark .btn:not(.accessibility-widget .btn) {
+  background-color: #ff6b9d !important; /* Bright cranberry */
   color: #ffffff !important;
+  border-color: #ff6b9d !important;
 }
 
-.accessibility-contrast-dark *:not(.accessibility-widget):not(.accessibility-widget *) {
-  background: #1a1a1a !important;
-  color: #ffffff !important;
+.accessibility-contrast-dark button:hover:not(.accessibility-widget button),
+.accessibility-contrast-dark .btn:hover:not(.accessibility-widget .btn) {
+  background-color: #ff8fb3 !important;
+  border-color: #ff8fb3 !important;
 }
 
-.accessibility-contrast-dark a:not(.accessibility-widget a) {
-  color: #66ccff !important;
+/* Dark Mode - Tables */
+.accessibility-contrast-dark table:not(.accessibility-widget table) {
+  background-color: #2a2a2a !important;
+  color: #e8e8e8 !important;
 }
 
-/* Spacing Adjustments */
-.accessibility-spacing-comfortable *:not(.accessibility-widget):not(.accessibility-widget *) {
-  line-height: 1.8 !important;
-  margin-bottom: 0.8em !important;
+.accessibility-contrast-dark th:not(.accessibility-widget th),
+.accessibility-contrast-dark td:not(.accessibility-widget td) {
+  border-color: #404040 !important;
+  background-color: inherit !important;
 }
 
-.accessibility-spacing-compact *:not(.accessibility-widget):not(.accessibility-widget *) {
-  line-height: 1.2 !important;
-  margin-bottom: 0.3em !important;
+.accessibility-contrast-dark th:not(.accessibility-widget th) {
+  background-color: #333333 !important;
+  color: #e8e8e8 !important;
 }
 
-/* Focus and Navigation */
-.accessibility-focus-enhanced *:focus {
-  outline: 3px solid #ff6600 !important;
-  outline-offset: 2px !important;
+/* Dark Mode - Code Elements */
+.accessibility-contrast-dark code:not(.accessibility-widget code),
+.accessibility-contrast-dark pre:not(.accessibility-widget pre) {
+  background-color: #1e1e1e !important;
+  color: #f8f8f2 !important;
+  border-color: #404040 !important;
 }
 
-/* Reading Guide */
-.accessibility-reading-guide {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #ff6600;
-  z-index: 9998;
-  pointer-events: none;
-  transition: top 0.1s ease;
-}
+/* =============================================================================
+   LIGHT MODE CONTRAST IMPLEMENTATION
+   ============================================================================= */
 
-/* Animation Controls */
-.accessibility-reduce-motion * {
-  animation-duration: 0.01ms !important;
-  animation-iteration-count: 1 !important;
-  transition-duration: 0.01ms !important;
-}
-
-/* Text Selection Enhancement */
-.accessibility-text-selection *::selection {
-  background: #ffff00 !important;
+.accessibility-contrast-light {
+  background-color: #ffffff !important;
   color: #000000 !important;
 }
 
-/* Link Highlighting */
-.accessibility-links-highlight a:not(.accessibility-widget a) {
-  background: #ffff99 !important;
-  padding: 2px 4px !important;
-  border-radius: 2px !important;
+.accessibility-contrast-light * {
+  background-color: inherit !important;
+  color: inherit !important;
 }
 
-/* Responsive Design */
+.accessibility-contrast-light a:not(.accessibility-widget a) {
+  color: #b8115a !important; /* Darker version of cranberry for better contrast */
+}
+
+/* =============================================================================
+   INVERT MODE CONTRAST IMPLEMENTATION
+   ============================================================================= */
+
+.accessibility-contrast-invert {
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+
+.accessibility-contrast-invert img:not(.accessibility-widget img) {
+  filter: invert(1) hue-rotate(180deg) !important; /* Re-invert images */
+}
+
+/* =============================================================================
+   TEXT SCALING IMPLEMENTATION
+   ============================================================================= */
+
+.accessibility-text-scale-2 {
+  font-size: 112.5% !important; /* 18px base instead of 16px */
+}
+
+.accessibility-text-scale-2 * {
+  font-size: inherit !important;
+}
+
+.accessibility-text-scale-3 {
+  font-size: 125% !important; /* 20px base */
+}
+
+.accessibility-text-scale-3 * {
+  font-size: inherit !important;
+}
+
+.accessibility-text-scale-4 {
+  font-size: 150% !important; /* 24px base */
+}
+
+.accessibility-text-scale-4 * {
+  font-size: inherit !important;
+}
+
+/* =============================================================================
+   FONT TYPE IMPLEMENTATIONS
+   ============================================================================= */
+
+.accessibility-font-dyslexia * {
+  font-family: 'OpenDyslexic', monospace !important;
+}
+
+.accessibility-font-legible * {
+  font-family: 'Arial', 'Helvetica', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* =============================================================================
+   TEXT SPACING AND LINE HEIGHT
+   ============================================================================= */
+
+.accessibility-letter-spacing * {
+  letter-spacing: var(--accessibility-letter-spacing, normal) !important;
+}
+
+.accessibility-line-height * {
+  line-height: var(--accessibility-line-height, 1.5) !important;
+}
+
+.accessibility-text-align * {
+  text-align: var(--accessibility-text-align, left) !important;
+}
+
+/* =============================================================================
+   CURSOR IMPLEMENTATIONS
+   ============================================================================= */
+
+.accessibility-cursor-big,
+.accessibility-cursor-big * {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M2 2 l8 20 l4 -4 l8 8 l2 -2 l-8 -8 l4 -4 Z" fill="black"/></svg>'), auto !important;
+}
+
+.accessibility-cursor-reading-guide {
+  cursor: none !important;
+}
+
+.accessibility-cursor-reading-guide::before {
+  content: '';
+  position: fixed;
+  top: var(--mouse-y, 0px);
+  left: 0;
+  width: 100vw;
+  height: 2px;
+  background-color: #ff6b9d;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translateY(-1px);
+}
+
+.accessibility-cursor-reading-mask {
+  cursor: none !important;
+}
+
+.accessibility-cursor-reading-mask::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    linear-gradient(
+      transparent calc(var(--mouse-y, 50vh) - 30px),
+      rgba(0,0,0,0.8) calc(var(--mouse-y, 50vh) - 30px),
+      rgba(0,0,0,0.8) calc(var(--mouse-y, 50vh) + 30px),
+      transparent calc(var(--mouse-y, 50vh) + 30px)
+    );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* =============================================================================
+   SATURATION IMPLEMENTATIONS
+   ============================================================================= */
+
+.accessibility-saturation-low {
+  filter: saturate(0.5) !important;
+}
+
+.accessibility-saturation-heavy {
+  filter: saturate(2) !important;
+}
+
+.accessibility-saturation-desaturate {
+  filter: grayscale(1) !important;
+}
+
+/* =============================================================================
+   INTERACTIVE FEATURES
+   ============================================================================= */
+
+/* Link Highlighting */
+.accessibility-highlight-links a:not(.accessibility-widget a) {
+  background-color: rgba(255, 107, 157, 0.2) !important; /* Cranberry highlight */
+  padding: 2px 4px !important;
+  border-radius: 3px !important;
+  border: 1px solid #ff6b9d !important;
+}
+
+/* Pause Animations */
+.accessibility-pause-animations * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Hide Images */
+.accessibility-hide-images img:not(.accessibility-widget img),
+.accessibility-hide-images picture:not(.accessibility-widget picture),
+.accessibility-hide-images svg:not(.accessibility-widget svg):not([role="button"]):not([role="link"]) {
+  opacity: 0.1 !important;
+  filter: grayscale(1) !important;
+}
+
+.accessibility-hide-images img:not(.accessibility-widget img)::after,
+.accessibility-hide-images picture:not(.accessibility-widget picture)::after {
+  content: 'Image Hidden';
+  position: absolute;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+/* Enhanced Tooltips */
+.accessibility-tooltips [title]:hover::after,
+.accessibility-tooltips [aria-label]:hover::after,
+.accessibility-tooltips [data-tooltip]:hover::after {
+  content: attr(title) attr(aria-label) attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  z-index: 10000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* =============================================================================
+   FOCUS ENHANCEMENTS
+   ============================================================================= */
+
+.accessibility-contrast-dark *:focus:not(.accessibility-widget *:focus),
+.accessibility-contrast-light *:focus:not(.accessibility-widget *:focus),
+*:focus:not(.accessibility-widget *:focus) {
+  outline: 3px solid #ff6b9d !important; /* Cranberry focus outline */
+  outline-offset: 2px !important;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
 @media (max-width: 768px) {
-  .accessibility-widget {
-    width: calc(100% - 40px);
-    right: 20px;
-    left: 20px;
+  .accessibility-text-scale-2 {
+    font-size: 110% !important;
   }
   
-  .accessibility-toggle {
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
+  .accessibility-text-scale-3 {
+    font-size: 118% !important;
   }
+  
+  .accessibility-text-scale-4 {
+    font-size: 130% !important;
+  }
+}
+
+/* =============================================================================
+   ACCESSIBILITY WIDGET PROTECTION
+   ============================================================================= */
+
+/* Ensure the accessibility widget itself is never affected by its own styles */
+.accessibility-widget,
+.accessibility-widget * {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  letter-spacing: normal !important;
+  text-align: left !important;
+  filter: none !important;
+  background: white !important;
+  color: black !important;
 }
