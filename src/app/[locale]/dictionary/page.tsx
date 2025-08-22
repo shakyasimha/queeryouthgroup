@@ -35,7 +35,7 @@ export default function DictionaryPage() {
       console.log('Fetching from Supabase...')
       
       const { data, error } = await supabase
-        .from('dictionary_terms')
+        .from('dictionary')
         .select('*')
         .order('english', { ascending: true })
 
