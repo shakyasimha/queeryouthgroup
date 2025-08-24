@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/wp-admin/:path*",
+      "destination": "http://legacy.queeryouthgroup.org.np/wp-admin/:path*"
+    },
+    {
+      "source": "/wp-content/:path*",
+      "destination": "http://legacy.queeryouthgroup.org.np/wp-content/:path*"
+    },
+    {
+      "source": "/wp-includes/:path*",
+      "destination": "http://legacy.queeryouthgroup.org.np/wp-includes/:path*"
+    },
+    {
+      "source": "/wp-json/:path*",
+      "destination": "http://legacy.queeryouthgroup.org.np/wp-json/:path*"
+    }
+  ]
+}
