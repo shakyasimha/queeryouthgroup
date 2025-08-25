@@ -73,7 +73,7 @@ export async function GET() {
             success: false,
             error: error instanceof Error ? error.message : 'Unknown error',
             errorName: error instanceof Error ? error.name : 'Unknown',
-            // @ts-ignore - error might have code property
+            // @ts-expect-error
             errorCode: error?.code,
             timestamp: new Date().toISOString(),
             nodeVersion: process.version,

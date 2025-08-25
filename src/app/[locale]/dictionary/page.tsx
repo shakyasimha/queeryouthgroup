@@ -127,7 +127,7 @@ export default function DictionaryPage() {
   // Fetch entries on component mount
   useEffect(() => {
     fetchEntries()
-  }, [])
+  }, [fetchEntries])
 
   if (loading) {
     return (

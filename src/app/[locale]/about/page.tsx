@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 // forcing dynamic rendering
 export const dynamic = "force-dynamic";
