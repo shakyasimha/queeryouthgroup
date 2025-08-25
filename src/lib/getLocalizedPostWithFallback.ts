@@ -11,7 +11,7 @@ export async function getLocalizedPostWithFallback(locale: string, baseSlug: str
             console.log(`Attempting to fetch: ${slug}`);
             
             const res = await fetch(
-                `https://queeryouthgroup.org.np/wp-json/wp/v2/posts?slug=${slug}`,
+                `https://cms.queeryouthgroup.org.np/~queeryouthgroup/wp-json/wp/v2/posts?slug=${slug}`,
                 { 
                     cache: "no-store",
                     headers: {
