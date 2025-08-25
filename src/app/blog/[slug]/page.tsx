@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
-import { PortableText } from '@portabletext/react'
+import { PortableText, PortableTextComponents } from '@portabletext/react'
+import Image from 'next/image'
 import { client, POST_QUERY, urlFor } from '@/lib/sanity'
 
 interface Post {
@@ -11,7 +12,7 @@ interface Post {
     asset: { _ref: string }
     alt?: string
   }
-  body: any[]
+  body: PortableTextBlock[]
   author?: {
     name: string
     image?: {
@@ -20,19 +21,61 @@ interface Post {
   }
 }
 
-// Custom components for PortableText
-const components = {
+interface PortableTextBlock {
+  _type: string
+  _key: string
+  children?: PortableTextChild[]
+  style?: string
+  markDefs?: MarkDef[]
+}
+
+interface PortableTextChild {
+  _type: 'span'
+  text: string
+  marks?: string[]
+}
+
+interface MarkDef {
+  _key: string
+  _type: string
+  href?: string
+}
+
+interface ImageBlock {
+  _type: 'image'
+  asset: {
+    _ref: string
+  }
+  alt?: string
+}
+
+interface LinkMark {
+  _type: 'link'
+  href: string
+}
+
+// Custom components for PortableText with proper types
+const components: PortableTextComponents = {
   types: {
-    image: ({ value }: any) => (
-      <img
-        src={urlFor(value)}
-        alt={value.alt || ''}
-        className="w-full h-auto my-8 rounded-lg"
-      />
-    ),
+    image: ({ value }: { value: ImageBlock }) => {
+      const imageUrl = urlFor(value)
+      if (!imageUrl) return null
+      
+      return (
+        <div className="w-full h-auto my-8">
+          <Image
+            src={imageUrl}
+            alt={value.alt || ''}
+            width={800}
+            height={400}
+            className="w-full h-auto rounded-lg"
+          />
+        </div>
+      )
+    },
   },
   marks: {
-    link: ({ children, value }: any) => (
+    link: ({ children, value }: { children: React.ReactNode; value: LinkMark }) => (
       <a 
         href={value.href} 
         className="text-blue-600 hover:underline"
@@ -44,10 +87,16 @@ const components = {
     ),
   },
   block: {
-    h1: ({ children }: any) => <h1 className="text-3xl font-bold my-6">{children}</h1>,
-    h2: ({ children }: any) => <h2 className="text-2xl font-semibold my-5">{children}</h2>,
-    h3: ({ children }: any) => <h3 className="text-xl font-medium my-4">{children}</h3>,
-    blockquote: ({ children }: any) => (
+    h1: ({ children }: { children: React.ReactNode }) => (
+      <h1 className="text-3xl font-bold my-6">{children}</h1>
+    ),
+    h2: ({ children }: { children: React.ReactNode }) => (
+      <h2 className="text-2xl font-semibold my-5">{children}</h2>
+    ),
+    h3: ({ children }: { children: React.ReactNode }) => (
+      <h3 className="text-xl font-medium my-4">{children}</h3>
+    ),
+    blockquote: ({ children }: { children: React.ReactNode }) => (
       <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4">
         {children}
       </blockquote>
@@ -68,14 +117,21 @@ export default async function PostPage({
     notFound()
   }
 
+  const mainImageUrl = post.mainImage ? urlFor(post.mainImage) : null
+  const authorImageUrl = post.author?.image ? urlFor(post.author.image) : null
+
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
-      {post.mainImage && (
-        <img
-          src={urlFor(post.mainImage)}
-          alt={post.mainImage.alt || post.title}
-          className="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
-        />
+      {mainImageUrl && (
+        <div className="w-full h-64 md:h-96 relative mb-8 rounded-lg overflow-hidden">
+          <Image
+            src={mainImageUrl}
+            alt={post.mainImage?.alt || post.title}
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
       )}
 
       <header className="mb-8">
@@ -84,12 +140,15 @@ export default async function PostPage({
         <div className="flex items-center gap-4 text-gray-600">
           {post.author && (
             <div className="flex items-center gap-2">
-              {post.author.image && (
-                <img
-                  src={urlFor(post.author.image)}
-                  alt={post.author.name}
-                  className="w-8 h-8 rounded-full"
-                />
+              {authorImageUrl && (
+                <div className="w-8 h-8 relative rounded-full overflow-hidden">
+                  <Image
+                    src={authorImageUrl}
+                    alt={post.author.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               )}
               <span>by {post.author.name}</span>
             </div>
