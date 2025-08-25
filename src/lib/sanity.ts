@@ -40,7 +40,8 @@ export function urlFor(source: SanityImageSource) {
   }
   
   const ref = source.asset._ref
-  const [file, id, dimensions, format] = ref.split('-')
+  // Remove unused 'file' variable - we only need id, dimensions, and format
+  const [, id, dimensions, format] = ref.split('-')
   
   if (!id || !dimensions || !format) {
     return ''
