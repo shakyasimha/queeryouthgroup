@@ -73,7 +73,7 @@ export async function GET() {
             success: false,
             error: error instanceof Error ? error.message : 'Unknown error',
             errorName: error instanceof Error ? error.name : 'Unknown',
-            // @ts-expect-error
+            // @ts-expect-error - WordPress API response type not defined
             errorCode: error?.code,
             timestamp: new Date().toISOString(),
             nodeVersion: process.version,
