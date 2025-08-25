@@ -1,99 +1,38 @@
 import { notFound } from 'next/navigation'
 import { PortableText } from '@portabletext/react'
-import Image from 'next/image'
 import { client, POST_QUERY, urlFor } from '@/lib/sanity'
-
-// Define proper interfaces for Sanity types
-interface SanityImage {
-  asset: { _ref: string }
-  alt?: string
-  caption?: string
-}
-
-interface SanityAuthor {
-  name: string
-  image?: SanityImage
-}
-
-// Define types for Portable Text blocks
-interface PortableTextBlock {
-  _type: string
-  _key: string
-  children: Array<{
-    _type: string
-    _key: string
-    text: string
-    marks?: string[]
-  }>
-  markDefs?: Array<{
-    _key: string
-    _type: string
-    href?: string
-  }>
-  style?: string
-}
-
-interface PortableTextImage {
-  _type: 'image'
-  _key: string
-  asset: {
-    _ref: string
-  }
-  alt?: string
-  caption?: string
-}
-
-// Union type for all possible portable text types
-type PortableTextContent = PortableTextBlock | PortableTextImage;
 
 interface Post {
   title: string
   slug: { current: string }
   publishedAt: string
   excerpt?: string
-  mainImage?: SanityImage
-  body: PortableTextContent[] // ✅ Replaced any[] with proper type
-  author?: SanityAuthor
-}
-
-// Define proper types for PortableText components
-interface ImageValue {
-  value: SanityImage
-}
-
-interface LinkValue {
-  value: {
-    href: string
+  mainImage?: {
+    asset: { _ref: string }
+    alt?: string
   }
-  children: React.ReactNode
-}
-
-interface BlockValue {
-  children: React.ReactNode
+  body: any[]
+  author?: {
+    name: string
+    image?: {
+      asset: { _ref: string }
+    }
+  }
 }
 
 // Custom components for PortableText
 const components = {
   types: {
-    image: ({ value }: ImageValue) => (
-      <div className="w-full my-8 rounded-lg overflow-hidden">
-        <Image
-          src={urlFor(value).url()}
-          alt={value.alt || ''}
-          width={800}
-          height={400}
-          className="w-full h-auto"
-        />
-        {value.caption && (
-          <figcaption className="text-center text-sm text-gray-600 mt-2">
-            {value.caption}
-          </figcaption>
-        )}
-      </div>
+    image: ({ value }: any) => (
+      <img
+        src={urlFor(value)}
+        alt={value.alt || ''}
+        className="w-full h-auto my-8 rounded-lg"
+      />
     ),
   },
   marks: {
-    link: ({ children, value }: LinkValue) => (
+    link: ({ children, value }: any) => (
       <a 
         href={value.href} 
         className="text-blue-600 hover:underline"
@@ -105,10 +44,10 @@ const components = {
     ),
   },
   block: {
-    h1: ({ children }: BlockValue) => <h1 className="text-3xl font-bold my-6">{children}</h1>,
-    h2: ({ children }: BlockValue) => <h2 className="text-2xl font-semibold my-5">{children}</h2>,
-    h3: ({ children }: BlockValue) => <h3 className="text-xl font-medium my-4">{children}</h3>,
-    blockquote: ({ children }: BlockValue) => (
+    h1: ({ children }: any) => <h1 className="text-3xl font-bold my-6">{children}</h1>,
+    h2: ({ children }: any) => <h2 className="text-2xl font-semibold my-5">{children}</h2>,
+    h3: ({ children }: any) => <h3 className="text-xl font-medium my-4">{children}</h3>,
+    blockquote: ({ children }: any) => (
       <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4">
         {children}
       </blockquote>
@@ -116,8 +55,14 @@ const components = {
   },
 }
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
-  const post: Post = await client.fetch(POST_QUERY, { slug: params.slug })
+export default async function PostPage({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
+}) {
+  // Await the params Promise
+  const { slug } = await params
+  const post: Post = await client.fetch(POST_QUERY, { slug })
 
   if (!post) {
     notFound()
@@ -126,14 +71,11 @@ export default async function PostPage({ params }: { params: { slug: string } })
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
       {post.mainImage && (
-        <div className="w-full h-64 md:h-96 relative mb-8 rounded-lg overflow-hidden">
-          <Image
-            src={urlFor(post.mainImage).url()}
-            alt={post.mainImage.alt || post.title}
-            fill
-            className="object-cover"
-          />
-        </div>
+        <img
+          src={urlFor(post.mainImage)}
+          alt={post.mainImage.alt || post.title}
+          className="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
+        />
       )}
 
       <header className="mb-8">
@@ -143,14 +85,11 @@ export default async function PostPage({ params }: { params: { slug: string } })
           {post.author && (
             <div className="flex items-center gap-2">
               {post.author.image && (
-                <div className="w-8 h-8 relative">
-                  <Image
-                    src={urlFor(post.author.image).url()}
-                    alt={post.author.name}
-                    fill
-                    className="rounded-full object-cover"
-                  />
-                </div>
+                <img
+                  src={urlFor(post.author.image)}
+                  alt={post.author.name}
+                  className="w-8 h-8 rounded-full"
+                />
               )}
               <span>by {post.author.name}</span>
             </div>
@@ -173,7 +112,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
   )
 }
 
-// Generate static params for all posts
+// Generate static params for all posts - also updated for Next.js 15
 export async function generateStaticParams() {
   const posts: { slug: { current: string } }[] = await client.fetch(
     `*[_type == "post" && defined(slug.current)][].slug`
