@@ -1,3 +1,6 @@
+// forcing dynamic rendering
+export const dynamic = "force-dynamic";
+
 import { alegreyaSans, roboto } from "@/ui/fonts";
 import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback";
 

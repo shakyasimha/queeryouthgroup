@@ -1,4 +1,6 @@
 // staff/page.tsx
+// forcing dynamic rendering
+export const dynamic = "force-dynamic";
 
 import { useTranslations } from 'next-intl';
 import { alegreyaSans } from "@/ui/fonts";

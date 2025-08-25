@@ -16,6 +16,38 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  // Add rewrites to bypass next-intl for cms directory
+  async rewrites() {
+    return {
+      beforeFiles: [
+        // Bypass next-intl for cms directory and all its subdirectories
+        {
+          source: '/cms/:path*',
+          destination: '/cms/:path*',
+          locale: false, // This bypasses internationalization
+        },
+      ],
+    }
+  },
+
+  // Alternative: Use redirects if rewrites don't work
+  async redirects() {
+    return [
+      {
+        source: '/en/cms/:path*',
+        destination: '/cms/:path*',
+        permanent: false,
+        locale: false,
+      },
+      {
+        source: '/ne/cms/:path*',
+        destination: '/cms/:path*',
+        permanent: false,
+        locale: false,
+      },
+    ]
+  },
 };
 
 const withNextIntl = createNextIntlPlugin(); 
