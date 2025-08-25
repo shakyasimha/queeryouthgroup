@@ -16,6 +16,7 @@
     "@sanity/core": "^2.36.2",
     "@sanity/icons": "^3.7.4",
     "@sanity/image-url": "^1.1.0",
+    "@sanity/types": "^4.5.0",
     "@sanity/vision": "^4.5.0",
     "@supabase/auth-helpers-nextjs": "^0.10.0",
     "@supabase/ssr": "^0.6.1",

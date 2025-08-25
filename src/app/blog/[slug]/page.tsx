@@ -15,13 +15,44 @@ interface SanityAuthor {
   image?: SanityImage
 }
 
+// Define types for Portable Text blocks
+interface PortableTextBlock {
+  _type: string
+  _key: string
+  children: Array<{
+    _type: string
+    _key: string
+    text: string
+    marks?: string[]
+  }>
+  markDefs?: Array<{
+    _key: string
+    _type: string
+    href?: string
+  }>
+  style?: string
+}
+
+interface PortableTextImage {
+  _type: 'image'
+  _key: string
+  asset: {
+    _ref: string
+  }
+  alt?: string
+  caption?: string
+}
+
+// Union type for all possible portable text types
+type PortableTextContent = PortableTextBlock | PortableTextImage;
+
 interface Post {
   title: string
   slug: { current: string }
   publishedAt: string
   excerpt?: string
   mainImage?: SanityImage
-  body: any[] // This can be more specific with PortableText types
+  body: PortableTextContent[] // ✅ Replaced any[] with proper type
   author?: SanityAuthor
 }
 
