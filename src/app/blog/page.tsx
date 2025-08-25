@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { client, POSTS_QUERY, urlFor } from '@/lib/sanity'
 
 interface Post {
@@ -24,11 +25,14 @@ export default async function BlogPage() {
         {posts.map((post) => (
           <article key={post._id} className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
             {post.mainImage && (
-              <img
-                src={urlFor(post.mainImage)}
-                alt={post.mainImage.alt || post.title}
-                className="w-full h-48 object-cover"
-              />
+              <div className="w-full h-48 relative">
+                <Image
+                  src={urlFor(post.mainImage).url()}
+                  alt={post.mainImage.alt || post.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
             )}
             
             <div className="p-6">

@@ -5,11 +5,10 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!
 const apiVersion = '2024-01-01'
 
 export const client = createClient({
-  projectId,
-  dataset,
-  apiVersion,
-  useCdn: false, // Set to true for production
-  token: process.env.SANITY_API_TOKEN, // Only needed for mutations
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  useCdn: process.env.NODE_ENV === 'production',
+  apiVersion: '2023-05-03',
 })
 
 // GROQ queries
