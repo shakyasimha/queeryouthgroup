@@ -10,14 +10,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  async rewrites() {
-    return [
-      {
-        source: '/studio/:path*',
-        destination: '/studio/:path*', // Points to the Next.js route
-      },
-    ];
-  },
 };
 
 const withNextIntl = createNextIntlPlugin(); 
