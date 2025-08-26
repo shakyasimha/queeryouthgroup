@@ -9,45 +9,63 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 export default function Notice() {
-  const [images, setImages] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  /* This section is for fetching image from slugs */
+  // const [images, setImages] = useState<string[]>([]);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchNoticeImages() {
-      try {
-        // Wordpress slug is here
-        const res = await fetch(
-          "https://queeryouthgroup.org.np/wp-json/wp/v2/posts?slug=notice"
-        );
-        const data = await res.json();
+  // useEffect(() => {
+  //   async function fetchNoticeImages() {
+  //     try {
+  //       // Wordpress slug is here
+  //       const res = await fetch(
+  //         "https://queeryouthgroup.org.np/wp-json/wp/v2/posts?slug=notice"
+  //       );
+  //       const data = await res.json();
 
-        if (data.length > 0) {
-          const content = data[0].content.rendered;
+  //       if (data.length > 0) {
+  //         const content = data[0].content.rendered;
 
-          // Regex to extract all <img src="..."> URLs
-          const imgRegex = /<img[^>]+src=["']([^"']+)["']/g;
-          const urls: string[] = [];
-          let match;
-          while ((match = imgRegex.exec(content)) !== null) {
-            urls.push(match[1]);
-          }
+  //         // Regex to extract all <img src="..."> URLs
+  //         const imgRegex = /<img[^>]+src=["']([^"']+)["']/g;
+  //         const urls: string[] = [];
+  //         let match;
+  //         while ((match = imgRegex.exec(content)) !== null) {
+  //           urls.push(match[1]);
+  //         }
 
-          setImages(urls);
-        }
-      } catch (err) {
-        console.error("Error fetching notice images:", err);
-      } finally {
-        setIsLoading(false);
-      }
-    }
+  //         setImages(urls);
+  //       }
+  //     } catch (err) {
+  //       console.error("Error fetching notice images:", err);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
 
-    fetchNoticeImages();
+  //   fetchNoticeImages();
+  // }, []);
+
+  // // Don't render anything if loading or no images found
+  // if (isLoading || images.length === 0) {
+  //   return null;
+  // }
+
+  /* This section is for fetching images locally when slugs aren't working */
+  const [images, setImages] = useState([]);
+
+  useEffect(()=>{
+    const fetchImagesFromPublic = () => {
+      const imagePaths = [
+        '/images/notice/banda-notice-08.jpg',
+        '/images/notice/banda-notice-09-09-09.jpg'
+      ];
+
+      setImages(imagePaths);
+    };
+
+    fetchImagesFromPublic();
   }, []);
 
-  // Don't render anything if loading or no images found
-  if (isLoading || images.length === 0) {
-    return null;
-  }
 
   return (
     <div className="w-[400px] h-[400px] lg:h-[800px] lg:w-[800px] relative group">
