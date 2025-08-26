@@ -10,12 +10,14 @@ export const authorType = defineType({
     defineField({
       name: 'name',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
       type: 'slug',
       options: {
         source: 'name',
+        maxLength: 96,
       },
     }),
     defineField({
@@ -30,6 +32,7 @@ export const authorType = defineType({
       type: 'array',
       of: [
         defineArrayMember({
+          title: 'Block',
           type: 'block',
           styles: [{title: 'Normal', value: 'normal'}],
           lists: [],
