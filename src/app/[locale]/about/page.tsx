@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 
 import { alegreyaSans, roboto } from "@/ui/fonts";
 import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback";
-import { PortableText } from '@portabletext/react';
+import { PortableText, PortableTextBlock, PortableTextComponentProps } from '@portabletext/react';
 import { urlFor } from '@/sanity/lib/client';
 import Image from "next/image";
 
@@ -17,10 +17,18 @@ interface PageProps {
     params: Promise<{ locale: string }>;
 }
 
+// Type for Sanity image in PortableText
+interface SanityImageValue {
+    asset: {
+        _ref: string;
+    };
+    alt?: string;
+}
+
 // Custom components for PortableText rendering
 const portableTextComponents = {
     types: {
-        image: ({ value }: any) => {
+        image: ({ value }: { value: SanityImageValue }) => {
             if (!value?.asset?._ref) {
                 return null;
             }
@@ -38,17 +46,17 @@ const portableTextComponents = {
         },
     },
     block: {
-        normal: ({ children }: any) => (
+        normal: ({ children }: PortableTextComponentProps<PortableTextBlock>) => (
             <p className={`${roboto.className} text-justify text-black mb-4`}>
                 {children}
             </p>
         ),
-        h1: ({ children }: any) => (
+        h1: ({ children }: PortableTextComponentProps<PortableTextBlock>) => (
             <h1 className={`${alegreyaSans.className} text-2xl font-bold mb-4`}>
                 {children}
             </h1>
         ),
-        h2: ({ children }: any) => (
+        h2: ({ children }: PortableTextComponentProps<PortableTextBlock>) => (
             <h2 className={`${alegreyaSans.className} text-xl font-bold mb-3`}>
                 {children}
             </h2>
