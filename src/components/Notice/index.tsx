@@ -51,7 +51,7 @@ export default function Notice() {
   // }
 
   /* This section is for fetching images locally when slugs aren't working */
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<string[]>([]);
 
   useEffect(()=>{
     const fetchImagesFromPublic = () => {
