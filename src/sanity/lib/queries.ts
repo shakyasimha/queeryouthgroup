@@ -1,4 +1,5 @@
 import { groq } from 'next-sanity'
+import { PortableTextBlock } from '@portabletext/types'
 
 // Define types for your posts
 export interface SanityPost {
@@ -7,7 +8,7 @@ export interface SanityPost {
   slug: {
     current: string;
   };
-  body: any; // PortableText content
+  body: PortableTextBlock[]; // Properly typed PortableText content
   mainImage?: {
     asset: {
       _ref: string;
