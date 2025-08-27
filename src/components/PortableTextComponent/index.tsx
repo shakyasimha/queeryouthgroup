@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/client';
 import { alegreyaSans, roboto, notoSansDevanagari } from '@/ui/fonts';
 
+
 // Type for Sanity image in PortableText
 interface SanityImageValue {
   asset: {
@@ -45,7 +46,7 @@ const getFontClass = (children: React.ReactNode, isHeader: boolean = false): str
 
 export const portableTextComponents: PortableTextComponents = {
   types: {
-    image: ({ value }: { value: SanityImageValue }): JSX.Element | null => {
+    image: ({ value }: { value: SanityImageValue }): React.JSX.Element | null => {
       if (!value?.asset?._ref) {
         return null;
       }
