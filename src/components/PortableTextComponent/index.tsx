@@ -167,7 +167,7 @@ export const portableTextComponents: PortableTextComponents = {
 export const compactPortableTextComponents: PortableTextComponents = {
   ...portableTextComponents,
   block: {
-    ...portableTextComponents.block,
+    ...(portableTextComponents.block as Record<string, PortableTextComponents['block']>),
     normal: ({ children }: BlockComponentProps) => (
       <p className={`${getFontClass(children)} text-justify text-gray-800 mb-2 leading-relaxed`}>
         {children}
@@ -175,6 +175,7 @@ export const compactPortableTextComponents: PortableTextComponents = {
     ),
   },
 };
+
 
 // Default export for easier imports
 export default portableTextComponents;
