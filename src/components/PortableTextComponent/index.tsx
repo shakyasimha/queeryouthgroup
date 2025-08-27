@@ -1,11 +1,10 @@
 // @/components/PortableTextComponent/index.tsx
-
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { PortableTextComponents } from '@portabletext/react';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/client';
 import { alegreyaSans, roboto, notoSansDevanagari } from '@/ui/fonts';
-
+import { PortableTextBlock, PortableTextMarkDefinition, PortableTextSpan, PortableTextTextBlock } from '@portabletext/types';
 
 // Type for Sanity image in PortableText
 interface SanityImageValue {
@@ -13,14 +12,25 @@ interface SanityImageValue {
     _ref: string;
   };
   alt?: string;
+  caption?: string;
 }
 
-// More specific type for component props
-interface PortableTextComponentProps {
-  children?: React.ReactNode;
+// Properly typed component props
+interface BlockComponentProps {
+  children: ReactNode;
+  value?: PortableTextBlock;
+}
+
+interface MarkComponentProps {
+  children: ReactNode;
   value?: {
+    href?: string;
     [key: string]: unknown;
   };
+}
+
+interface ListComponentProps {
+  children: ReactNode;
 }
 
 // Helper function to detect if text contains Nepali (Devanagari) characters
@@ -31,7 +41,7 @@ const hasNepaliText = (text: string): boolean => {
 };
 
 // Helper function to get appropriate font class based on text content and type
-const getFontClass = (children: React.ReactNode, isHeader: boolean = false): string => {
+const getFontClass = (children: ReactNode, isHeader: boolean = false): string => {
   // Convert children to string to check for Nepali characters
   const textContent = React.Children.toArray(children).join('');
   
@@ -51,67 +61,72 @@ export const portableTextComponents: PortableTextComponents = {
         return null;
       }
       return (
-        <div className="my-6 flex justify-center">
+        <div className="my-6 flex justify-center flex-col items-center">
           <Image
             src={urlFor(value).url()}
             alt={value.alt || 'Image'}
-            width={400}
+            width={600}
             height={400}
-            className="rounded-lg object-contain max-w-full h-auto"
+            className="rounded-lg object-contain max-w-full h-auto shadow-md"
             style={{ objectFit: 'contain' as const }}
           />
+          {value.caption && (
+            <figcaption className="text-center text-sm text-gray-600 mt-2">
+              {value.caption}
+            </figcaption>
+          )}
         </div>
       );
     },
     code: ({ value }: { value: { code: string; language: string } }) => (
-      <pre className="bg-gray-100 p-4 rounded-lg my-6">
-        <code>{value.code}</code>
+      <pre className="bg-gray-100 p-4 rounded-lg my-6 overflow-x-auto border border-gray-200">
+        <code className={`text-sm ${roboto.className} font-mono`}>{value.code}</code>
       </pre>
     ),
   },
   block: {
-    normal: ({ children }: PortableTextComponentProps) => (
-      <p className={`${getFontClass(children)} text-justify text-black mb-4`}>
+    normal: ({ children }: BlockComponentProps) => (
+      <p className={`${getFontClass(children)} text-justify text-gray-800 mb-4 leading-relaxed`}>
         {children}
       </p>
     ),
-    h1: ({ children }: PortableTextComponentProps) => (
-      <h1 className={`${getFontClass(children, true)} text-2xl text-center font-bold mb-4 text-black`}>
+    h1: ({ children }: BlockComponentProps) => (
+      <h1 className={`${getFontClass(children, true)} text-3xl md:text-4xl text-center font-bold my-6 text-gray-900`}>
         {children}
       </h1>
     ),
-    h2: ({ children }: PortableTextComponentProps) => (
-      <h2 className={`${getFontClass(children, true)} text-xl text-center font-bold mb-3 text-black`}>
+    h2: ({ children }: BlockComponentProps) => (
+      <h2 className={`${getFontClass(children, true)} text-2xl md:text-3xl text-center font-bold my-5 text-gray-900`}>
         {children}
       </h2>
     ),
-    h3: ({ children }: PortableTextComponentProps) => (
-      <h3 className={`${getFontClass(children, true)} text-lg text-center font-bold mb-2 text-black`}>
+    h3: ({ children }: BlockComponentProps) => (
+      <h3 className={`${getFontClass(children, true)} text-xl md:text-2xl text-center font-bold my-4 text-gray-900`}>
         {children}
       </h3>
     ),
-    h4: ({ children }: PortableTextComponentProps) => (
-      <h4 className={`${getFontClass(children, true)} text-base text-center font-bold mb-2 text-black`}>
+    h4: ({ children }: BlockComponentProps) => (
+      <h4 className={`${getFontClass(children, true)} text-lg md:text-xl text-center font-bold my-3 text-gray-900`}>
         {children}
       </h4>
     ),
-    blockquote: ({ children }: PortableTextComponentProps) => (
-      <blockquote className={`${getFontClass(children)} border-l-4 border-gray-300 pl-4 italic my-4 text-black`}>
+    blockquote: ({ children }: BlockComponentProps) => (
+      <blockquote className={`${getFontClass(children)} border-l-4 border-blue-500 pl-4 italic my-6 bg-blue-50 py-3 px-4 rounded-r text-gray-700`}>
         {children}
       </blockquote>
     ),
   },
   marks: {
-    strong: ({ children }: PortableTextComponentProps) => (
-      <strong className="font-bold">{children}</strong>
+    strong: ({ children }: MarkComponentProps) => (
+      <strong className="font-bold text-gray-900">{children}</strong>
     ),
-    em: ({ children }: PortableTextComponentProps) => (
+    em: ({ children }: MarkComponentProps) => (
       <em className="italic">{children}</em>
     ),
-    link: ({ value, children }: PortableTextComponentProps & { value?: { href: string } }) => (
+    link: ({ value, children }: MarkComponentProps) => (
       <a 
         href={value?.href} 
-        className="text-blue-600 hover:text-blue-800 underline"
+        className="text-blue-600 hover:text-blue-800 underline transition-colors duration-200 font-medium"
         target={value?.href?.startsWith('http') ? '_blank' : undefined}
         rel={value?.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
       >
@@ -120,25 +135,25 @@ export const portableTextComponents: PortableTextComponents = {
     ),
   },
   list: {
-    bullet: ({ children }: PortableTextComponentProps) => (
-      <ul className={`${getFontClass(children)} text-black mb-4 pl-6 list-disc`}>
+    bullet: ({ children }: ListComponentProps) => (
+      <ul className={`${getFontClass(children)} text-gray-800 mb-6 pl-6 list-disc space-y-2`}>
         {children}
       </ul>
     ),
-    number: ({ children }: PortableTextComponentProps) => (
-      <ol className={`${getFontClass(children)} text-black mb-4 pl-6 list-decimal`}>
+    number: ({ children }: ListComponentProps) => (
+      <ol className={`${getFontClass(children)} text-gray-800 mb-6 pl-6 list-decimal space-y-2`}>
         {children}
       </ol>
     ),
   },
   listItem: {
-    bullet: ({ children }: PortableTextComponentProps) => (
-      <li className={`${getFontClass(children)} text-black mb-2`}>
+    bullet: ({ children }: ListComponentProps) => (
+      <li className={`${getFontClass(children)} text-gray-800`}>
         {children}
       </li>
     ),
-    number: ({ children }: PortableTextComponentProps) => (
-      <li className={`${getFontClass(children)} text-black mb-2`}>
+    number: ({ children }: ListComponentProps) => (
+      <li className={`${getFontClass(children)} text-gray-800`}>
         {children}
       </li>
     ),
@@ -150,10 +165,13 @@ export const compactPortableTextComponents: PortableTextComponents = {
   ...portableTextComponents,
   block: {
     ...portableTextComponents.block,
-    normal: ({ children }: PortableTextComponentProps) => (
-      <p className={`${getFontClass(children)} text-justify text-black mb-2`}>
+    normal: ({ children }: BlockComponentProps) => (
+      <p className={`${getFontClass(children)} text-justify text-gray-800 mb-2 leading-relaxed`}>
         {children}
       </p>
     ),
   },
 };
+
+// Default export for easier imports
+export default portableTextComponents;
