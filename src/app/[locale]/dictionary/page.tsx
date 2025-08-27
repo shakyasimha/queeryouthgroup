@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { createClient } from '@/utils/supabase/client'
+import { roboto, notoSansDevanagari } from '@/ui/fonts'
 
 // Define the type for your dictionary entry
 interface DictionaryEntry {
@@ -24,38 +25,9 @@ export default function DictionaryPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [language, setLanguage] = useState<'en' | 'ne'>('en')
-  const [searchMode, setSearchMode] = useState<'prefix' | 'full'>('prefix') // New state for search mode
+  const [searchMode, setSearchMode] = useState<'prefix' | 'full'>('prefix')
 
   const supabase = createClient()
-
-  // Fetch dictionary entries from Supabase
-  const fetchEntries = async () => {
-    try {
-      setLoading(true)
-      console.log('Fetching from Supabase...')
-      
-      const { data, error } = await supabase
-        .from('dictionary')
-        .select('*')
-        .order('english', { ascending: true })
-
-      console.log('Supabase response:', { data, error })
-
-      if (error) {
-        console.error('Supabase error:', error)
-        throw error
-      }
-
-      setEntries(data || [])
-      setFilteredEntries(data || [])
-      console.log('Entries loaded:', data?.length)
-    } catch (err) {
-      console.error('Fetch error:', err)
-      setError(err instanceof Error ? err.message : 'An error occurred')
-    } finally {
-      setLoading(false)
-    }
-  }
 
   // Real-time filtering function
   const filterEntries = (term: string) => {
@@ -124,17 +96,75 @@ export default function DictionaryPage() {
     }
   }
 
-  // Fetch entries on component mount
+  // Fetch dictionary entries from Supabase - moved inside useEffect
   useEffect(() => {
+    const fetchEntries = async () => {
+      try {
+        setLoading(true)
+        console.log('Fetching from Supabase...')
+        
+        const { data, error } = await supabase
+          .from('dictionary')
+          .select('*')
+          .order('english', { ascending: true })
+
+        console.log('Supabase response:', { data, error })
+
+        if (error) {
+          console.error('Supabase error:', error)
+          throw error
+        }
+
+        setEntries(data || [])
+        setFilteredEntries(data || [])
+        console.log('Entries loaded:', data?.length)
+      } catch (err) {
+        console.error('Fetch error:', err)
+        setError(err instanceof Error ? err.message : 'An error occurred')
+      } finally {
+        setLoading(false)
+      }
+    }
+
     fetchEntries()
-  }, [fetchEntries])
+  }, []) // Empty dependency array - only run on mount
+
+  // Separate function for retry button
+  const retryFetch = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      console.log('Retrying fetch from Supabase...')
+      
+      const { data, error } = await supabase
+        .from('dictionary')
+        .select('*')
+        .order('english', { ascending: true })
+
+      console.log('Supabase response:', { data, error })
+
+      if (error) {
+        console.error('Supabase error:', error)
+        throw error
+      }
+
+      setEntries(data || [])
+      setFilteredEntries(data || [])
+      console.log('Entries loaded:', data?.length)
+    } catch (err) {
+      console.error('Fetch error:', err)
+      setError(err instanceof Error ? err.message : 'An error occurred')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className={`min-h-screen bg-gray-50 flex items-center justify-center ${roboto.className}`}>
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">
+          <p className={`mt-4 text-gray-600 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
             {language === 'en' ? 'Loading dictionary...' : 'शब्दकोश लोड हुँदैछ...'}
           </p>
         </div>
@@ -144,15 +174,15 @@ export default function DictionaryPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className={`min-h-screen bg-gray-50 flex items-center justify-center ${roboto.className}`}>
         <div className="text-center">
-          <div className="text-red-500 text-xl mb-4">
+          <div className={`text-red-500 text-xl mb-4 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
             {language === 'en' ? 'Error loading dictionary' : 'शब्दकोश लोड गर्न त्रुटि'}
           </div>
-          <p className="text-gray-600 mb-4">{error}</p>
+          <p className={`text-gray-600 mb-4 ${roboto.className}`}>{error}</p>
           <button
-            onClick={fetchEntries}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+            onClick={retryFetch}
+            className={`bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}
           >
             {language === 'en' ? 'Try Again' : 'पुन: प्रयास'}
           </button>
@@ -162,22 +192,22 @@ export default function DictionaryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className={`min-h-screen bg-gray-50 py-8 ${roboto.className}`}>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-4 mb-4">
-            <h1 className="text-4xl font-bold text-gray-900">
+            <h1 className={`text-4xl font-bold text-gray-900 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
               {language === 'en' ? 'SOGIESC Dictionary' : 'SOGIESC शब्दकोश'}
             </h1>
             <button
               onClick={toggleLanguage}
-              className="bg-[#d41367] text-white px-4 py-2 rounded-lg hover:bg-[#d41367]/50 transition-colors text-sm font-medium"
+              className={`bg-[#d41367] text-white px-4 py-2 rounded-lg hover:bg-[#d41367]/50 transition-colors text-sm font-medium ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}
             >
               {language === 'en' ? 'नेपाली' : 'English'}
             </button>
           </div>
-          <p className="text-gray-600">
+          <p className={`text-gray-600 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
             {language === 'en' 
               ? `Search through ${entries.length} entries` 
               : `${entries.length} शब्दहरू खोज्नुहोस्`
@@ -196,7 +226,7 @@ export default function DictionaryPage() {
                   searchMode === 'prefix'
                     ? 'bg-[#d41367] text-white'
                     : 'text-gray-600 hover:text-gray-900'
-                }`}
+                } ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}
               >
                 {language === 'en' ? 'Starts With' : 'सुरु हुन्छ'}
               </button>
@@ -206,7 +236,7 @@ export default function DictionaryPage() {
                   searchMode === 'full'
                     ? 'bg-[#d41367] text-white'
                     : 'text-gray-600 hover:text-gray-900'
-                }`}
+                } ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}
               >
                 {language === 'en' ? 'Full Search' : 'पूर्ण खोज'}
               </button>
@@ -229,14 +259,14 @@ export default function DictionaryPage() {
                 value={searchTerm}
                 onChange={(e) => handleSearchChange(e.target.value)}
                 onKeyPress={handleKeyPress}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#d41367] focus:border-[#d41367] outline-none text-black"
+                className={`w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#d41367] focus:border-[#d41367] outline-none text-black ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}
               />
             </div>
             <div className="flex gap-2">
               {searchTerm && (
                 <button
                   onClick={clearSearch}
-                  className="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-colors font-medium"
+                  className={`bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-colors font-medium ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}
                 >
                   {language === 'en' ? 'Clear' : 'मेटाउनुहोस्'}
                 </button>
@@ -246,13 +276,13 @@ export default function DictionaryPage() {
           
           {searchTerm && (
             <div className="mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-              <p className="text-sm text-gray-600">
+              <p className={`text-sm text-gray-600 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
                 {language === 'en' 
                   ? `Found ${filteredEntries.length} result${filteredEntries.length !== 1 ? 's' : ''} for "${searchTerm}"`
                   : `"${searchTerm}" का लागि ${filteredEntries.length} परिणाम फेला पर्यो`
                 }
               </p>
-              <p className="text-xs text-gray-500">
+              <p className={`text-xs text-gray-500 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
                 {searchMode === 'prefix' 
                   ? (language === 'en' ? 'Showing words starting with these letters' : 'यी अक्षरहरूले सुरु हुने शब्दहरू देखाउँदै')
                   : (language === 'en' ? 'Searching all content' : 'सबै सामग्री खोजिँदै')
@@ -266,7 +296,7 @@ export default function DictionaryPage() {
         <div className="space-y-6">
           {filteredEntries.length === 0 ? (
             <div className="bg-white rounded-lg shadow-md p-8 text-center">
-              <p className="text-gray-500 text-lg">
+              <p className={`text-gray-500 text-lg ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
                 {searchTerm 
                   ? (searchMode === 'prefix'
                       ? (language === 'en' ? `No words found starting with "${searchTerm}"` : `"${searchTerm}" ले सुरु हुने कुनै शब्द फेला परेन`)
@@ -276,7 +306,7 @@ export default function DictionaryPage() {
                 }
               </p>
               {searchTerm && searchMode === 'prefix' && (
-                <p className="text-sm text-gray-400 mt-2">
+                <p className={`text-sm text-gray-400 mt-2 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
                   {language === 'en' 
                     ? 'Try switching to "Full Search" for broader results' 
                     : '"पूर्ण खोज" मा स्विच गरेर व्यापक परिणामहरू प्राप्त गर्नुहोस्'
@@ -291,10 +321,10 @@ export default function DictionaryPage() {
                 <div className="border-b border-gray-200 pb-4 mb-6">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
-                      <h2 className="text-3xl font-bold text-gray-900 mb-1">
+                      <h2 className={`text-3xl font-bold text-gray-900 mb-1 ${roboto.className}`}>
                         {entry.english}
                       </h2>
-                      <h3 className="text-2xl font-semibold text-indigo-700" style={{ fontFamily: 'serif' }}>
+                      <h3 className={`text-2xl font-semibold text-indigo-700 ${notoSansDevanagari.className}`}>
                         {entry.nepali}
                       </h3>
                     </div>
@@ -308,10 +338,10 @@ export default function DictionaryPage() {
                       {/* English Definition */}
                       {entry.definition_en && entry.definition_en.trim() && (
                         <div className="bg-blue-50 rounded-lg p-4">
-                          <h4 className="font-semibold text-blue-900 mb-2">
+                          <h4 className={`font-semibold text-blue-900 mb-2 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
                             {language === 'en' ? 'Definition (English)' : 'परिभाषा (अङ्ग्रेजी)'}
                           </h4>
-                          <p className="text-gray-700 leading-relaxed">
+                          <p className={`text-gray-700 leading-relaxed ${roboto.className}`}>
                             {entry.definition_en}
                           </p>
                         </div>
@@ -320,10 +350,10 @@ export default function DictionaryPage() {
                       {/* Nepali Definition */}
                       {entry.definition_ne && entry.definition_ne.trim() && (
                         <div className="bg-green-50 rounded-lg p-4">
-                          <h4 className="font-semibold text-green-900 mb-2">
+                          <h4 className={`font-semibold text-green-900 mb-2 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
                             {language === 'en' ? 'Definition (Nepali)' : 'परिभाषा (नेपाली)'}
                           </h4>
-                          <p className="text-gray-700 leading-relaxed" style={{ fontFamily: 'serif' }}>
+                          <p className={`text-gray-700 leading-relaxed ${notoSansDevanagari.className}`}>
                             {entry.definition_ne}
                           </p>
                         </div>
@@ -336,10 +366,10 @@ export default function DictionaryPage() {
                     <div className="grid md:grid-cols-2 gap-6">
                       {entry.etymology_en && entry.etymology_en.trim() && (
                         <div className="bg-purple-50 rounded-lg p-4">
-                          <h4 className="font-semibold text-purple-900 mb-2">
+                          <h4 className={`font-semibold text-purple-900 mb-2 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
                             {language === 'en' ? 'Etymology (English)' : 'व्युत्पत्ति (अङ्ग्रेजी)'}
                           </h4>
-                          <p className="text-gray-700 leading-relaxed text-sm">
+                          <p className={`text-gray-700 leading-relaxed text-sm ${roboto.className}`}>
                             {entry.etymology_en}
                           </p>
                         </div>
@@ -347,10 +377,10 @@ export default function DictionaryPage() {
 
                       {entry.etymology_ne && entry.etymology_ne.trim() && (
                         <div className="bg-orange-50 rounded-lg p-4">
-                          <h4 className="font-semibold text-orange-900 mb-2">
+                          <h4 className={`font-semibold text-orange-900 mb-2 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
                             {language === 'en' ? 'Etymology (Nepali)' : 'व्युत्पत्ति (नेपाली)'}
                           </h4>
-                          <p className="text-gray-700 leading-relaxed text-sm" style={{ fontFamily: 'serif' }}>
+                          <p className={`text-gray-700 leading-relaxed text-sm ${notoSansDevanagari.className}`}>
                             {entry.etymology_ne}
                           </p>
                         </div>
@@ -363,10 +393,10 @@ export default function DictionaryPage() {
                     <div className="grid md:grid-cols-2 gap-6">
                       {entry.explanation_en && entry.explanation_en.trim() && (
                         <div className="bg-gray-50 rounded-lg p-4">
-                          <h4 className="font-semibold text-gray-900 mb-2">
+                          <h4 className={`font-semibold text-gray-900 mb-2 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
                             {language === 'en' ? 'Explanation (English)' : 'व्याख्या (अङ्ग्रेजी)'}
                           </h4>
-                          <p className="text-gray-700 leading-relaxed text-sm">
+                          <p className={`text-gray-700 leading-relaxed text-sm ${roboto.className}`}>
                             {entry.explanation_en}
                           </p>
                         </div>
@@ -374,10 +404,10 @@ export default function DictionaryPage() {
 
                       {entry.explanation_ne && entry.explanation_ne.trim() && (
                         <div className="bg-yellow-50 rounded-lg p-4">
-                          <h4 className="font-semibold text-yellow-900 mb-2">
+                          <h4 className={`font-semibold text-yellow-900 mb-2 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
                             {language === 'en' ? 'Explanation (Nepali)' : 'व्याख्या (नेपाली)'}
                           </h4>
-                          <p className="text-gray-700 leading-relaxed text-sm" style={{ fontFamily: 'serif' }}>
+                          <p className={`text-gray-700 leading-relaxed text-sm ${notoSansDevanagari.className}`}>
                             {entry.explanation_ne}
                           </p>
                         </div>
@@ -393,7 +423,7 @@ export default function DictionaryPage() {
         {/* Footer */}
         {filteredEntries.length > 0 && (
           <div className="text-center mt-8">
-            <p className="text-gray-600">
+            <p className={`text-gray-600 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
               {language === 'en' 
                 ? `Showing ${filteredEntries.length} of ${entries.length} entries`
                 : `${entries.length} मध्ये ${filteredEntries.length} शब्द देखाइँदै`
