@@ -31,13 +31,16 @@ export const footerContent: FooterContent = {
     },
     resources: [
       { name: "SOGEISC Dictionary", href: "/dictionary" },
-      { name: "Legal documents", href: "/resources" },
       { name: "Publications", href: "/publications" },
+      { name: "Legal Resources", href: "/resources/legal" },
+      { name: "Reports", href: "/resources/reports" },
+      { name: "Academic Resources", href: "/resources/academic-report" },
     ],
     links: [
       { name: "Home", href: "/" },
       { name: "About Us", href: "/about" },
-      { name: "Our Team", href: "/team" },
+      { name: "Our Team", href: "/about/team" },
+      { name: "Nepal Pride Parade", href: "/pride/nepal" },
     ],
     socialMedia: [
       { name: "Facebook", icon: "FaFacebook", href: "https://www.facebook.com/QYGnepal" },

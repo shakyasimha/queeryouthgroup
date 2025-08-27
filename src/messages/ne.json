@@ -47,9 +47,20 @@
   },
   "TeamRootPage": {
       "title": "हाम्रो टोलीका लिङ्कहरू",
-      "boardLink": "सञ्चालक समिति",
-      "alumniLink": "पूर्व सदस्य",
-      "staffLink": "कार्य सदस्य"
+      "links": [
+        {
+          "link": "सञ्चालक समिति",
+          "route": "/about/team/board"
+        },
+        {
+          "link": "कार्य समिति",
+          "route": "/about/team/staff"
+        },
+        {
+          "link": "पूर्व सदस्य",
+          "route": "/about/team/alumni"
+        }
+      ]
   },
   "BoardPage": {
     "title": "सञ्चालक समिति",

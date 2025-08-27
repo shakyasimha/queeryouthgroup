@@ -49,10 +49,21 @@
     "title": "Our Journey"
   },
   "TeamRootPage": {
-      "title": "Our Team Links",
-      "boardLink": "Our Board",
-      "alumniLink": "Alumni",
-      "staffLink": "Our Staff"
+      "title": "Our Team",
+      "links": [
+        {
+          "link": "Board Members",
+          "route": "/about/team/board"
+        },
+        {
+          "link": "Staff Members",
+          "route": "/about/team/staff"
+        },
+        {
+          "link": "Alumni",
+          "route": "/about/team/alumni"
+        }
+      ]
   },
   "BoardPage": {
     "title": "Board Members",
