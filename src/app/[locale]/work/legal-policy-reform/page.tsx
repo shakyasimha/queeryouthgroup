@@ -35,8 +35,8 @@ export default async function Page({ params }: PageProps) {
                     {/* Image for the section */}
                     <div className="flex justify-center mb-8 mt-4">
                         <Image 
-                            src="/images/icons/multilingualism.png"
-                            alt="multilingualism"
+                            src="/images/icons/legal-administrative-reform.png"
+                            alt="legal and policy reform"
                             width={240}
                             height={240}
                         />
