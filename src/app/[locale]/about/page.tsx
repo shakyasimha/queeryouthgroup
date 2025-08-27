@@ -1,68 +1,21 @@
-// "use client";
+// about/page.tsx
 
 // forcing dynamic rendering
 export const dynamic = "force-dynamic";
 
-import { alegreyaSans, roboto } from "@/ui/fonts";
+import { alegreyaSans } from "@/ui/fonts";
 import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback";
-import { PortableText, PortableTextBlock, PortableTextComponentProps } from '@portabletext/react';
-import { urlFor } from '@/sanity/lib/client';
+import { PortableText } from '@portabletext/react';
+import { portableTextComponents } from "@/components/PortableTextComponent";
 import Image from "next/image";
 
-// Base slugs (adjust these to match your Sanity post slugs)
-const ABOUT_SLUG = "about-us-";
-const LOGO_SLUG = "logo-";
+// Base slugs
+const ABOUT_SLUG = "about-us";
+const LOGO_SLUG = "logo";
 
 interface PageProps {
     params: Promise<{ locale: string }>;
 }
-
-// Type for Sanity image in PortableText
-interface SanityImageValue {
-    asset: {
-        _ref: string;
-    };
-    alt?: string;
-}
-
-// Custom components for PortableText rendering
-const portableTextComponents = {
-    types: {
-        image: ({ value }: { value: SanityImageValue }) => {
-            if (!value?.asset?._ref) {
-                return null;
-            }
-            return (
-                <div className="my-6">
-                    <Image
-                        src={urlFor(value).width(800).height(600).url()}
-                        alt={value.alt || 'Image'}
-                        width={800}
-                        height={600}
-                        className="rounded-lg"
-                    />
-                </div>
-            );
-        },
-    },
-    block: {
-        normal: ({ children }: PortableTextComponentProps<PortableTextBlock>) => (
-            <p className={`${roboto.className} text-justify text-black mb-4`}>
-                {children}
-            </p>
-        ),
-        h1: ({ children }: PortableTextComponentProps<PortableTextBlock>) => (
-            <h1 className={`${alegreyaSans.className} text-2xl font-bold mb-4`}>
-                {children}
-            </h1>
-        ),
-        h2: ({ children }: PortableTextComponentProps<PortableTextBlock>) => (
-            <h2 className={`${alegreyaSans.className} text-xl font-bold mb-3`}>
-                {children}
-            </h2>
-        ),
-    },
-};
 
 export default async function Page({ params }: PageProps) {
     const { locale } = await params;
@@ -83,7 +36,7 @@ export default async function Page({ params }: PageProps) {
                         {aboutPost.title}
                     </h1>
                     
-                    {/* Use PortableText instead of dangerouslySetInnerHTML */}
+                    {/* Use imported PortableText component */}
                     <div className="w-full">
                         <PortableText 
                             value={aboutPost.body} 
@@ -92,7 +45,7 @@ export default async function Page({ params }: PageProps) {
                     </div>
                 </div>
 
-                {/* Logo / Ego Section */}
+                {/* Logo Section */}
                 <div className="flex flex-col items-center mt-4 px-16 md:mx-64 sm:mx-2 mb-16">
                     <h1 className={`${alegreyaSans.className} text-black py-4 font-bold text-2xl`}>
                         {logoPost.title}
@@ -107,7 +60,7 @@ export default async function Page({ params }: PageProps) {
                         />
                     </div>
 
-                    {/* Use PortableText for logo post content */}
+                    {/* Use imported PortableText component */}
                     <div className="w-full">
                         <PortableText 
                             value={logoPost.body} 
@@ -128,7 +81,7 @@ export default async function Page({ params }: PageProps) {
                     <h1 className={`${alegreyaSans.className} text-red-600 py-4 font-bold text-2xl`}>
                         Content not available
                     </h1>
-                    <p className={`${roboto.className} text-gray-600 px-16 py-2`}>
+                    <p className="text-gray-600 px-16 py-2">
                         Sorry, the content could not be loaded from Sanity at this time.
                     </p>
                 </div>

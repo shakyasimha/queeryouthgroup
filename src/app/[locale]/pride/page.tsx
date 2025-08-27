@@ -1,12 +1,15 @@
+// multilingualism/page.tsx
+
 // forcing dynamic rendering
 export const dynamic = "force-dynamic";
 
-import { alegreyaSans, roboto } from "@/ui/fonts";
+import { alegreyaSans } from "@/ui/fonts";
 import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback";
+import { PortableText } from '@portabletext/react';
+import { portableTextComponents } from "@/components/PortableTextComponent"; // Import the reusable components
 
-// Base slugs for each section
-const OVERVIEW_SLUG = "overview-of-pride-parade";
-const INTRO_SLUG = "nepal-pride-parade";
+// Base slug
+const BASE_SLUG = "pride-overview";
 
 interface PageProps {
     params: Promise<{ locale: string }>;
@@ -14,44 +17,34 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
     const { locale } = await params;
-
+    
     try {
-        // Fetch both posts
-        const [overviewPost, introPost] = await Promise.all([
-            getLocalizedPostWithFallback(locale, OVERVIEW_SLUG),
-            getLocalizedPostWithFallback(locale, INTRO_SLUG),
-        ]);
+        // Fetch the multilingualism post from Sanity
+        const postContent = await getLocalizedPostWithFallback(locale, BASE_SLUG);
 
         return (
             <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
                 
-                {/* Overview Section */}
-                <section className="flex flex-col items-center min-h-[30vh] mt-4 mb-4">
-                    <h1 className={`${alegreyaSans.className} text-3xl text-black py-4 font-bold`}>
-                        {overviewPost.title.rendered}
+                {/* Multilingualism Section */}
+                <div className="flex flex-col items-center mt-4 px-16 md:mx-64 sm:mx-2 mb-16">
+                    <h1 className={`${alegreyaSans.className} text-black py-4 font-bold text-2xl`}>
+                        {postContent.title}
                     </h1>
-                    <div 
-                        className="wordpress-content text-justify px-16 py-2 text-black md:mx-64 sm:mx-2"
-                        dangerouslySetInnerHTML={{ __html: overviewPost.content.rendered }}
-                    />
-                </section>
-
-                {/* Introduction Section */}
-                <section className="flex flex-col items-center min-h-[30vh] mb-16">
-                    <h1 className={`${alegreyaSans.className} text-3xl text-black py-4 font-bold`}>
-                        {introPost.title.rendered}
-                    </h1>
-                    <div 
-                        className="wordpress-content text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8"
-                        dangerouslySetInnerHTML={{ __html: introPost.content.rendered }}
-                    />
-                </section>
+                    
+                    {/* Use imported PortableText components to render the content */}
+                    <div className="w-full">
+                        <PortableText 
+                            value={postContent.body} 
+                            components={portableTextComponents} // Using imported components
+                        />
+                    </div>
+                </div>
 
             </div>
         );
 
     } catch (error) {
-        console.error('Error loading posts:', error);
+        console.error('Error loading post from Sanity:', error);
 
         return (
             <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
@@ -59,8 +52,8 @@ export default async function Page({ params }: PageProps) {
                     <h1 className={`${alegreyaSans.className} text-red-600 py-4 font-bold text-2xl`}>
                         Content not available
                     </h1>
-                    <p className={`${roboto.className} text-gray-600 px-16 py-2`}>
-                        Sorry, the content could not be loaded at this time.
+                    <p className="text-gray-600 px-16 py-2">
+                        Sorry, the content could not be loaded from Sanity at this time.
                     </p>
                 </div>
             </div>

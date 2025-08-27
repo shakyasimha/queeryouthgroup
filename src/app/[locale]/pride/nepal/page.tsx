@@ -7,10 +7,9 @@ import { alegreyaSans } from "@/ui/fonts";
 import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback";
 import { PortableText } from '@portabletext/react';
 import { portableTextComponents } from "@/components/PortableTextComponent"; // Import the reusable components
-import Image from "next/image";
 
 // Base slug
-const BASE_SLUG = "legal-administrative-reform";
+const BASE_SLUG = "pride-nepal";
 
 interface PageProps {
     params: Promise<{ locale: string }>;
@@ -31,16 +30,6 @@ export default async function Page({ params }: PageProps) {
                     <h1 className={`${alegreyaSans.className} text-black py-4 font-bold text-2xl`}>
                         {postContent.title}
                     </h1>
-
-                    {/* Image for the section */}
-                    <div className="flex justify-center mb-8 mt-4">
-                        <Image 
-                            src="/images/icons/multilingualism.png"
-                            alt="multilingualism"
-                            width={240}
-                            height={240}
-                        />
-                    </div>
                     
                     {/* Use imported PortableText components to render the content */}
                     <div className="w-full">

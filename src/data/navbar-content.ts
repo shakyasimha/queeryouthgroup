@@ -61,6 +61,7 @@ export const navbarLinks: NavbarLinks = {
       href: '',
       children: [
         { name: 'Overview', href: '/pride' },
+        { name: 'Nepal Pride Parade', href: '/pride/nepal' },
         { name: 'Timeline', href: '/pride/timeline' },
         { name: 'Organizers', href: '/pride/organizers' },
         { name: 'Challenges & Achievements', href: '/pride/challenges' },
@@ -119,6 +120,7 @@ export const navbarLinks: NavbarLinks = {
       href: '',
       children: [
         { name: 'परिचय', href: '/pride' },
+        { name: 'नेपाल गौरव यात्रा', href: '/pride/nepal' },
         { name: 'समयरेखा', href: '/pride/timeline' },
         { name: 'आयोजक', href: '/pride/organizers' },
         { name: 'चुनौती र उपलब्धिहरू', href: '/pride/challenges' },

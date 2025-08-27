@@ -1,15 +1,18 @@
 import { client } from '@/sanity/lib/client'
 import { getPostBySlugQuery, type SanityPost } from '@/sanity/lib/queries'
 
+// Define supported locales for better type safety
+type SupportedLocale = 'en' | 'ne' | string;
+
 // Alternative function with error handling and better logging for Sanity
 export async function getLocalizedPostWithFallback(
-  locale: string, 
+  locale: SupportedLocale, 
   baseSlug: string
 ): Promise<SanityPost> {
   const slugsToTry: string[] = [
-    `${baseSlug}${locale}`,  // Try localized version first (e.g., "about-us-en")
-    ...(locale !== 'en' ? [`${baseSlug}en`] : []), // Fallback to English if not already English
-    baseSlug.replace(/-$/, '') // Final fallback to base slug without trailing dash (e.g., "about-us")
+    `${baseSlug}-${locale}`,  // Try localized version first (e.g., "our-history-en" or "our-history-ne")
+    ...(locale !== 'en' ? [`${baseSlug}-en`] : []), // Fallback to English if not already English
+    baseSlug // Final fallback to base slug without any locale suffix (e.g., "our-history")
   ];
 
   for (const slug of slugsToTry) {
