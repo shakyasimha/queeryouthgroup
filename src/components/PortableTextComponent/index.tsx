@@ -4,7 +4,7 @@ import { PortableTextComponents } from '@portabletext/react';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/client';
 import { alegreyaSans, roboto, notoSansDevanagari } from '@/ui/fonts';
-import { PortableTextBlock, PortableTextMarkDefinition, PortableTextSpan, PortableTextTextBlock } from '@portabletext/types';
+import { PortableTextBlock } from '@portabletext/types';
 
 // Type for Sanity image in PortableText
 interface SanityImageValue {
