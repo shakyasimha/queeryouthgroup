@@ -4,7 +4,6 @@ import { PortableTextComponents } from '@portabletext/react';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/client';
 import { alegreyaSans, roboto, notoSansDevanagari } from '@/ui/fonts';
-import { PortableTextBlock } from '@portabletext/types';
 
 // Type for Sanity image in PortableText
 interface SanityImageValue {
@@ -15,14 +14,14 @@ interface SanityImageValue {
   caption?: string;
 }
 
-// Properly typed component props
+// Properly typed component props that match @portabletext/react expectations
 interface BlockComponentProps {
-  children: ReactNode;
-  value?: PortableTextBlock;
+  children?: ReactNode;
+  value?: unknown;
 }
 
 interface MarkComponentProps {
-  children: ReactNode;
+  children?: ReactNode;
   value?: {
     href?: string;
     [key: string]: unknown;
@@ -30,7 +29,7 @@ interface MarkComponentProps {
 }
 
 interface ListComponentProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 // Helper function to detect if text contains Nepali (Devanagari) characters
@@ -41,7 +40,11 @@ const hasNepaliText = (text: string): boolean => {
 };
 
 // Helper function to get appropriate font class based on text content and type
-const getFontClass = (children: ReactNode, isHeader: boolean = false): string => {
+const getFontClass = (children?: ReactNode, isHeader: boolean = false): string => {
+  if (!children) {
+    return isHeader ? alegreyaSans.className : roboto.className;
+  }
+  
   // Convert children to string to check for Nepali characters
   const textContent = React.Children.toArray(children).join('');
   
@@ -80,7 +83,7 @@ export const portableTextComponents: PortableTextComponents = {
     },
     code: ({ value }: { value: { code: string; language: string } }) => (
       <pre className="bg-gray-100 p-4 rounded-lg my-6 overflow-x-auto border border-gray-200">
-        <code className={`text-sm ${roboto.className} font-mono`}>{value.code}</code>
+        <code className={`text-sm ${roboto.className} font-mono`}>{value?.code}</code>
       </pre>
     ),
   },
