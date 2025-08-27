@@ -45,18 +45,19 @@ const getFontClass = (children: React.ReactNode, isHeader: boolean = false): str
 
 export const portableTextComponents: PortableTextComponents = {
   types: {
-    image: ({ value }: { value: SanityImageValue }) => {
+    image: ({ value }: { value: SanityImageValue }): JSX.Element | null => {
       if (!value?.asset?._ref) {
         return null;
       }
       return (
-        <div className="my-6">
+        <div className="my-6 flex justify-center">
           <Image
-            src={urlFor(value).width(800).height(600).url()}
+            src={urlFor(value).url()}
             alt={value.alt || 'Image'}
-            width={800}
-            height={600}
-            className="rounded-lg"
+            width={400}
+            height={400}
+            className="rounded-lg object-contain max-w-full h-auto"
+            style={{ objectFit: 'contain' as const }}
           />
         </div>
       );

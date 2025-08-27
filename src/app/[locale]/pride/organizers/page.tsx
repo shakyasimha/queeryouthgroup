@@ -9,7 +9,7 @@ import { PortableText } from '@portabletext/react';
 import { portableTextComponents } from "@/components/PortableTextComponent"; // Import the reusable components
 
 // Base slug
-const BASE_SLUG = "organizers";
+const BASE_SLUG = "pride-organizers";
 
 interface PageProps {
     params: Promise<{ locale: string }>;

@@ -1,24 +1,62 @@
-import { alegreyaSans, roboto } from "@/ui/fonts";
-import { useTranslations } from "next-intl";
+// multilingualism/page.tsx
 
-export default function Page() {
-    const t = useTranslations('prideMediaPage');
+// forcing dynamic rendering
+export const dynamic = "force-dynamic";
 
-    return(
-        <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
-            <div className="flex flex-col items-center min-h-[30vh] mt-4">
-                <div className="text-center text-2xl">
-                    <h1 className={`${alegreyaSans.className} text-black py-4 font-bold`}>
-                        {t('title')}
+import { alegreyaSans } from "@/ui/fonts";
+import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback";
+import { PortableText } from '@portabletext/react';
+import { portableTextComponents } from "@/components/PortableTextComponent"; // Import the reusable components
+
+// Base slug
+const BASE_SLUG = "pride-media";
+
+interface PageProps {
+    params: Promise<{ locale: string }>;
+}
+
+export default async function Page({ params }: PageProps) {
+    const { locale } = await params;
+    
+    try {
+        // Fetch the multilingualism post from Sanity
+        const postContent = await getLocalizedPostWithFallback(locale, BASE_SLUG);
+
+        return (
+            <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
+                
+                {/* Multilingualism Section */}
+                <div className="flex flex-col items-center mt-4 px-16 md:mx-64 sm:mx-2 mb-16">
+                    <h1 className={`${alegreyaSans.className} text-black py-4 font-bold text-2xl`}>
+                        {postContent.title}
                     </h1>
+                    
+                    {/* Use imported PortableText components to render the content */}
+                    <div className="w-full">
+                        <PortableText 
+                            value={postContent.body} 
+                            components={portableTextComponents} // Using imported components
+                        />
+                    </div>
                 </div>
 
-                <div className={`${roboto.className} text-bg text-justify px-16 py-2 text-black md:mx-64 sm:mx-2 mb-8`}>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+        );
+
+    } catch (error) {
+        console.error('Error loading post from Sanity:', error);
+
+        return (
+            <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
+                <div className="flex flex-col items-center min-h-[30vh] mt-4">
+                    <h1 className={`${alegreyaSans.className} text-red-600 py-4 font-bold text-2xl`}>
+                        Content not available
+                    </h1>
+                    <p className="text-gray-600 px-16 py-2">
+                        Sorry, the content could not be loaded from Sanity at this time.
                     </p>
                 </div>
             </div>
-        </div>
-    )
+        );
+    }
 }
