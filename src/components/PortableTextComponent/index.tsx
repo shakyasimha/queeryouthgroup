@@ -14,10 +14,12 @@ interface SanityImageValue {
   alt?: string;
 }
 
-// Simplified component props interface
+// More specific type for component props
 interface PortableTextComponentProps {
   children?: React.ReactNode;
-  value?: any;
+  value?: {
+    [key: string]: unknown;
+  };
 }
 
 // Helper function to detect if text contains Nepali (Devanagari) characters
