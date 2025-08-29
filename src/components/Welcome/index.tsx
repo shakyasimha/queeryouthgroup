@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { alegreyaSans, roboto, notoSansDevanagari } from '@/ui/fonts';
+import { alegreyaSans, notoSansDevanagari } from '@/ui/fonts';
 
 const messages = [
     {

@@ -4,7 +4,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { alegreyaSans, notoSans, notoSansDevanagari } from "@/ui/fonts";
+import { alegreyaSans, notoSansDevanagari } from "@/ui/fonts";
 
 interface NavItem {
   name: string;
