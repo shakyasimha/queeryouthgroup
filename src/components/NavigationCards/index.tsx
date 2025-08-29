@@ -374,7 +374,7 @@ export default function NavigationCards({
         return `${gridClass} gap-6`;
     };
 
-    const renderIcon = (link: NavigationLink, index: number): ReactNode => {
+    const renderIcon = (link: NavigationLink): ReactNode => {
         if (!showIcons) return null;
 
         if (link.icon) {
@@ -416,7 +416,7 @@ export default function NavigationCards({
                             ${layout === 'cards' ? 'w-12 h-12' : 'w-10 h-10'} 
                             bg-gradient-to-br ${theme.iconGradient} rounded-full flex items-center justify-center
                         `}>
-                            {renderIcon(link, index)}
+                            {renderIcon(link)}
                         </div>
                     </div>
                 )}
