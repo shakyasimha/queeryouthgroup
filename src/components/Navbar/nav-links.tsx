@@ -4,7 +4,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { alegreyaSans } from "@/ui/fonts";
+import { alegreyaSans, notoSans, notoSansDevanagari } from "@/ui/fonts";
 
 interface NavItem {
   name: string;
@@ -49,7 +49,7 @@ export default function NavLinks({ className, links, lang }: NavLinksProps) {
     <ul
       className={clsx(
         "flex",
-        alegreyaSans.className,
+        lang == 'en' ? alegreyaSans.className : notoSansDevanagari.className,
         isVertical ? "space-y-2 flex-col" : "space-x-4",
         className
       )}

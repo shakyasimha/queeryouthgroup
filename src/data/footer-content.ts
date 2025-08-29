@@ -31,7 +31,7 @@ export const footerContent: FooterContent = {
     },
     resources: [
       { name: "SOGEISC Dictionary", href: "/dictionary" },
-      { name: "Publications", href: "/publications" },
+      { name: "Publications", href: "/resources/publications" },
       { name: "Legal Resources", href: "/resources/legal" },
       { name: "Reports", href: "/resources/reports" },
       { name: "Academic Resources", href: "/resources/academic-report" },
@@ -40,7 +40,7 @@ export const footerContent: FooterContent = {
       { name: "Home", href: "/" },
       { name: "About Us", href: "/about" },
       { name: "Our Team", href: "/about/team" },
-      { name: "Nepal Pride Parade", href: "/pride/nepal" },
+      { name: "Nepal Pride Parade", href: "/pride" },
     ],
     socialMedia: [
       { name: "Facebook", icon: "FaFacebook", href: "https://www.facebook.com/QYGnepal" },
@@ -62,13 +62,17 @@ export const footerContent: FooterContent = {
     },
     resources: [
       { name: "SOGEISC शब्दकोश", href: "/dictionary" },
-      { name: "मुद्दाहरू", href: "/resources" },
-      { name: "प्रकाशनहरू", href: "/publications" },
+      { name: "प्रकाशन", href: "/resources/publications" },
+      { name: "कानुनी स्रोत", href: "/resources/legal" },
+      { name: "प्रतिवेदन", href: "/resources/reports" },
+      { name: "शैक्षिक स्रोत", href: "/resources/academic-report" },
     ],
     links: [
       { name: "गृहपृष्ठ", href: "/" },
       { name: "हाम्रो बारेमा", href: "/about" },
-      { name: "हाम्रो टोली", href: "/team" },
+      { name: "हाम्रो टोली", href: "/about/team" },
+      { name: "नेपाल गौरव यात्रा", href: "/pride" },
+
     ],
     socialMedia: [
       { name: "फेसबुक", icon: "FaFacebook", href: "https://www.facebook.com/QYGnepal" },

@@ -105,10 +105,10 @@ export const navbarLinks: NavbarLinks = {
       name: 'स्रोतहरू',
       href: '',
       children: [
-        { name: 'कानुनी स्रोतहरू', href: '/resources/legal' },
+        { name: 'कानुनी स्रोत', href: '/resources/legal' },
         { name: 'प्रकाशन', href: '/resources/publications' },
-        { name: 'प्रतिवेदनहरू', href: '/resources/reports' },
-        { name: 'शैक्षिक स्रोतहरू', href: '/resources/academic-report' },
+        { name: 'प्रतिवेदन', href: '/resources/reports' },
+        { name: 'शैक्षिक स्रोत', href: '/resources/academic-report' },
       ],
     },
     { 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { openSans, alegreyaSans } from "@/ui/fonts";
+import { alegreyaSans, roboto, notoSansDevanagari } from "@/ui/fonts";
 import { FaPhone, FaEnvelope, FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 import { FaXTwitter, FaLocationDot } from "react-icons/fa6";
 import { footerContent } from "@/data/footer-content";
@@ -7,12 +7,15 @@ import { footerContent } from "@/data/footer-content";
 export default function Footer({ lang = "en" }: { lang?: "en" | "ne" }) {
   const content = footerContent[lang];
 
+  const bodyFont = lang == 'en' ? roboto.className : notoSansDevanagari.className;
+  const headerFont = lang == 'en' ? alegreyaSans.className : notoSansDevanagari.className;
+
   return (
-    <footer className={`${openSans.className} text-[#333] bg-[#cccffe] py-6`}>
+    <footer className={`${bodyFont} text-[#333] bg-[#cccffe] py-6`}>
       <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row">
         {/* Contact Info */}
         <div className="flex-1 py-4 flex flex-col gap-2 sm:m-0 m-4">
-          <div className={`${alegreyaSans.className} font-bold text-xl py-2`}>
+          <div className={`${headerFont} font-bold text-xl py-2`}>
             {content.title}
           </div>
 
@@ -38,7 +41,7 @@ export default function Footer({ lang = "en" }: { lang?: "en" | "ne" }) {
 
         {/* Resources */}
         <div className="flex-1 py-4 flex flex-col sm:mx-16 sm:my-0 mx-4">
-          <div className={`${alegreyaSans.className} font-bold text-xl py-2`}>
+          <div className={`${headerFont} font-bold text-xl py-2`}>
             {content.sections.resources}
           </div>
           <ul className="decoration-0 gap-2">
@@ -54,7 +57,7 @@ export default function Footer({ lang = "en" }: { lang?: "en" | "ne" }) {
 
         {/* Links */}
         <div className="flex-1 py-4 flex flex-col sm:mx-16 sm:my-0 mx-4">
-          <div className={`${alegreyaSans.className} font-bold text-xl py-2`}>
+          <div className={`${headerFont} font-bold text-xl py-2`}>
             {content.sections.links}
           </div>
           <ul className="decoration-0 gap-2">
@@ -70,7 +73,7 @@ export default function Footer({ lang = "en" }: { lang?: "en" | "ne" }) {
 
         {/* Social Media */}
         <div className="flex-1 py-4 flex flex-col sm:mx-16 sm:my-0 mx-4">
-          <div className={`${alegreyaSans.className} font-bold text-xl py-2`}>
+          <div className={`${headerFont} font-bold text-xl py-2`}>
             {content.sections.connect}
           </div>
           <div className="flex flex-row space-x-6 mt-2">

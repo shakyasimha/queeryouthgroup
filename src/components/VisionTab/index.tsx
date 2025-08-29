@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { alegreyaSans } from '@/ui/fonts';
+import { useTranslations, useLocale } from 'next-intl';
+import { alegreyaSans, notoSansDevanagari } from '@/ui/fonts';
 
 type GoalItem = {
   title: string;
@@ -12,13 +12,17 @@ type GoalItem = {
 export default function VisionTab() {
   const [activeTab, setActiveTab] = useState<'vision' | 'mission' | 'goal'>('vision');
   const t = useTranslations('VisionTab.tabContent');
+  const currentLocale = useLocale();
+
+  // Changing font per locale
+  const font = currentLocale == 'en' ? alegreyaSans.className : notoSansDevanagari.className; 
 
   // Get goals with proper type casting
   const goals = t.raw('goal.items') as GoalItem[];
 
   return (
     <div className="w-full max-w-6xl mx-auto mb-16 px-4">
-      <div className={`${alegreyaSans.className} flex flex-col lg:flex-row bg-white rounded-xl shadow-lg overflow-hidden`}>
+      <div className={`${font} flex flex-col lg:flex-row bg-white rounded-xl shadow-lg overflow-hidden`}>
         {/* Tabs on left */}
         <div className="flex lg:flex-col border-b lg:border-b-0 lg:border-r border-gray-200 bg-white text-[#d41367] lg:min-w-[200px]">
           {(['vision', 'mission', 'goal'] as const).map((tab) => (

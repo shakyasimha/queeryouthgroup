@@ -2,6 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
+import { alegreyaSans, notoSansDevanagari } from "@/ui/fonts";
 
 export default function LanguageSwitcher() {
     const router = useRouter();
@@ -10,7 +11,8 @@ export default function LanguageSwitcher() {
     
     const targetLocale = currentLocale === 'en' ? 'ne' : 'en';
     const buttonText = currentLocale === 'en' ? 'नेपा' : 'EN';
-    
+    const font = currentLocale == 'en' ? alegreyaSans.className : notoSansDevanagari.className;
+
     const handleClick = () => {
         // More robust path construction
         const segments = pathname.split('/').filter(Boolean); // Remove empty strings
@@ -29,7 +31,7 @@ export default function LanguageSwitcher() {
 
     return (
         <button
-            className="border border-gray-300 rounded p-2 bg-[#d13467] text-white hover:opacity-80 transition duration-300 ease-in-out"
+            className={`${font} border border-gray-300 rounded p-2 bg-[#d13467] text-white hover:opacity-80 transition duration-300 ease-in-out`}
             onClick={handleClick}
             type="button"
             aria-label={`Switch to ${targetLocale === 'en' ? 'English' : 'Nepali'}`}
