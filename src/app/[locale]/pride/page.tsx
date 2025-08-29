@@ -1,62 +1,60 @@
-// multilingualism/page.tsx
-
+// pride/page.tsx 
 // forcing dynamic rendering
 export const dynamic = "force-dynamic";
 
-import { alegreyaSans } from "@/ui/fonts";
-import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback";
-import { PortableText } from '@portabletext/react';
-import { portableTextComponents } from "@/components/PortableTextComponent"; // Import the reusable components
+import { useTranslations, useLocale } from 'next-intl';
+import { alegreyaSans, notoSansDevanagari } from "@/ui/fonts";
+import { NavigationCard } from '@/components/NavigationCards';
 
-// Base slug
-const BASE_SLUG = "pride-overview";
-
-interface PageProps {
-    params: Promise<{ locale: string }>;
+interface PrideLink {
+  title: string;
+  route: string;
+  description: string;
+  icon: string;
 }
 
-export default async function Page({ params }: PageProps) {
-    const { locale } = await params;
-    
-    try {
-        // Fetch the multilingualism post from Sanity
-        const postContent = await getLocalizedPostWithFallback(locale, BASE_SLUG);
+interface PrideRootPageData {
+  title: string;
+  links: PrideLink[];
+}
 
-        return (
-            <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
-                
-                {/* Multilingualism Section */}
-                <div className="flex flex-col items-center mt-4 px-16 md:mx-64 sm:mx-2 mb-16">
-                    <h1 className={`${alegreyaSans.className} text-black py-4 font-bold text-2xl`}>
-                        {postContent.title}
-                    </h1>
-                    
-                    {/* Use imported PortableText components to render the content */}
-                    <div className="w-full">
-                        <PortableText 
-                            value={postContent.body} 
-                            components={portableTextComponents} // Using imported components
-                        />
-                    </div>
-                </div>
+export default function PrideRootPage() {
+  const t = useTranslations();
+  const locale = useLocale();
+  const pridePage: PrideRootPageData = t.raw('PrideRootPage') as PrideRootPageData;
 
+  // Locale-based font
+  const headerFont =
+    locale === "ne"
+      ? notoSansDevanagari.className
+      : alegreyaSans.className;
+
+  return (
+    <div className={`w-full flex flex-col flex-grow bg-white items-center`}>
+        {/* Header */}
+        <div className="text-center text-2xl">
+            <h1 className={`${headerFont} text-black font-bold py-4 mt-4`}>
+            {pridePage.title}
+            </h1>
+        </div>
+
+        {/* Navigation Cards */}
+        <div className="w-full max-w-6xl mx-auto px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
+                {pridePage.links.map((link, index) => (
+                <NavigationCard
+                    key={`team-${index}-${link.route}`}
+                    title={link.title}
+                    href={link.route}
+                    description={link.description}
+                    icon={link.icon}
+                    variant="tertiary"
+                    size="md"
+                    className="h-full"
+                />
+                ))}
             </div>
-        );
-
-    } catch (error) {
-        console.error('Error loading post from Sanity:', error);
-
-        return (
-            <div className="w-full flex flex-col flex-grow bg-[#fafafc]">
-                <div className="flex flex-col items-center min-h-[30vh] mt-4">
-                    <h1 className={`${alegreyaSans.className} text-red-600 py-4 font-bold text-2xl`}>
-                        Content not available
-                    </h1>
-                    <p className="text-gray-600 px-16 py-2">
-                        Sorry, the content could not be loaded from Sanity at this time.
-                    </p>
-                </div>
-            </div>
-        );
-    }
+        </div>
+    </div>
+  );
 }

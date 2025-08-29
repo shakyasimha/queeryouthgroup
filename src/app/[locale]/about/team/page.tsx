@@ -2,50 +2,61 @@
 // forcing dynamic rendering
 export const dynamic = "force-dynamic";
 
-import { useTranslations } from 'next-intl';
-import { alegreyaSans } from "@/ui/fonts";
-import Card from "@/components/Card";
-import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
+import { alegreyaSans, notoSansDevanagari } from "@/ui/fonts";
+import { NavigationCard } from '@/components/NavigationCards';
 
 interface TeamLink {
-  link: string;
+  title: string;
   route: string;
+  description: string;
+  icon: string;
 }
 
 interface TeamRootPageData {
   title: string;
+  subtitle: string;
   links: TeamLink[];
 }
 
 export default function TeamRootPage() {
   const t = useTranslations();
+  const locale = useLocale();
   const teamPage: TeamRootPageData = t.raw('TeamRootPage') as TeamRootPageData;
 
+  // Pick font depending on locale
+  const headerFont = locale === "ne" ? notoSansDevanagari.className : alegreyaSans.className;
+
   return (
-    <div className={`${alegreyaSans.className} w-full flex flex-col flex-grow bg-white items-center`}>
-      <div className="text-center text-2xl">
-        <h1 className={`${alegreyaSans.className} text-black font-bold py-4 mt-4`}>
+    <div className={`w-full flex flex-col flex-grow bg-white items-center`}>
+      {/* Header Section */}
+      <div className="text-center max-w-4xl mx-auto px-4 py-8">
+        <h1 className={`${headerFont} text-black font-bold text-3xl md:text-4xl mb-4`}>
           {teamPage.title}
         </h1>
+        {teamPage.subtitle && (
+          <p className="text-gray-600 text-lg leading-relaxed">
+            {teamPage.subtitle}
+          </p>
+        )}
       </div>
-
-      {/* Team Navigation Cards */}
-      <div className="flex flex-col items-center md:flex-row md:justify-center gap-4 p-4 mb-8">
-        {teamPage.links.map((teamLink: TeamLink, index: number) => (
-          <Link 
-            key={index}
-            href={teamLink.route}
-            className="block"
-          >
-            <Card 
-              image="/qyg-logo.svg"
-              name={teamLink.link}
-              role="Team Section"
-              pronoun=""
-              email=""
+      
+      {/* Navigation Cards */}
+      <div className="w-full max-w-6xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          {teamPage.links.map((link, index) => (
+            <NavigationCard
+              key={`team-${index}-${link.route}`}
+              title={link.title}
+              href={link.route}
+              description={link.description}
+              icon={link.icon}
+              variant="tertiary"
+              size="md"
+              className="h-full"
             />
-          </Link>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

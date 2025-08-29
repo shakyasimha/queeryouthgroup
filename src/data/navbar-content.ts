@@ -58,9 +58,9 @@ export const navbarLinks: NavbarLinks = {
     },
     {
       name: 'Nepal Pride Parade',
-      href: '',
+      href: '/pride',
       children: [
-        { name: 'Overview', href: '/pride' },
+        { name: 'Overview', href: '/pride/overview' },
         { name: 'Nepal Pride Parade', href: '/pride/nepal' },
         { name: 'Timeline', href: '/pride/timeline' },
         { name: 'Organizers', href: '/pride/organizers' },
