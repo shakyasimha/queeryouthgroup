@@ -44,7 +44,7 @@ export default function Notice() {
   if (isLoading || images.length === 0) return null;
 
   return (
-    <div className="w-[400px] h-[400px] lg:h-[800px] lg:w-[800px] relative group">
+    <div className="w-full max-w-[400px] lg:max-w-[800px] mx-auto relative group">
       <Swiper
         modules={[Autoplay, Navigation]}
         spaceBetween={0}
@@ -55,16 +55,18 @@ export default function Notice() {
           nextEl: ".custom-next",
           prevEl: ".custom-prev",
         }}
-        className="w-full h-full"
+        className="w-full"
       >
         {images.map((img, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full h-full">
+            <div className="relative w-full aspect-auto">
               <Image
                 src={img}
                 alt={`Notice ${index + 1}`}
-                fill
-                className="object-cover"
+                width={800}
+                height={0}
+                style={{ height: 'auto' }}
+                className="w-full h-auto object-contain"
                 priority={index === 0}
               />
             </div>
