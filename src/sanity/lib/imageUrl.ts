@@ -1,12 +1,9 @@
-// /sanity/lib/imageUrl.ts
-// import { createClient } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
-
-// ✅ reuse your sanity client
-import { client } from "./client"; // adjust path if your client file is elsewhere
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { client } from "./client";
 
 const builder = imageUrlBuilder(client);
 
-export function urlFor(source: any) {
+export function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }
