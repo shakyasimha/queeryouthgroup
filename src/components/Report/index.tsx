@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { alegreyaSans, notoSansDevanagari } from "@/ui/fonts";
 import { useTranslations } from "next-intl";
@@ -19,6 +20,7 @@ interface Publication {
   imagePath: string;
   imageAlt: string;
   isNepali: boolean;
+  link: string;
 }
 
 export default function PublicationsCarousel() {
@@ -50,7 +52,8 @@ export default function PublicationsCarousel() {
         year: 2021,
         imagePath: "/images/publication/Anyalingi_Ecopy cover.jpg",
         imageAlt: "Gender Directive Analysis",
-        isNepali: true
+        isNepali: true,
+        link: "https://archive.org/download/anyalingi-ecopy/Anyalingi_Ecopy.pdf"
       },
       {
         id: 2,
@@ -59,7 +62,8 @@ export default function PublicationsCarousel() {
         year: 2021,
         imagePath: "/images/publication/Basic_SOGIESC_Nepali cover.jpg",
         imageAlt: "SOGIESC Concepts",
-        isNepali: true
+        isNepali: true,
+        link: "https://archive.org/download/basic-sogiesc-nepali/Basic_SOGIESC_Nepali.pdf"
       },
       {
         id: 3,
@@ -68,7 +72,8 @@ export default function PublicationsCarousel() {
         year: 2020,
         imagePath: "/images/publication/DemandSheetBook_Ecopy cover.jpg",
         imageAlt: "Gender Rights Demands",
-        isNepali: true
+        isNepali: true, 
+        link: "https://archive.org/download/demand-sheet-book-ecopy/DemandSheetBook_Ecopy.pdf"
       },
       {
         id: 4,
@@ -77,7 +82,8 @@ export default function PublicationsCarousel() {
         year: 2021,
         imagePath: "/images/publication/लैप_विधेयक_पुस्तक cover.jpg",
         imageAlt: "Gender Identity Bill",
-        isNepali: true
+        isNepali: true,
+        link: ""
       }
     ];
 
@@ -169,7 +175,14 @@ export default function PublicationsCarousel() {
                         className="text-[#d41367] hover:text-[#a0105a] font-medium text-sm transition-colors duration-200 hover:underline sm:text-base"
                         onClick={() => console.log(`View publication: ${publication.title}`)}
                       >
-                        Read More →
+                        <Link 
+                          href={publication.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#d41367] hover:text-[#a0105a] font-medium text-sm transition-colors duration-200 hover:underline sm:text-base"
+                        >
+                          Read More →
+                        </Link>
                       </button>
                     </div>
                   </div>

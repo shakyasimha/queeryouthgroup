@@ -230,36 +230,45 @@ export default function AccessibilityWidget({ lang = "en" }: AccessibilityWidget
         ${state.isWidgetOpen ? 'translate-x-0' : 'translate-x-full'}
         w-full sm:w-96 md:w-[28rem] lg:w-[32rem]
       `}>
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gradient-to-r from-[#d41367] to-[#b8115a] text-white">
-          <div className="flex items-center gap-3">
-            <Accessibility className="text-white" size={24} />
-            <h2 className="text-lg font-bold">{t.accessibility}</h2>
-            {state.hasAccessibilityEnabled && (
-              <div className="flex items-center gap-1 px-2 py-1 bg-white bg-opacity-20 text-black rounded-full text-xs backdrop-blur-sm">
-                <Check size={12} />
-                <span>{t.active}</span>
-              </div>
-            )}
+          {/* Header */}
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gradient-to-r from-[#d41367] to-[#b8115a] text-white">
+            {/* Left side (title + status) */}
+            <div className="flex items-center gap-3 min-w-0 overflow-hidden">
+              <Accessibility className="text-white" size={24} />
+              <h2 className="text-lg font-bold truncate">{t.accessibility}</h2>
+              {state.hasAccessibilityEnabled && (
+                <div className="flex items-center gap-1 px-2 py-1 bg-white bg-opacity-20 text-black rounded-full text-xs backdrop-blur-sm">
+                  <Check size={12} />
+                  <span>{t.active}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Right side (Reset + Close) */}
+            <div className="flex items-center gap-2">
+              {/* Reset button (persistent) */}
+              <button
+                onClick={resetAll}
+                className="flex items-center gap-1 px-3 py-1 text-white hover:bg-white hover:bg-opacity-20 rounded-lg transition-all duration-200 backdrop-blur-sm text-sm"
+                aria-label={t.resetAll}
+              >
+                <RotateCcw size={14} />
+                <span>{t.reset}</span>
+              </button>
+
+              {/* Close button inside a circle */}
+              <button
+                onClick={toggleWidget}
+                className="flex items-center justify-center w-8 h-8 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all duration-200"
+                aria-label={t.close}
+              >
+                <X size={18} className="text-black" />
+              </button>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={resetAll}
-              className="flex items-center gap-1 px-3 py-1 text-white hover:bg-white hover:bg-opacity-20 rounded-lg transition-all duration-200 backdrop-blur-sm text-sm"
-              aria-label={t.resetAll}
-            >
-              <RotateCcw size={14} />
-              <span>{t.reset}</span>
-            </button>
-            <button
-              onClick={toggleWidget}
-              className="p-2 text-white hover:bg-white hover:bg-opacity-20 rounded-lg transition-all duration-200"
-              aria-label={t.close}
-            >
-              <X size={20} />
-            </button>
-          </div>
-        </div>
+
+
+
 
         {/* Content - Scrollable */}
         <div className="h-full overflow-y-auto pb-20">
