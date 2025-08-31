@@ -26,38 +26,65 @@ export default function DictionaryPage() {
   const [error, setError] = useState<string | null>(null)
   const [language, setLanguage] = useState<'en' | 'ne'>('en')
   const [searchMode, setSearchMode] = useState<'prefix' | 'full'>('prefix')
+  const [selectedAlphabet, setSelectedAlphabet] = useState<string>('')
 
   const supabase = createClient()
 
+  // English alphabets
+  const englishAlphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+  
+  // Nepali alphabets - vowels and consonants
+  const nepaliVowels = ['अ', 'आ', 'इ', 'ई', 'उ', 'ऊ', 'ए', 'ऐ', 'ओ', 'औ', 'अं', 'अः']
+  const nepaliConsonants = [
+    'क', 'ख', 'ग', 'घ', 'ङ',
+    'च', 'छ', 'ज', 'झ', 'ञ',
+    'ट', 'ठ', 'ड', 'ढ', 'ण',
+    'त', 'थ', 'द', 'ध', 'न',
+    'प', 'फ', 'ब', 'भ', 'म',
+    'य', 'र', 'ल', 'व', 'श',
+    'ष', 'स', 'ह', 'क्ष', 'त्र', 'ज्ञ'
+  ]
+
   // Real-time filtering function
-  const filterEntries = (term: string) => {
-    if (!term.trim()) {
-      setFilteredEntries(entries)
-      return
+  const filterEntries = (term: string, alphabetFilter?: string) => {
+    let filtered = entries
+
+    // Apply alphabet filter first if selected
+    if (alphabetFilter) {
+      if (language === 'en') {
+        filtered = entries.filter(entry =>
+          entry.english.toLowerCase().startsWith(alphabetFilter.toLowerCase())
+        )
+      } else {
+        filtered = entries.filter(entry =>
+          entry.nepali.startsWith(alphabetFilter)
+        )
+      }
     }
 
-    const searchTerm = term.toLowerCase()
-    
-    let filtered: DictionaryEntry[] = []
-
-    if (searchMode === 'prefix') {
-      // Prefix matching - matches words that START with the typed letters
-      filtered = entries.filter(entry =>
-        entry.english.toLowerCase().startsWith(searchTerm) ||
-        entry.nepali.toLowerCase().startsWith(searchTerm)
-      )
-    } else {
-      // Full text search - matches anywhere in the content
-      filtered = entries.filter(entry =>
-        entry.english.toLowerCase().includes(searchTerm) ||
-        entry.nepali.includes(term) ||
-        entry.definition_en.toLowerCase().includes(searchTerm) ||
-        entry.definition_ne.includes(term) ||
-        (entry.etymology_en && entry.etymology_en.toLowerCase().includes(searchTerm)) ||
-        (entry.etymology_ne && entry.etymology_ne.includes(term)) ||
-        (entry.explanation_en && entry.explanation_en.toLowerCase().includes(searchTerm)) ||
-        (entry.explanation_ne && entry.explanation_ne.includes(term))
-      )
+    // Then apply search term filter if exists
+    if (term.trim()) {
+      const searchTerm = term.toLowerCase()
+      
+      if (searchMode === 'prefix') {
+        // Prefix matching - matches words that START with the typed letters
+        filtered = filtered.filter(entry =>
+          entry.english.toLowerCase().startsWith(searchTerm) ||
+          entry.nepali.toLowerCase().startsWith(searchTerm)
+        )
+      } else {
+        // Full text search - matches anywhere in the content
+        filtered = filtered.filter(entry =>
+          entry.english.toLowerCase().includes(searchTerm) ||
+          entry.nepali.includes(term) ||
+          entry.definition_en.toLowerCase().includes(searchTerm) ||
+          entry.definition_ne.includes(term) ||
+          (entry.etymology_en && entry.etymology_en.toLowerCase().includes(searchTerm)) ||
+          (entry.etymology_ne && entry.etymology_ne.includes(term)) ||
+          (entry.explanation_en && entry.explanation_en.toLowerCase().includes(searchTerm)) ||
+          (entry.explanation_ne && entry.explanation_ne.includes(term))
+        )
+      }
     }
 
     setFilteredEntries(filtered)
@@ -66,33 +93,49 @@ export default function DictionaryPage() {
   // Handle search input change with real-time filtering
   const handleSearchChange = (value: string) => {
     setSearchTerm(value)
-    filterEntries(value)
+    filterEntries(value, selectedAlphabet)
+  }
+
+  // Handle alphabet click
+  const handleAlphabetClick = (alphabet: string) => {
+    if (selectedAlphabet === alphabet) {
+      // If clicking the same alphabet, clear the filter
+      setSelectedAlphabet('')
+      filterEntries(searchTerm, '')
+    } else {
+      setSelectedAlphabet(alphabet)
+      filterEntries(searchTerm, alphabet)
+    }
   }
 
   // Handle Enter key press for explicit search
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
-      filterEntries(searchTerm)
+      filterEntries(searchTerm, selectedAlphabet)
     }
   }
 
   // Clear search
   const clearSearch = () => {
     setSearchTerm('')
+    setSelectedAlphabet('')
     setFilteredEntries(entries)
   }
 
   // Toggle language
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'en' ? 'ne' : 'en')
+    // Clear alphabet filter when switching languages
+    setSelectedAlphabet('')
+    filterEntries(searchTerm, '')
   }
 
   // Toggle search mode
   const toggleSearchMode = () => {
     setSearchMode(prev => prev === 'prefix' ? 'full' : 'prefix')
     // Re-filter with current search term using new mode
-    if (searchTerm) {
-      filterEntries(searchTerm)
+    if (searchTerm || selectedAlphabet) {
+      filterEntries(searchTerm, selectedAlphabet)
     }
   }
 
@@ -128,6 +171,13 @@ export default function DictionaryPage() {
 
     fetchEntries()
   }, []) // Empty dependency array - only run on mount
+
+  // Re-filter when language changes
+  useEffect(() => {
+    if (searchTerm || selectedAlphabet) {
+      filterEntries(searchTerm, selectedAlphabet)
+    }
+  }, [language, searchMode])
 
   // Separate function for retry button
   const retryFetch = async () => {
@@ -263,7 +313,7 @@ export default function DictionaryPage() {
               />
             </div>
             <div className="flex gap-2">
-              {searchTerm && (
+              {(searchTerm || selectedAlphabet) && (
                 <button
                   onClick={clearSearch}
                   className={`bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-colors font-medium ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}
@@ -273,15 +323,97 @@ export default function DictionaryPage() {
               )}
             </div>
           </div>
+
+          {/* Alphabet Filters */}
+          <div className="mt-6">
+            <h3 className={`text-sm font-semibold text-gray-700 mb-3 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
+              {language === 'en' ? 'Filter by Alphabet:' : 'अक्षरअनुसार छान्नुहोस्:'}
+            </h3>
+            
+            {language === 'en' ? (
+              // English Alphabets
+              <div className="flex flex-wrap gap-1">
+                {englishAlphabets.map((letter) => (
+                  <button
+                    key={letter}
+                    onClick={() => handleAlphabetClick(letter)}
+                    className={`w-8 h-8 rounded-md text-sm font-semibold transition-colors ${
+                      selectedAlphabet === letter
+                        ? 'bg-[#d41367] text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    } ${roboto.className}`}
+                  >
+                    {letter}
+                  </button>
+                ))}
+              </div>
+            ) : (
+              // Nepali Alphabets
+              <div className="space-y-4">
+                {/* Vowels */}
+                <div>
+                  <h4 className={`text-xs font-medium text-gray-600 mb-2 ${notoSansDevanagari.className}`}>
+                    स्वरहरू (Vowels):
+                  </h4>
+                  <div className="flex flex-wrap gap-1">
+                    {nepaliVowels.map((letter) => (
+                      <button
+                        key={letter}
+                        onClick={() => handleAlphabetClick(letter)}
+                        className={`min-w-[32px] h-8 px-2 rounded-md text-sm font-semibold transition-colors ${
+                          selectedAlphabet === letter
+                            ? 'bg-[#d41367] text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        } ${notoSansDevanagari.className}`}
+                      >
+                        {letter}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Consonants */}
+                <div>
+                  <h4 className={`text-xs font-medium text-gray-600 mb-2 ${notoSansDevanagari.className}`}>
+                    व्यञ्जनहरू (Consonants):
+                  </h4>
+                  <div className="flex flex-wrap gap-1">
+                    {nepaliConsonants.map((letter) => (
+                      <button
+                        key={letter}
+                        onClick={() => handleAlphabetClick(letter)}
+                        className={`min-w-[32px] h-8 px-2 rounded-md text-sm font-semibold transition-colors ${
+                          selectedAlphabet === letter
+                            ? 'bg-[#d41367] text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        } ${notoSansDevanagari.className}`}
+                      >
+                        {letter}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
           
-          {searchTerm && (
-            <div className="mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-              <p className={`text-sm text-gray-600 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
-                {language === 'en' 
-                  ? `Found ${filteredEntries.length} result${filteredEntries.length !== 1 ? 's' : ''} for "${searchTerm}"`
-                  : `"${searchTerm}" का लागि ${filteredEntries.length} परिणाम फेला पर्यो`
-                }
-              </p>
+          {(searchTerm || selectedAlphabet) && (
+            <div className="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <div className="flex flex-wrap gap-4">
+                <p className={`text-sm text-gray-600 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
+                  {language === 'en' 
+                    ? `Found ${filteredEntries.length} result${filteredEntries.length !== 1 ? 's' : ''}`
+                    : `${filteredEntries.length} परिणाम फेला पर्यो`
+                  }
+                  {searchTerm && ` for "${searchTerm}"`}
+                  {selectedAlphabet && (
+                    <span>
+                      {searchTerm ? ' and ' : ' '}
+                      {language === 'en' ? `starting with "${selectedAlphabet}"` : `"${selectedAlphabet}" ले सुरु हुने`}
+                    </span>
+                  )}
+                </p>
+              </div>
               <p className={`text-xs text-gray-500 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
                 {searchMode === 'prefix' 
                   ? (language === 'en' ? 'Showing words starting with these letters' : 'यी अक्षरहरूले सुरु हुने शब्दहरू देखाउँदै')
@@ -297,15 +429,15 @@ export default function DictionaryPage() {
           {filteredEntries.length === 0 ? (
             <div className="bg-white rounded-lg shadow-md p-8 text-center">
               <p className={`text-gray-500 text-lg ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
-                {searchTerm 
+                {searchTerm || selectedAlphabet
                   ? (searchMode === 'prefix'
-                      ? (language === 'en' ? `No words found starting with "${searchTerm}"` : `"${searchTerm}" ले सुरु हुने कुनै शब्द फेला परेन`)
+                      ? (language === 'en' ? 'No words found with the current filters' : 'हालको फिल्टरसँग कुनै शब्द फेला परेन')
                       : (language === 'en' ? 'No entries found matching your search.' : 'खोजसँग मिल्दो कुनै शब्द फेला परेन।')
                     )
                   : (language === 'en' ? 'No entries available.' : 'कुनै शब्द उपलब्ध छैन।')
                 }
               </p>
-              {searchTerm && searchMode === 'prefix' && (
+              {(searchTerm || selectedAlphabet) && searchMode === 'prefix' && (
                 <p className={`text-sm text-gray-400 mt-2 ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}>
                   {language === 'en' 
                     ? 'Try switching to "Full Search" for broader results' 
