@@ -1,3 +1,5 @@
+// Notice/index.tsx
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -8,64 +10,38 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
 
+import { getLocalizedPostWithFallback } from "@/lib/getLocalizedPostWithFallback";
+import { urlFor } from "@/sanity/lib/imageUrl"; // standard sanity image builder
+
 export default function Notice() {
-  /* This section is for fetching image from slugs */
-  // const [images, setImages] = useState<string[]>([]);
-  // const [isLoading, setIsLoading] = useState(true);
-
-  // useEffect(() => {
-  //   async function fetchNoticeImages() {
-  //     try {
-  //       // Wordpress slug is here
-  //       const res = await fetch(
-  //         "https://queeryouthgroup.org.np/wp-json/wp/v2/posts?slug=notice"
-  //       );
-  //       const data = await res.json();
-
-  //       if (data.length > 0) {
-  //         const content = data[0].content.rendered;
-
-  //         // Regex to extract all <img src="..."> URLs
-  //         const imgRegex = /<img[^>]+src=["']([^"']+)["']/g;
-  //         const urls: string[] = [];
-  //         let match;
-  //         while ((match = imgRegex.exec(content)) !== null) {
-  //           urls.push(match[1]);
-  //         }
-
-  //         setImages(urls);
-  //       }
-  //     } catch (err) {
-  //       console.error("Error fetching notice images:", err);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   }
-
-  //   fetchNoticeImages();
-  // }, []);
-
-  // // Don't render anything if loading or no images found
-  // if (isLoading || images.length === 0) {
-  //   return null;
-  // }
-
-  /* This section is for fetching images locally when slugs aren't working */
   const [images, setImages] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(()=>{
-    const fetchImagesFromPublic = () => {
-      const imagePaths = [
-        '/images/notice/banda-notice-08.jpg',
-        '/images/notice/banda-notice-09-09-09.jpg'
-      ];
+  useEffect(() => {
+    async function fetchNoticeImages() {
+      try {
+        // fetch the post with slug = "notice"
+        const post = await getLocalizedPostWithFallback("en", "notice");
 
-      setImages(imagePaths);
-    };
+        if (post?.body) {
+          // filter out only images
+          const urls = post.body
+            .filter((block: any) => block._type === "image" && block.asset)
+            .map((block: any) => urlFor(block).width(1200).url());
 
-    fetchImagesFromPublic();
+          setImages(urls);
+        }
+      } catch (err) {
+        console.error("Error fetching notice images from Sanity:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchNoticeImages();
   }, []);
 
+  if (isLoading || images.length === 0) return null;
 
   return (
     <div className="w-[400px] h-[400px] lg:h-[800px] lg:w-[800px] relative group">
@@ -90,7 +66,6 @@ export default function Notice() {
                 fill
                 className="object-cover"
                 priority={index === 0}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
               />
             </div>
           </SwiperSlide>
