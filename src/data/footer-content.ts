@@ -21,7 +21,7 @@ export type FooterContent = Record<Locale, FooterContentSection>;
 export const footerContent: FooterContent = {
   en: {
     title: "Queer Youth Group",
-    address: "Yala Dhwakha (Patandhoka), Lalitpur-11, Nepal",
+    address: "Yala Dhwakha (Patandhoka), Lalitpur-20, Nepal",
     email: "communications.qyg@gmail.com",
     phone: "+977 9851350665",
     sections: {
@@ -52,7 +52,7 @@ export const footerContent: FooterContent = {
   },
   ne: {
     title: "क्वेयर युथ ग्रुप",
-    address: "यल ध्वखा (पाटनधोका), ललितपुर-११, नेपाल",
+    address: "यल ध्वखा (पाटनधोका), ललितपुर-२०, नेपाल",
     email: "communications.qyg@gmail.com",
     phone: "+९७७ ९८५१३५०६६५",
     sections: {
