@@ -1,7 +1,7 @@
 import { alegreyaSans, gulzar, jomolhari, notoSansNewa } from "@/ui/fonts";
 import Link from "next/link";
 import Image from "next/image";
-import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTiktok, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 interface HeaderProps {
@@ -87,6 +87,9 @@ export default function Header({ lang }: HeaderProps) {
             </Link>
             <Link href="https://www.tiktok.com/@queeryouthgroup/" target="_blank" rel="noopener noreferrer" className="hover:text-[#DD4285] transition duration-300 ease-in-out">
               <FaTiktok size={24} />
+            </Link>
+            <Link href="https://www.linkedin.com/company/68658037/admin/page-posts/published/" target="_blank" rel="noopener noreferrer" className="hover:text-[#DD4285] transition duration-300 ease-in-out">
+              <FaLinkedin size={24} />
             </Link>
           </div>
         </div>

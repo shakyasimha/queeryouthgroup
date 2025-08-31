@@ -1,3 +1,5 @@
+// @/sanity/schemaTypes/postType.ts
+
 import {DocumentTextIcon} from '@sanity/icons'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 

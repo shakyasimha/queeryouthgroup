@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { alegreyaSans, roboto, notoSansDevanagari } from "@/ui/fonts";
-import { FaPhone, FaEnvelope, FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaFacebook, FaInstagram, FaTiktok, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter, FaLocationDot } from "react-icons/fa6";
 import { footerContent } from "@/data/footer-content";
 
@@ -82,7 +82,8 @@ export default function Footer({ lang = "en" }: { lang?: "en" | "ne" }) {
                 FaFacebook,
                 FaInstagram,
                 FaXTwitter,
-                FaTiktok
+                FaTiktok, 
+                FaLinkedin
               };
               const Icon = icons[item.icon as keyof typeof icons];
               
