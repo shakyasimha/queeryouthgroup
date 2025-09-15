@@ -5,6 +5,8 @@ import Welcome from "@/components/Welcome";
 import Notice from "@/components/Notice";
 import VisionTab from "@/components/VisionTab";
 import PublicationsCarousel from "@/components/Report";
+import Donations from "@/components/Donations";
+import Reveal from "@/components/Reveal";
 
 export default function Home() {
   return (
@@ -15,21 +17,35 @@ export default function Home() {
       </section>
 
       {/* You can add a Welcome section, About, etc. below this */}
-      <Welcome />
-      
+      <Reveal>
+        <Welcome />  
+      </Reveal>
+
       {/* Visions, Goals, Mission */}
-      <VisionTab />
+      <Reveal>
+        <VisionTab />
+      </Reveal>
 
       {/* Notice section */}
-      <div className="mb-16 mt-16 text-center">
-        <Notice />
-      </div>
+      <Reveal>
+        <div className="mb-16 mt-16 text-center">
+          <Notice />
+        </div>
+      </Reveal>
 
       {/* Publications */}
-      <div className="mb-32 text-center">
-        <PublicationsCarousel /> 
-      </div> 
-        
+      <Reveal>
+        <div className="mb-16 text-center">
+          <PublicationsCarousel /> 
+        </div>  
+      </Reveal> 
+      
+      {/* QR code for donations */}
+      <Reveal>
+        <div className="mb-32 text-center">
+          <Donations />
+        </div>
+      </Reveal>
     </main>
   );
 }
