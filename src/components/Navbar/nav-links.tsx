@@ -34,7 +34,7 @@ export default function NavLinks({ className, links, lang }: NavLinksProps) {
   };
 
   const getLocalizedHref = (href: string) => {
-    if (href === "/") return lang === "en" ? "/" : "/ne";
+    if (href === "/") return lang === "en" ? "/en" : "/ne";
     return lang === "en" ? href : `/ne${href}`;
   };
 
@@ -42,7 +42,7 @@ export default function NavLinks({ className, links, lang }: NavLinksProps) {
     if (href === "/") {
       return pathname === "/" || pathname === "/ne";
     }
-    return lang === "en" ? pathname === href : pathname === `/ne${href}`;
+    return lang === "en" ? pathname === `/en${href}` : pathname === `/ne${href}`;
   };
 
   return (
