@@ -25,7 +25,7 @@ src/
 │   ├── env.ts               # Environment variable validation
 │   └── structure.ts         # Studio sidebar structure
 └── app/
-    ├── studio/
+    └── studio/
         ├── [[...tool]]/
         │   └── page.tsx         # Studio route handler
         └── layout.tsx           # Studio layout
