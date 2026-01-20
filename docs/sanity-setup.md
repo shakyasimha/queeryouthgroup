@@ -7,7 +7,7 @@ This project uses [Sanity](https://www.sanity.io/) as a headless CMS for managin
 ## Project Structure
 
 ```
-app/
+src/
 ├── sanity/
 │   ├── lib/
 │   │   ├── client.ts        # Sanity client configuration
@@ -24,10 +24,11 @@ app/
 │   │   └── index.ts         # Schema exports
 │   ├── env.ts               # Environment variable validation
 │   └── structure.ts         # Studio sidebar structure
-└── studio/
-    ├── [[...tool]]/
-    │   └── page.tsx         # Studio route handler
-    └── layout.tsx           # Studio layout
+└── app/
+    ├── studio/
+        ├── [[...tool]]/
+        │   └── page.tsx         # Studio route handler
+        └── layout.tsx           # Studio layout
 ```
 
 ## Environment Variables
