@@ -1,3 +1,5 @@
+// Footer/index.tsx 
+
 import Link from "next/link";
 import { alegreyaSans, roboto, notoSansDevanagari } from "@/ui/fonts";
 import { FaPhone, FaEnvelope, FaFacebook, FaInstagram, FaTiktok, FaLinkedin } from "react-icons/fa";
