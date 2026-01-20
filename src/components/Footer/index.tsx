@@ -11,7 +11,7 @@ export default function Footer({ lang = "en" }: { lang?: "en" | "ne" }) {
   const headerFont = lang == 'en' ? alegreyaSans.className : notoSansDevanagari.className;
 
   return (
-    <footer className={`${bodyFont} text-[#333] bg-[#cccffe] py-6 rounded-t-xl`}>
+    <footer className={`${bodyFont} text-[#333] bg-[#cccffe] py-6 rounded-t-xl -mt-6 relative z-10`}>
       <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row">
         {/* Contact Info */}
         <div className="flex-1 py-4 flex flex-col gap-2 sm:m-0 m-4">
@@ -105,7 +105,17 @@ export default function Footer({ lang = "en" }: { lang?: "en" | "ne" }) {
       </div>
 
       <div className="mx-auto w-[90%] h-[1px] bg-gray-400 mt-6"></div>
-      <div className="text-center text-xs mt-4">{content.copyright}</div>
+      
+      {/* Mobile: Stacked vertically, Desktop: Side by side */}
+      <div className="max-w-screen-xl mx-auto text-xs mt-4 px-4">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center text-center">
+          <div className="hidden md:block md:flex-1"></div>
+          <div className="md:flex-1">{content.copyright}</div>
+          <div className="mt-2 md:mt-0 md:flex-1 md:text-right">
+            Created by <Link href="https://sushovan-shakya.com.np/" className="hover:text-[#333]/80">Sushovan Shakya</Link>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }
