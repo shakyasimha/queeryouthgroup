@@ -27,7 +27,7 @@ The integration uses Microsoft Graph API to connect to OneDrive and fetch PDF fi
 
 ### Data Flow
 
-```
+```text
 OneDrive Folder → Microsoft Graph API → Next.js API Route → Frontend Component → User
 ```
 
@@ -51,7 +51,7 @@ Before implementing the OneDrive integration, ensure you have:
 
 The first step is to register an application in Azure Active Directory to obtain authentication credentials.
 
-#### Steps:
+#### Steps
 
 1. **Navigate to Azure Portal**
    - Go to [https://portal.azure.com](https://portal.azure.com)
@@ -112,14 +112,18 @@ To get your Drive ID and Folder ID, you can use the Microsoft Graph Explorer or 
 1. Go to [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer)
 2. Sign in with your account
 3. Run this query to get drives:
-   ```
+
+   ```text
    GET https://graph.microsoft.com/v1.0/me/drives
    ```
+
 4. Copy the `id` of your desired drive
 5. To find folders, run:
-   ```
+  
+   ```text
    GET https://graph.microsoft.com/v1.0/drives/{driveId}/root/children
    ```
+
 6. Locate your publications folder and copy its `id`
 
 #### Option B: Using a Helper Script
@@ -173,6 +177,7 @@ npm install @microsoft/microsoft-graph-client isomorphic-fetch pdf-parse
 ```
 
 **Package purposes:**
+
 - `@microsoft/microsoft-graph-client` - Official Microsoft Graph SDK
 - `isomorphic-fetch` - Polyfill for fetch in Node.js
 - `pdf-parse` - Extract metadata from PDF files
@@ -234,6 +239,7 @@ export async function getGraphClient() {
 ```
 
 **Key Features:**
+
 - **Token Caching**: Stores access token in memory to avoid unnecessary API calls
 - **Auto-refresh**: Refreshes token 1 minute before expiry
 - **Client Credentials Flow**: Uses app-only authentication (no user interaction)
@@ -338,6 +344,7 @@ async function generatePdfThumbnail(fileId: string): Promise<string | null> {
 ```
 
 **Process Flow:**
+
 1. Authenticate with Microsoft Graph API
 2. Fetch all PDF files from specified OneDrive folder
 3. For each PDF:
@@ -477,6 +484,7 @@ export default function PublicationsPage() {
 ```
 
 **Features:**
+
 - Responsive grid layout (1-4 columns based on screen size)
 - Loading and error states
 - Opens PDFs in new tab when clicked
@@ -586,6 +594,7 @@ await client.api('/subscriptions').post({
 **Error**: `401 Unauthorized` or `Invalid client secret`
 
 **Solutions:**
+
 - Verify credentials in `.env.local` match Azure portal
 - Check if client secret has expired
 - Ensure admin consent was granted for API permissions
@@ -595,6 +604,7 @@ await client.api('/subscriptions').post({
 **Error**: `404 Not Found` when accessing drive/folder
 
 **Solutions:**
+
 - Verify `ONEDRIVE_DRIVE_ID` and `ONEDRIVE_FOLDER_ID` are correct
 - Check if the folder exists and contains PDF files
 - Ensure the app has `Files.Read.All` permission
@@ -604,6 +614,7 @@ await client.api('/subscriptions').post({
 **Error**: No cover images displayed
 
 **Solutions:**
+
 - Thumbnails may take time to generate for new files
 - Large PDFs may not generate thumbnails immediately
 - Fallback icon is shown if thumbnail unavailable
@@ -613,6 +624,7 @@ await client.api('/subscriptions').post({
 **Error**: CORS errors in browser console
 
 **Solutions:**
+
 - Ensure API calls are server-side only (not from client)
 - Use Next.js API routes as proxy
 
@@ -685,6 +697,7 @@ console.log('Processed books:', books);
 ## Support
 
 For issues or questions:
+
 1. Check troubleshooting section above
 2. Review Microsoft Graph API documentation
 3. Contact development team
