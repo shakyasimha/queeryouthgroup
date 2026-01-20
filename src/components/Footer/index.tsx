@@ -11,7 +11,7 @@ export default function Footer({ lang = "en" }: { lang?: "en" | "ne" }) {
   const headerFont = lang == 'en' ? alegreyaSans.className : notoSansDevanagari.className;
 
   return (
-    <footer className={`${bodyFont} text-[#333] bg-[#cccffe] py-6`}>
+    <footer className={`${bodyFont} text-[#333] bg-[#cccffe] py-6 rounded-t-xl`}>
       <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row">
         {/* Contact Info */}
         <div className="flex-1 py-4 flex flex-col gap-2 sm:m-0 m-4">

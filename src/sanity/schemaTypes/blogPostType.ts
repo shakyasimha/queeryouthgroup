@@ -54,6 +54,23 @@ export const blogPostType = defineType({
             },
             initialValue: 'en',
         }),
+        defineField({
+        name: 'slug',
+        title: 'Slug',
+        type: 'slug',
+        options: {
+            source: 'title',
+            maxLength: 96,
+        },
+        validation: (Rule) => Rule.required(),
+        }),
+
+        defineField({
+        name: 'publishedAt',
+        title: 'Published At',
+        type: 'datetime',
+        initialValue: () => new Date().toISOString(),
+        }),
     ],
     preview: {
         select: {
