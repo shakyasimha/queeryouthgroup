@@ -24,9 +24,10 @@ async function getBlogPosts(locale: string) {
 export default async function BlogPage({
   params
 }: {
-  params: { locale: string }
+  params: Promise<{ locale: string }> // Changed this
 }) {
-  const posts = await getBlogPosts(params.locale)
+  const { locale } = await params // Added await here
+  const posts = await getBlogPosts(locale) // Use destructured locale
 
   return (
     <div className="flex items-center justify-center flex-col bg-white text-black min-h-screen py-8">
@@ -44,7 +45,7 @@ export default async function BlogPage({
             slug={post.slug}
             author={post.author?.name}
             category={post.category?.title}
-            locale={params.locale}
+            locale={locale} // Use destructured locale
           />
         ))
       )}
