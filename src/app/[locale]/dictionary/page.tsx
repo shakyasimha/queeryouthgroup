@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { createClient } from '@/utils/supabase/client'
 import { roboto, notoSansDevanagari } from '@/ui/fonts'
 
 // Define the type for your dictionary entry
@@ -11,11 +10,10 @@ interface DictionaryEntry {
   nepali: string
   definition_en: string
   definition_ne: string
-  etymology_en?: string
-  etymology_ne?: string
-  explanation_en?: string
-  explanation_ne?: string
-  created_at?: string
+  etymology_en?: string | null
+  etymology_ne?: string | null
+  explanation_en?: string | null
+  explanation_ne?: string | null
 }
 
 export default function DictionaryPage() {
@@ -27,8 +25,6 @@ export default function DictionaryPage() {
   const [language, setLanguage] = useState<'en' | 'ne'>('en')
   const [searchMode, setSearchMode] = useState<'prefix' | 'full'>('prefix')
   const [selectedAlphabet, setSelectedAlphabet] = useState<string>('')
-
-  const supabase = createClient()
 
   // English alphabets
   const englishAlphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
@@ -139,28 +135,25 @@ export default function DictionaryPage() {
     }
   }
 
-  // Fetch dictionary entries from Supabase - moved inside useEffect
+  // Fetch dictionary entries from SQLite API
   useEffect(() => {
     const fetchEntries = async () => {
       try {
         setLoading(true)
-        console.log('Fetching from Supabase...')
+        console.log('Fetching from SQLite API...')
         
-        const { data, error } = await supabase
-          .from('dictionary')
-          .select('*')
-          .order('english', { ascending: true })
+        const response = await fetch('@/api/dictionary')
+        const result = await response.json()
 
-        console.log('Supabase response:', { data, error })
+        console.log('API response:', result)
 
-        if (error) {
-          console.error('Supabase error:', error)
-          throw error
+        if (result.error) {
+          throw new Error(result.error)
         }
 
-        setEntries(data || [])
-        setFilteredEntries(data || [])
-        console.log('Entries loaded:', data?.length)
+        setEntries(result.data || [])
+        setFilteredEntries(result.data || [])
+        console.log('Entries loaded:', result.data?.length)
       } catch (err) {
         console.error('Fetch error:', err)
         setError(err instanceof Error ? err.message : 'An error occurred')
@@ -184,23 +177,20 @@ export default function DictionaryPage() {
     try {
       setLoading(true)
       setError(null)
-      console.log('Retrying fetch from Supabase...')
+      console.log('Retrying fetch from SQLite API...')
       
-      const { data, error } = await supabase
-        .from('dictionary')
-        .select('*')
-        .order('english', { ascending: true })
+      const response = await fetch('/api/dictionary')
+      const result = await response.json()
 
-      console.log('Supabase response:', { data, error })
+      console.log('API response:', result)
 
-      if (error) {
-        console.error('Supabase error:', error)
-        throw error
+      if (result.error) {
+        throw new Error(result.error)
       }
 
-      setEntries(data || [])
-      setFilteredEntries(data || [])
-      console.log('Entries loaded:', data?.length)
+      setEntries(result.data || [])
+      setFilteredEntries(result.data || [])
+      console.log('Entries loaded:', result.data?.length)
     } catch (err) {
       console.error('Fetch error:', err)
       setError(err instanceof Error ? err.message : 'An error occurred')
