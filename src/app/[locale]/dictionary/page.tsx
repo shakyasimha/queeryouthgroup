@@ -137,12 +137,14 @@ export default function DictionaryPage() {
 
   // Fetch dictionary entries from SQLite API
   useEffect(() => {
+    if (typeof window === 'undefined') return; // Checking if we're in the browser or not
+
     const fetchEntries = async () => {
       try {
         setLoading(true)
         console.log('Fetching from SQLite API...')
         
-        const response = await fetch('@/api/dictionary')
+        const response = await fetch(`${window.location.origin}/api/dictionary`)
         const result = await response.json()
 
         console.log('API response:', result)
@@ -174,12 +176,14 @@ export default function DictionaryPage() {
 
   // Separate function for retry button
   const retryFetch = async () => {
+    if (typeof window === 'undefined') return; // Checking if the browser is loaded 
+
     try {
       setLoading(true)
       setError(null)
       console.log('Retrying fetch from SQLite API...')
       
-      const response = await fetch('/api/dictionary')
+      const response = await fetch(`${window.location.origin}/api/dictionary`)
       const result = await response.json()
 
       console.log('API response:', result)
