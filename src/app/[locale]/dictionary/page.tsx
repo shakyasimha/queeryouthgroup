@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { roboto, notoSansDevanagari } from '@/ui/fonts'
+import { fetchDictionaryData } from '@/utils/fetch-json'
 
 // Define the type for your dictionary entry
 interface DictionaryEntry {
@@ -135,19 +136,16 @@ export default function DictionaryPage() {
     }
   }
 
-  // Fetch dictionary entries from SQLite API
+  // Fetch dictionary entries from local JSON file
   useEffect(() => {
-    if (typeof window === 'undefined') return; // Checking if we're in the browser or not
-
-    const fetchEntries = async () => {
+    const loadEntries = async () => {
       try {
         setLoading(true)
-        console.log('Fetching from SQLite API...')
+        console.log('Loading dictionary data from JSON...')
         
-        const response = await fetch(`${window.location.origin}/api/dictionary`)
-        const result = await response.json()
+        const result = await fetchDictionaryData()
 
-        console.log('API response:', result)
+        console.log('Data loaded:', result)
 
         if (result.error) {
           throw new Error(result.error)
@@ -157,14 +155,14 @@ export default function DictionaryPage() {
         setFilteredEntries(result.data || [])
         console.log('Entries loaded:', result.data?.length)
       } catch (err) {
-        console.error('Fetch error:', err)
+        console.error('Load error:', err)
         setError(err instanceof Error ? err.message : 'An error occurred')
       } finally {
         setLoading(false)
       }
     }
 
-    fetchEntries()
+    loadEntries()
   }, []) // Empty dependency array - only run on mount
 
   // Re-filter when language changes
@@ -175,18 +173,15 @@ export default function DictionaryPage() {
   }, [language, searchMode])
 
   // Separate function for retry button
-  const retryFetch = async () => {
-    if (typeof window === 'undefined') return; // Checking if the browser is loaded 
-
+  const retryLoad = async () => {
     try {
       setLoading(true)
       setError(null)
-      console.log('Retrying fetch from SQLite API...')
+      console.log('Retrying to load dictionary data...')
       
-      const response = await fetch(`${window.location.origin}/api/dictionary`)
-      const result = await response.json()
+      const result = await fetchDictionaryData()
 
-      console.log('API response:', result)
+      console.log('Data loaded:', result)
 
       if (result.error) {
         throw new Error(result.error)
@@ -196,7 +191,7 @@ export default function DictionaryPage() {
       setFilteredEntries(result.data || [])
       console.log('Entries loaded:', result.data?.length)
     } catch (err) {
-      console.error('Fetch error:', err)
+      console.error('Load error:', err)
       setError(err instanceof Error ? err.message : 'An error occurred')
     } finally {
       setLoading(false)
@@ -225,7 +220,7 @@ export default function DictionaryPage() {
           </div>
           <p className={`text-gray-600 mb-4 ${roboto.className}`}>{error}</p>
           <button
-            onClick={retryFetch}
+            onClick={retryLoad}
             className={`bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors ${language === 'ne' ? notoSansDevanagari.className : roboto.className}`}
           >
             {language === 'en' ? 'Try Again' : 'पुन: प्रयास'}
