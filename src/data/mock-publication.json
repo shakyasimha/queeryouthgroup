@@ -1,0 +1,22 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "Introduction to Climate Change",
+      "downloadUrl": "https://example.com/book1.pdf",
+      "coverImage": "https://picsum.photos/seed/book1/400/600",
+      "webUrl": "https://example.com/book1.pdf",
+      "lastModified": "2024-01-15T10:30:00Z",
+      "size": 2457600
+    },
+    {
+      "id": "2",
+      "title": "Sustainable Development Goals 2024",
+      "downloadUrl": "https://example.com/book2.pdf",
+      "coverImage": "https://picsum.photos/seed/book2/400/600",
+      "webUrl": "https://example.com/book2.pdf",
+      "lastModified": "2024-02-01T14:20:00Z",
+      "size": 5242880
+    }
+  ]
+}

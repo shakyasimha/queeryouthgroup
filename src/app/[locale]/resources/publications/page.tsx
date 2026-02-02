@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import mockData from '@/data/mock-publication.json';
 
 interface Book {
   id: string;
@@ -25,14 +26,25 @@ export default function PublicationsPage() {
   const fetchBooks = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/publications');
       
-      if (!response.ok) {
-        throw new Error('Failed to fetch publications');
+      // Check if we should use mock data
+      const useMock = process.env.NEXT_PUBLIC_USE_MOCK === 'true';
+      
+      if (useMock) {
+        // Use mock data
+        await new Promise(resolve => setTimeout(resolve, 500)); // Simulate delay
+        setBooks(mockData.books);
+      } else {
+        // Use real API
+        const response = await fetch('/api/publications');
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch publications');
+        }
+        
+        const data = await response.json();
+        setBooks(data.books);
       }
-      
-      const data = await response.json();
-      setBooks(data.books);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {

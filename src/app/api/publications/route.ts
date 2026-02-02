@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getGraphClient } from '@/lib/microsoft-graph';
-import pdfParse from 'pdf-parse';
+import * as pdfParse from 'pdf-parse';
 
 interface Book {
   id: string;
