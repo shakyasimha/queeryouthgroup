@@ -43,3 +43,6 @@ next-env.d.ts
 
 # dist folder
 /dist
+
+# .vscode config
+.vscode
